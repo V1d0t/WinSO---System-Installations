@@ -126,7 +126,6 @@
         padding: 10px 20px;
         font-size: 0.9rem;
     }
-}
 
 .nav-main {
     display: flex;
@@ -637,4 +636,13 @@
     text-align: center;
     color: #A0AEC0;
     font-size: 0.875rem;
+}
+
+@media (max-width: 480px) {
+  body, html {
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-x: hidden;
+  }
+}
 }
