@@ -1,0 +1,50 @@
+Website License Agreement
+=========================
+
+Effective Date: [2025-08-30]
+Website: [WinSO---System-Installations / URL]
+
+GEORGIA OPEN SOURCE LICENSE
+Copyright (c) 2025 [WinSO]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, subject to the following conditions:
+
+1. Attribution:
+   All copies or substantial portions of the Software must include the above
+   copyright notice, this permission notice, and the following acknowledgment:
+   “Licensed under the Georgia Open Source License (GOSL).”
+
+2. Jurisdiction:
+   This License is governed by and shall be construed in accordance with the
+   laws of Georgia (Sakartvelo), without regard to conflict-of-law principles.
+   Any dispute arising under this License shall be resolved by the competent
+   courts of Georgia.
+
+3. Warranty Disclaimer:
+   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+4. Liability Limitation:
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR
+   OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE
+   USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. International Use:
+   Redistribution and use outside the jurisdiction of Georgia are permitted,
+   provided that the above conditions are preserved and references to this
+   License remain intact.
+
+6. Modifications:
+   Modifications to this License text are not permitted except with explicit
+   written permission from the original author(s).
+
+---------------------------------------------
+This license is inspired by open-source principles, adapted with jurisdiction
+to Georgia (Sakartvelo), ensuring clarity for local and international use.
+---------------------------------------------
