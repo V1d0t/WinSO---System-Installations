@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="privacy-title">კონფიდენციალურობის პოლიტიკა</title>
+    <title data-i18n="title">Windows & Linux Installation Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="WinSO-modern.css">
 </head>
 <body class="body-container">
@@ -14,17 +15,36 @@
     <header class="header-main">
         <div class="container-main">
             <div class="header-content">
-                <h1 class="header-title" data-i18n="title">Windows & Linux ინსტალაციის სერვისები</h1>
-                <nav class="nav-main">
+                <a href="index.html" class="logo-container">
+                    <i class="fab fa-windows"></i>
+                    <i class="fab fa-linux"></i>
+                    <h1 class="logo-text" data-i18n="title">OS ინსტალაცია</h1>
+                </a>
+
+                <nav class="desktop-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-                        <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="windows">Windows</a></li>
-                        <li class="nav-item"><a href="index.html#linux-section" class="nav-link" data-i18n="linux">Linux</a></li>
-                        <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+                        <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="windows">Windows</a></li>
+                        <li class="nav-item"><a href="#linux-section" class="nav-link" data-i18n="linux">Linux </a></li>
+                        <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
                     </ul>
                 </nav>
+
+                <div class="mobile-menu-button-container">
+                    <button id="menu-toggle" class="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
+
+        <!--Mobile Section-->
+        <nav id="mobile-menu" class="mobile-nav hidden">
+        <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
+        <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="windows">Windows</a></li>
+        <li class="nav-item"><a href="#linux-section" class="nav-link" data-i18n="linux">Linux </a></li>
+        <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+        </nav>
     </header>
 
     <!-- Main Content Area -->
@@ -63,22 +83,47 @@
     <footer class="footer-main">
         <div class="container-main">
             <div class="footer-content">
+                <!-- Column 1: Info -->
                 <div class="footer-info">
                     <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
                     <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
                 </div>
+
+                <!-- Column 2: Links -->
                 <div class="footer-links">
+                    <h4 class="footer-subtitle">ნავიგაცია</h4>
                     <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
                     <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
-                    <a href="WinSO-Contact.html" class="footer-link" data-i18n="contact">დაგვიკავშირდით</a>
+                </div>
+
+                <!-- Column 3: Contact Details with Icons -->
+                <div class="footer-contact">
+                    <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+995 XXX XX XX XX</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@winso.ge</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ქუთაისი, --- N/A -- საქართველო</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
-
 </html>
-
-
-
