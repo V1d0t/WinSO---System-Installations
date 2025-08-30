@@ -640,21 +640,26 @@ html, body {
         max-width: 100vw;
         width: 100vw;
         box-sizing: border-box;
-        padding-left: 4vw;
-        padding-right: 4vw;
+        padding-left: 2vw; /* less padding for more space */
+        padding-right: 2vw;
         margin-left: 0;
         margin-right: 0;
+        overflow-wrap: break-word; /* force wrap long words */
+        word-break: break-word;
     }
     .section-title,
     .intro-title,
-    .footer-title {
+    .footer-title,
+    .nav-link {
+        font-size: 1rem;
         word-break: break-word;
-        font-size: 1.1rem;
+        overflow-wrap: break-word;
     }
     .intro-text,
     .footer-description {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         word-break: break-word;
+        overflow-wrap: break-word;
     }
 }
 
