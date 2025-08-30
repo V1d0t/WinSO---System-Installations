@@ -77,6 +77,19 @@
     }
 }
 
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+        text-align: center;
+    }
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 0;
+    }
+}
+
 .nav-main {
     display: flex;
 }
