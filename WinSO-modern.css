@@ -77,56 +77,6 @@
     }
 }
 
-@media (max-width: 480px) {
-    .header-title {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-        text-align: center;
-    }
-    .header-content {
-        flex-direction: column;
-        align-items: center;
-        padding: 12px 0;
-    }
-    .nav-list {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-    .nav-item {
-        margin: 2px;
-    }
-    .nav-link {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-    }
-    .container-main {
-        padding: 0 15px;
-    }
-    .glass-card {
-        padding: 16px;
-    }
-    .section-title {
-        font-size: 1.1rem;
-        margin-bottom: 16px;
-    }
-    .price-item1, .price-item2, .price-item3, .price-item4, .price-item5, 
-    .price-item6, .price-item7, .price-item8, .price-item9, .price-item10 {
-        padding: 8px 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-    .price-tag1, .price-tag2, .price-tag3, .price-tag4, .price-tag5, 
-    .price-tag6, .price-tag7, .price-tag8, .price-tag9, .price-tag10 {
-        align-self: flex-end;
-        margin-top: 4px;
-    }
-    .btn-primary {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
 .nav-main {
     display: flex;
 }
@@ -636,13 +586,4 @@
     text-align: center;
     color: #A0AEC0;
     font-size: 0.875rem;
-}
-
-@media (max-width: 480px) {
-  body, html {
-    padding-left: 15px;
-    padding-right: 15px;
-    overflow-x: hidden;
-  }
-}
 }
