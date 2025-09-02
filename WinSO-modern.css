@@ -478,6 +478,101 @@ html, body {
     font-size: 0.875rem;
 }
 
+/* ======================================= */
+/* ========== Order Form Styles ========== */
+/* ======================================= */
+
+/* Controls the entire form, arranging elements vertically. */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between the form groups. */
+}
+
+/* Controls each group (e.g., the 'Email' label and its input field). */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Spacing between a label and its input field. */
+}
+
+/* Styles all labels within the form (e.g., 'Your Email:', 'Select OS'). */
+.form-group label {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Styles the input field where the user enters their email. */
+.form-group input[type="email"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    width: 100%; /* Makes the input fill the full width of its container. */
+}
+
+/* Styles the input field where the user enters their phone number. */
+.form-group input[type="tel"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    width: 100%; /* Makes the input fill the full width of its container. */
+}
+
+/* Styles the dropdown menu for selecting an operating system. */
+.form-group select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    width: 100%;
+}
+
+/* Styles a multi-line text area, if you add one later (e.g., for comments). */
+.form-group textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    width: 100%;
+}
+
+/* Styles the container that holds all the addon checkboxes. */
+.form-group .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Styles each individual line containing one checkbox and its label. */
+.form-group .checkbox-item {
+    display: flex;
+    align-items: center; /* Vertically aligns the checkbox with its text. */
+    gap: 10px;
+}
+
+/* Styles the actual checkbox square itself. */
+ .form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Style for the 'Addons for Windows Only' notice */
+.addons-message {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f0f4f8; /* A light blue/gray background */
+    border: 1px solid #cdd8e3;
+    text-align: center;
+    font-style: italic;
+    color: #4a5568;
+}
+
 /* --- RESPONSIVE ADJUSTMENTS --- */
 @media (min-width: 768px) {
     .desktop-nav { display: flex; }
