@@ -20,6 +20,7 @@
                     <i class="fab fa-linux"></i>
                     <h1 class="logo-text" data-i18n="title">OS ინსტალაცია</h1>
                 </a>
+
                 <nav class="desktop-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
@@ -27,6 +28,7 @@
                         <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
                     </ul>
                 </nav>  
+
                 <div class="mobile-menu-button-container">
                     <button id="menu-toggle" class="mobile-menu-button">
                         <i class="fas fa-bars"></i>
@@ -34,6 +36,9 @@
                 </div>
             </div>
         </div>
+
+        <!--Mobile Section-->
+
         <nav id="mobile-menu" class="mobile-nav hidden">
             <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
             <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
@@ -43,75 +48,157 @@
 
     <!-- Main Content Area -->
     <main class="main-content">
-        <div class="container-main">
-            <section class="glass-card">
-                <h2 class="section-title" data-i18n="contact-title">დაგვიკავშირდით</h2>
+    <div class="container-main">
+        <section class="glass-card">
+            <h2 class="section-title" data-i18n="contact-title">დაგვიკავშირდით</h2>
 
-                <!-- NEW: Form Choice Buttons -->
-                <div class="form-choice-container">
-                    <button id="show-order-btn" class="form-choice-btn active">შეკვეთის გაფორმება</button>
-                    <button id="show-question-btn" class="form-choice-btn">კითხვის დასმა</button>
+        <!-- NEW: Form Choice Buttons -->
+        <div class="form-choice-container">
+            <button id="show-order-btn" class="form-choice-btn active">შეკვეთის გაფორმება</button>
+            <button id="show-question-btn" class="form-choice-btn">კითხვის დასმა</button>
+        </div>
+
+        <!-- Order Form Section (Visible by default) -->
+        <div id="order-form-section">
+            <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
+            <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
+                <!-- Hidden input for custom email subject -->
+                <input type="hidden" name="_subject" value="New Order Submission!">
+                
+                <div class="form-group">
+                    <label for="order-email">თქვენი ელ.ფოსტა:</label>
+                    <input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required>
                 </div>
 
-                <!-- Order Form Section (Visible by default) -->
-                <div id="order-form-section">
-                    <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
-                    <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
-                        <!-- Hidden input for custom email subject -->
-                        <input type="hidden" name="_subject" value="New Order Submission!">
-                        
-                        <div class="form-group">
-                            <label for="order-email">თქვენი ელ.ფოსტა:</label>
-                            <input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">ტელეფონის ნომერი:</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+995 555 123 456" maxlength="20" pattern="^\+995\s?[0-9]{9}$" title="გთხოვთ, შეიყვანოთ მოქმედი ქართული ტელეფონის ნომერი, მაგ., +995 555123456" required>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="iso-selection">აირჩიეთ ოპერაციული სისტემა:</label>
-                            <select id="iso-selection" name="Operating_System" required>
-                                <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
-                                <optgroup label="Windows ISOs">
-                                    <option value="Windows 7 Home Basic - ₾10">Windows 7 Home Basic - ₾10</option>
-                                    <option value="Windows 7 Ultimate SP1 - ₾15">Windows 7 Ultimate SP1 - ₾15</option>
-                                    <option value="Windows 10 Home / Consumer - ₾25">Windows 10 Home / Consumer - ₾25</option>
-                                    <option value="Windows 10 Pro - ₾35">Windows 10 Pro - ₾35</option>
-                                    <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
-                                    <option value="Windows 10 Consumer Edition - ₾50">Windows 10 Consumer Edition - ₾50</option>
-                                    <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
-                                </optgroup>
-                                <optgroup label="Linux ISOs">
-                                    <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
-                                    <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
-                                    <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
-                                    <option value="ArchLinux (Troubleshooting)">ArchLinux (Troubleshooting)</option>
-                                    <option value="Kali Linux (Troubleshooting)">Kali Linux (Troubleshooting)</option>
-                                </optgroup>
-                            </select>
-                        </div>
-
-
-                        <div id="addons-container">
-                            <div id="addons-checkboxes" style="display: none;">
-                                <div class="form-group">
-                                    <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
-                                    <div class="checkbox-group">
-                                        <div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL"><label for="antivirus">ანტივირუსი - ₾5</label></div>
-                                        <div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL"><label for="office">Microsoft Office - ₾15</label></div>
-                                        <div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL"><label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div>
-                                        <div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - ₾10</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="addons-notice" class="addons-message" style="display: none;">დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
-                        </div>
-                        <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
-                    </form>
+                <div class="form-group">
+                    <label for="phone">ტელეფონის ნომერი:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+995 555 123 456" maxlength="20" pattern="^\+995\s?[0-9]{9}$" title="გთხოვთ, შეიყვანოთ მოქმედი ქართული ტელეფონის ნომერი, მაგ., +995 555123456" required>
                 </div>
+
+
+    <div class="form-group">
+        <label for="iso-selection">აირჩიეთ ოპერაციული სისტემა:</label>
+        <select id="iso-selection" name="Operating_System" required>
+            <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
+            <optgroup label="Windows ISOs">
+                <option value="Windows 7 Home Basic - ₾10">Windows 7 Home Basic - ₾10</option>
+                <option value="Windows 7 Ultimate SP1 - ₾15">Windows 7 Ultimate SP1 - ₾15</option>
+                <option value="Windows 10 Home / Consumer - ₾25">Windows 10 Home / Consumer - ₾25</option>
+                <option value="Windows 10 Pro - ₾35">Windows 10 Pro - ₾35</option>
+                <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
+                <option value="Windows 10 Consumer Edition - ₾50">Windows 10 Consumer Edition - ₾50</option>
+                <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
+            </optgroup>
+            <optgroup label="Linux ISOs">
+                <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
+                <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
+                <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
+                <option value="ArchLinux" disabled>Linux ArchLinux V2025.08.01 86-64bit</option>
+                <option value="Kali" disabled>Linux Kali V2025.2 64bit</option>
+                <option value="Kali Netinst" disabled>Linux Kali Netinst V2025.2 64bit</option>
+                <option value="Kali Purple" disabled>Linux Kali Purple V2025.2 64bit</option>
+                <option value="Fedora Workstation" disabled>Fedora Workstation Live V41 86-64bit</option>
+                <option value="Fedora Server" disabled>Fedora Server Netinst V41 Red Hat Edition</option>
+            </optgroup>
+        </select>
+    </div>
+
+
+    <div id="addons-container">
+        <div id="addons-checkboxes" style="display: none;">
+            <div class="form-group">
+                <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL"><label for="antivirus">ანტივირუსი - ₾5</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL"><label for="office">Microsoft Office - ₾15</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL"><label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - ₾10</label></div>
+                    <!-- NEW: Fully Interactive Custom Apps Section -->
+                    <hr class="form-divider"> <!-- A nice separator -->
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="custom-apps-check" name="addon_custom_apps_service" value="Custom App Installation Service requested">
+                        <label for="custom-apps-check"><b>მომხმარებლის აპლიკაციების დაყენება (₾1 თითო)</b></label>
+                    </div>
+
+<!-- This entire container will be hidden by default -->
+<div id="custom-apps-selection-container" style="display: none; margin-left: 28px;">
+
+    <!-- NEW: Disclaimer Message -->
+    <div id="apps-disclaimer-notice" class="addons-message addons-message-warning" style="display: none;">
+        <strong>ყურადღება:</strong> თქვენ ხართ პასუხისმგებელი თქვენს მიერ არჩეული პროგრამების ლიცენზირებაზე და კანონიერ გამოყენებაზე. !!  
+        <br>ჩვენ დაგიკავშირდებით მეილით ან პირადად თქვენ მიერ ჩაწერილ პროგრამებზე გვაქვს თუ არა ისინი. !!
+    </div>
+
+    <!-- Header with NEW Clear Button -->
+    <div class="app-selection-header">
+        <p>აირჩიეთ სასურველი პროგრამები (თითოეული ₾1):</p>
+        <button type="button" id="clear-apps-btn" class="btn-clear-selection">გასუფთავება</button>
+    </div>
+    
+
+    <!-- Dynamically Generated App List -->
+    <div class="app-categories-container">
+
+        <h4 class="app-category-title">Browsers</h4>
+        <div class="app-selection-grid">
+            <div class="checkbox-item"><input type="checkbox" id="app-chrome" name="app_chrome" value="Chrome"><label for="app-chrome">Chrome</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-chromium" name="app_chromium" value="Chromium"><label for="app-chromium">Chromium</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-falkon" name="app_falkon" value="Falkon"><label for="app-falkon">Falkon</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-firefox" name="app_firefox" value="Firefox"><label for="app-firefox">Firefox</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-firefoxesr" name="app_firefoxesr" value="Firefox ESR"><label for="app-firefoxesr">Firefox ESR</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-ZenBrowser" name="app_ZenBrowser" value="Zen Browser"><label for="app-ZenBrowser">Zen Browser</label></div>
+        </div>
+
+        <h4 class="app-category-title">Communications</h4>
+        <div class="app-selection-grid">
+            <div class="checkbox-item"><input type="checkbox" id="app-discord" name="app_discord" value="Discord"><label for="app-discord">Discord</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-teams" name="app_teams" value="Teams"><label for="app-teams">Teams</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-telegram" name="app_telegram" value="Telegram"><label for="app-telegram">Telegram</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-viber" name="app_viber" value="Viber"><label for="app-viber">Viber</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-zoom" name="app_zoom" value="Zoom"><label for="app-zoom">Zoom</label></div>
+        </div>
+
+        <h4 class="app-category-title">Development</h4>
+        <div class="app-selection-grid">
+            <!-- Add all "Development" apps here... -->
+            <div class="checkbox-item"><input type="checkbox" id="app-dockerdesktop" name="app_dockerdesktop" value="Docker Desktop"><label for="app-dockerdesktop">Docker Desktop</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-git" name="app_git" value="Git"><label for="app-git">Git</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-gitbutler" name="app_gitbutler" value="Git Butler"><label for="app-gitbutler">Git Butler</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-gitextensions" name="app_gitextensions" value="Git Extensions"><label for="app-gitextensions">Git Extensions</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-githubcli" name="app_githubcli" value="GitHub CLI"><label for="app-githubcli">GitHub CLI</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-githubdesktop" name="app_githubdesktop" value="GitHub Desktop"><label for="app-githubdesktop">GitHub Desktop</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-jetbrains" name="app_jetbrains" value="Jetbrains Toolbox"><label for="app-jetbrains">Jetbrains Toolbox</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-lazygit" name="app_lazygit" value="Lazygit"><label for="app-lazygit">Lazygit</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-neovim" name="app_neovim" value="Neovim"><label for="app-neovim">Neovim</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-nodejs" name="app_nodejs" value="NodeJS"><label for="app-nodejs">NodeJS</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-nodejslts" name="app_nodejslts" value="NodeJS LTS"><label for="app-nodejslts">NodeJS LTS</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-unity" name="app_unity" value="Unity Game Engine"><label for="app-unity">Unity Game Engine</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-visualstudio" name="app_visualstudio" value="Visual Studio 2022"><label for="app-visualstudio">Visual Studio 2022</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-vscode" name="app_vscode" value="VS Code"><label for="app-vscode">VS Code</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="app-vscodium" name="app_vscodium" value="VS Codium"><label for="app-vscodium">VS Codium</label></div>
+        </div>
+
+        <!-- Add other categories like Document, Games, etc. in the same way -->
+        
+    </div>
+
+        <!-- "Other" checkbox and its textarea -->
+        <div class="checkbox-item" style="margin-top: 15px;">
+            <input type="checkbox" id="app-other-check" name="app_other" value="Other apps requested">
+            <label for="app-other-check"><b>- სხვა (ჩაწერეთ ქვემოთ) -</b></label>
+        </div>
+                <div id="other-apps-textarea-container" style="display: none;">
+                    <textarea name="other_apps_list" rows="3" placeholder="ჩაწერეთ სხვა პროგრამების სია აქ... მაგ: (Steam, GOG Launcher, Prism, Adobe, ETC... ) "></textarea>
+                </div>
+        </div>
+        </div>
+    </div>
+                </div>
+                <div id="addons-notice" class="addons-message" style="display: none;">დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
+            </div>
+            <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
+        </form>
+    </div>
 
 
                 <!-- Question Form Section (Initially Hidden) -->
@@ -177,7 +264,7 @@
             <div class="footer-socials">
                 <h4 class="footer-subtitle">გამოგვყევით</h4>
                 <div class="social-icons-container">
-                    <a href="https://www.facebook.com/profile.php?id=100081595650312" target="_blank" class="social-icon">
+                    <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <!-- You can add more icons here later J. -->
@@ -188,47 +275,92 @@
     </div>
 </footer>
 
-    <script>
-        // --- SCRIPT FOR FORM TOGGLING ---
-        const showOrderBtn = document.getElementById('show-order-btn');
-        const showQuestionBtn = document.getElementById('show-question-btn');
-        const orderFormSection = document.getElementById('order-form-section');
-        const questionFormSection = document.getElementById('question-form-section');
+<script>
+    // --- SCRIPT FOR FORM TOGGLING (Order vs Question) ---
+    const showOrderBtn = document.getElementById('show-order-btn');
+    const showQuestionBtn = document.getElementById('show-question-btn');
+    const orderFormSection = document.getElementById('order-form-section');
+    const questionFormSection = document.getElementById('question-form-section');
 
-        showOrderBtn.addEventListener('click', function() {
-            orderFormSection.style.display = 'block';
-            questionFormSection.style.display = 'none';
-            showOrderBtn.classList.add('active');
-            showQuestionBtn.classList.remove('active');
-        });
+    showOrderBtn.addEventListener('click', function() {
+        orderFormSection.style.display = 'block';
+        questionFormSection.style.display = 'none';
+        showOrderBtn.classList.add('active');
+        showQuestionBtn.classList.remove('active');
+    });
 
-        showQuestionBtn.addEventListener('click', function() {
-            orderFormSection.style.display = 'none';
-            questionFormSection.style.display = 'block';
-            showOrderBtn.classList.remove('active');
-            showQuestionBtn.classList.add('active');
-        });
+    showQuestionBtn.addEventListener('click', function() {
+        orderFormSection.style.display = 'none';
+        questionFormSection.style.display = 'block';
+        showOrderBtn.classList.remove('active');
+        showQuestionBtn.classList.add('active');
+    });
 
-        // --- SCRIPT FOR DYNAMIC ADDONS ---
-        const osSelection = document.getElementById('iso-selection');
-        const addonsCheckboxes = document.getElementById('addons-checkboxes');
-        const addonsNotice = document.getElementById('addons-notice');
+    // --- SCRIPT FOR DYNAMIC ADDONS (Show/Hide for Windows) ---
+    const osSelection = document.getElementById('iso-selection');
+    const addonsCheckboxes = document.getElementById('addons-checkboxes');
+    const addonsNotice = document.getElementById('addons-notice');
 
-        osSelection.addEventListener('change', function() {
-            const selectedOS = this.options[this.selectedIndex].text;
-            if (selectedOS.includes('Windows')) {
-                addonsCheckboxes.style.display = 'block';
-                addonsNotice.style.display = 'none';
-            } else {
-                addonsCheckboxes.style.display = 'none';
-                addonsNotice.style.display = 'block';
-            }
+    osSelection.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const optgroup = selectedOption.parentElement;
+        if (optgroup && optgroup.tagName === 'OPTGROUP' && optgroup.label === 'Windows ISOs') {
+            addonsCheckboxes.style.display = 'block';
+            addonsNotice.style.display = 'none';
+        } else {
+            addonsCheckboxes.style.display = 'none';
+            addonsNotice.style.display = 'block';
+        }
+    });
+
+    // --- SCRIPT to show/hide the main Custom Apps section AND DISCLAIMER ---
+    const customAppsCheckbox = document.getElementById('custom-apps-check');
+    const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
+    const appsDisclaimerNotice = document.getElementById('apps-disclaimer-notice'); // Get the new disclaimer
+
+    customAppsCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            customAppsSelectionContainer.style.display = 'block';
+            appsDisclaimerNotice.style.display = 'block'; // Show disclaimer
+        } else {
+            customAppsSelectionContainer.style.display = 'none';
+            appsDisclaimerNotice.style.display = 'none'; // Hide disclaimer
+        }
+    });
+
+    // --- SCRIPT to show/hide the "Other" apps textarea ---
+    const otherAppsCheckbox = document.getElementById('app-other-check');
+    const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
+
+    otherAppsCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            otherAppsTextarea.style.display = 'block';
+        } else {
+            otherAppsTextarea.style.display = 'none';
+        }
+    });
+
+    // --- NEW SCRIPT for the "Clear Selection" button ---
+    const clearAppsBtn = document.getElementById('clear-apps-btn');
+    
+    clearAppsBtn.addEventListener('click', function() {
+        // Find all checkboxes within the app selection area
+        const allAppCheckboxes = customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]');
+        
+        // Loop through them and uncheck each one
+        allAppCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
         });
         
-        // --- SCRIPT FOR MOBILE MENU ---
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    </script>
+        // Also make sure the "Other" textarea is hidden
+        otherAppsTextarea.style.display = 'none';
+    });
+    
+    // --- SCRIPT FOR MOBILE MENU ---
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
 </body>
 </html>
