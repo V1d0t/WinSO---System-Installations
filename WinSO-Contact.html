@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="WinSO-modern.css">
 </head>
 <body class="body-container">
-    <!-- Header Section with correct links -->
+    <!-- Header Section -->
     <header class="header-main">
         <div class="container-main">
             <div class="header-content">
@@ -40,176 +40,195 @@
             <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
         </nav>
     </header>
-<!-- Main Content Area -->
-<main class="main-content">
-    <div class="container-main">
-        <section class="glass-card">
-            <h2 class="section-title" data-i18n="contact-title">შეკვეთის გაფორმება</h2>
-            <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით. ჩვენ დაგიკავშირდებით ელ.ფოსტით დასადასტურებლად.</p>
-            
-            <!-- Order Form -->
-            <!-- IMPORTANT: Change the email in the action attribute below to your own email address -->
-            <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
-                
-            <!-- Customer Email -->
-            <div class="form-group">
-                <label for="email">თქვენი ელ.ფოსტა:</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="customer@example.com" 
-                    maxlength="30" 
-                    required
-                >
-            </div>
 
-            <!-- Customer Phone Number (Now Required with Limits) -->
-            <div class="form-group">
-                <label for="phone">ტელეფონის ნომერი:</label>
-                <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    placeholder="+995 555 123 456" 
-                    maxlength="20" 
-                    pattern="^\+995\s?[0-9]{9}$"
-                    title="გთხოვთ, შეიყვანოთ მოქმედი ქართული ტელეფონის ნომერი, მაგ., +995 555123456"
-                    required
-                >
-            </div>
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container-main">
+            <section class="glass-card">
+                <h2 class="section-title" data-i18n="contact-title">დაგვიკავშირდით</h2>
 
-                <!-- ISO Selection (Updated with price in value) -->
-                <div class="form-group">
-                    <label for="iso-selection">აირჩიეთ ოპერაციული სისტემა:</label>
-                    <select id="iso-selection" name="Operating_System" required>
-                        <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
-                        <optgroup label="Windows ISOs">
-                            <option value="Windows 7 Home Basic - ₾10">Windows 7 Home Basic - ₾10</option>
-                            <option value="Windows 7 Ultimate SP1 - ₾15">Windows 7 Ultimate SP1 - ₾15</option>
-                            <option value="Windows 10 Home / Consumer - ₾25">Windows 10 Home / Consumer - ₾25</option>
-                            <option value="Windows 10 Pro - ₾35">Windows 10 Pro - ₾35</option>
-                            <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
-                            <option value="Windows 10 Consumer Edition - ₾50">Windows 10 Consumer Edition - ₾50</option>
-                            <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
-                        </optgroup>
-                        <optgroup label="Linux ISOs">
-                            <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
-                            <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
-                            <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
-                            <option value="ArchLinux (Troubleshooting)">ArchLinux (Troubleshooting)</option>
-                            <option value="Kali Linux (Troubleshooting)">Kali Linux (Troubleshooting)</option>
-                        </optgroup>
-                    </select>
+                <!-- NEW: Form Choice Buttons -->
+                <div class="form-choice-container">
+                    <button id="show-order-btn" class="form-choice-btn active">შეკვეთის გაფორმება</button>
+                    <button id="show-question-btn" class="form-choice-btn">კითხვის დასმა</button>
                 </div>
 
-                    <!-- Container for Add-ons -->
-                    <div id="addons-container">
-                        <!-- This part will only show for Windows -->
-                        <div id="addons-checkboxes" style="display: none;">
-                            <div class="form-group">
-                                <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
-                                <div class="checkbox-group">
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL">
-                                        <label for="antivirus">ანტივირუსი - ₾5</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL">
-                                        <label for="office">Microsoft Office - ₾15</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL">
-                                        <label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL">
-                                        <label for="drivers">დრაივერების დაყენება - ₾10</label>
+                <!-- Order Form Section (Visible by default) -->
+                <div id="order-form-section">
+                    <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
+                    <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
+                        <!-- Hidden input for custom email subject -->
+                        <input type="hidden" name="_subject" value="New Order Submission!">
+                        
+                        <div class="form-group">
+                            <label for="order-email">თქვენი ელ.ფოსტა:</label>
+                            <input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">ტელეფონის ნომერი:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+995 555 123 456" maxlength="20" pattern="^\+995\s?[0-9]{9}$" title="გთხოვთ, შეიყვანოთ მოქმედი ქართული ტელეფონის ნომერი, მაგ., +995 555123456" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="iso-selection">აირჩიეთ ოპერაციული სისტემა:</label>
+                            <select id="iso-selection" name="Operating_System" required>
+                                <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
+                                <optgroup label="Windows ISOs">
+                                    <option value="Windows 7 Home Basic - ₾10">Windows 7 Home Basic - ₾10</option>
+                                    <option value="Windows 7 Ultimate SP1 - ₾15">Windows 7 Ultimate SP1 - ₾15</option>
+                                    <option value="Windows 10 Home / Consumer - ₾25">Windows 10 Home / Consumer - ₾25</option>
+                                    <option value="Windows 10 Pro - ₾35">Windows 10 Pro - ₾35</option>
+                                    <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
+                                    <option value="Windows 10 Consumer Edition - ₾50">Windows 10 Consumer Edition - ₾50</option>
+                                    <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
+                                </optgroup>
+                                <optgroup label="Linux ISOs">
+                                    <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
+                                    <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
+                                    <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
+                                    <option value="ArchLinux (Troubleshooting)">ArchLinux (Troubleshooting)</option>
+                                    <option value="Kali Linux (Troubleshooting)">Kali Linux (Troubleshooting)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+
+                        <div id="addons-container">
+                            <div id="addons-checkboxes" style="display: none;">
+                                <div class="form-group">
+                                    <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL"><label for="antivirus">ანტივირუსი - ₾5</label></div>
+                                        <div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL"><label for="office">Microsoft Office - ₾15</label></div>
+                                        <div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL"><label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div>
+                                        <div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - ₾10</label></div>
                                     </div>
                                 </div>
                             </div>
+                            <div id="addons-notice" class="addons-message" style="display: none;">დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
                         </div>
-
-                        <!-- This message will only show for Linux -->
-                        <div id="addons-notice" class="addons-message" style="display: none;">
-                            დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.
-                        </div>
-                    </div>
-                
-                <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
-            </form>
-        </section>
-    </div>
-</main>
-
-    <!-- Footer Section -->
-    <footer class="footer-main">
-        <div class="container-main">
-            <div class="footer-content">
-                <!-- Column 1: Info -->
-                <div class="footer-info">
-                    <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
-                    <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
+                        <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
+                    </form>
                 </div>
 
-                <!-- Column 2: Links -->
-                <div class="footer-links">
-                    <h4 class="footer-subtitle">ნავიგაცია</h4>
-                    <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
-                    <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
-                </div>
 
-                <!-- Column 3: Contact Details with Icons -->
-                <div class="footer-contact">
-                    <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
-                    <ul class="contact-list">
-                        <li class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+995 XXX XX XX XX</span>
-                        </li>
-                        <li class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>winso.contact@gmail.com</span>
-                        </li>
-                        <li class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>ქუთაისი, --- N/A -- საქართველო</span>
-                        </li>
-                    </ul>
+                <!-- Question Form Section (Initially Hidden) -->
+                <div id="question-form-section" style="display: none;">
+                    <p class="intro-text">გთხოვთ, დასვით თქვენი კითხვა. ჩვენ მალე დაგიკავშირდებით.</p>
+                    <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
+                        <!-- Hidden input for custom email subject -->
+                        <input type="hidden" name="_subject" value="New Contact Question!">
+                        
+                        <div class="form-group">
+                            <label for="question-email">თქვენი ელ.ფოსტა:</label>
+                            <input type="email" id="question-email" name="email" placeholder="customer@example.com" maxlength="30" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">თქვენი შეტყობინება:</label>
+                            <textarea id="message" name="message" rows="6" placeholder="აკრიფეთ თქვენი კითხვა აქ..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">შეტყობინების გაგზავნა</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+<!-- Footer Section -->
+<footer class="footer-main">
+    <div class="container-main">
+        <div class="footer-content">
+            <!-- Column 1: Info -->
+            <div class="footer-info">
+                <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
+                <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
+            </div>
+
+            <!-- Column 2: Links -->
+            <div class="footer-links">
+                <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
+                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
+                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
+            </div>
+
+            <!-- Column 3: Contact Details with Icons -->
+            <div class="footer-contact">
+                <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+995 XXX XX XX XX</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>winso.contact@gmail.com</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ქუთაისი, საქართველო</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- NEW: Column 4: Social Media Links -->
+            <div class="footer-socials">
+                <h4 class="footer-subtitle">გამოგვყევით</h4>
+                <div class="social-icons-container">
+                    <a href="https://www.facebook.com/profile.php?id=100081595650312" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- You can add more icons here later J. -->
                 </div>
             </div>
-            <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
         </div>
-    </footer>
+        <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
+    </div>
+</footer>
 
     <script>
-        // Mobile menu toggle
+        // --- SCRIPT FOR FORM TOGGLING ---
+        const showOrderBtn = document.getElementById('show-order-btn');
+        const showQuestionBtn = document.getElementById('show-question-btn');
+        const orderFormSection = document.getElementById('order-form-section');
+        const questionFormSection = document.getElementById('question-form-section');
+
+        showOrderBtn.addEventListener('click', function() {
+            orderFormSection.style.display = 'block';
+            questionFormSection.style.display = 'none';
+            showOrderBtn.classList.add('active');
+            showQuestionBtn.classList.remove('active');
+        });
+
+        showQuestionBtn.addEventListener('click', function() {
+            orderFormSection.style.display = 'none';
+            questionFormSection.style.display = 'block';
+            showOrderBtn.classList.remove('active');
+            showQuestionBtn.classList.add('active');
+        });
+
+        // --- SCRIPT FOR DYNAMIC ADDONS ---
+        const osSelection = document.getElementById('iso-selection');
+        const addonsCheckboxes = document.getElementById('addons-checkboxes');
+        const addonsNotice = document.getElementById('addons-notice');
+
+        osSelection.addEventListener('change', function() {
+            const selectedOS = this.options[this.selectedIndex].text;
+            if (selectedOS.includes('Windows')) {
+                addonsCheckboxes.style.display = 'block';
+                addonsNotice.style.display = 'none';
+            } else {
+                addonsCheckboxes.style.display = 'none';
+                addonsNotice.style.display = 'block';
+            }
+        });
+        
+        // --- SCRIPT FOR MOBILE MENU ---
         document.getElementById('menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-
-    // Get all the elements we need to control
-    const osSelection = document.getElementById('iso-selection');
-    const addonsCheckboxes = document.getElementById('addons-checkboxes');
-    const addonsNotice = document.getElementById('addons-notice');
-
-    // Listen for any change in the dropdown menu
-    osSelection.addEventListener('change', function() {
-        // Get the text of the selected option
-        const selectedOS = this.options[this.selectedIndex].text;
-
-        // Check if the selected text includes the word "Windows"
-        if (selectedOS.includes('Windows')) {
-            // If it's Windows: show the checkboxes and hide the notice
-            addonsCheckboxes.style.display = 'block';
-            addonsNotice.style.display = 'none';
-        } else {
-            // If it's Linux or anything else: hide the checkboxes and show the notice
-            addonsCheckboxes.style.display = 'none';
-            addonsNotice.style.display = 'block';
-        }
-    });
-
     </script>
 </body>
 </html>
