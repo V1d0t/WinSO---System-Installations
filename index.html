@@ -73,11 +73,36 @@
                     <ul class="price-list">
                         <li class="price-item1"><span class="price-name1">Windows 7 Home Basic</span><span class="price-tag1">₾10</span></li>
                         <li class="price-item2"><span class="price-name2">Windows 7 Ultimate SP1</span><span class="price-tag2">₾15</span></li>
-                        <li class="price-item3"><span class="price-name3">Windows 10 Home / Consumer</span><span class="price-tag3">₾25</span></li>
-                        <li class="price-item4"><span class="price-name4">Windows 10 Pro</span><span class="price-tag4">₾35</span></li>
-                        <li class="price-item5"><span class="price-name5">NanoWin10 23H1 NTDEV (LTSC)</span><span class="price-tag5">₾45 <span class="price-note" data-i18n="price-note">[+]</span></span></li>
-                        <li class="price-item6"><span class="price-name6">Windows 10 Consumer Edition</span><span class="price-tag6">₾50 <span class="price-note" data-i18n="price-note">[+]</span></span></li>
-                        <li class="price-item7"><span class="price-name7">Windows 10 Enterprise LTSC</span><span class="price-tag7">₾55 <span class="price-note" data-i18n="price-note">[+]</span></span></li>
+                        
+                        <!-- UPDATED: Interactive Dropdown with Corrected Layout -->
+                        <li class="price-item-interactive">
+                            <details>
+                                <summary>
+                                    <div class="summary-content">
+                                        <span class="price-name-main">Windows 10 Consumer Edition</span>
+                                        <span class="price-tag-main">₾25-დან<span class="price-note">[+]</span></span>
+                                    </div>
+                                </summary>
+                                <ul class="sub-edition-list">
+                                    <li><span>Home N / Single Language<span class="price-note">[+]</span></span><span class="sub-price">₾23</span></li>
+                                    <li><span>Home<span class="price-note">[+]</span></span><span class="sub-price">₾25</span></li>
+                                    <li><span>Education N<span class="price-note">[+]</span></span><span class="sub-price">₾28</span></li>
+                                    <li><span>Education<span class="price-note">[+]</span></span><span class="sub-price">₾30</span></li>
+                                    <li><span>Pro N<span class="price-note">[+]</span></span><span class="sub-price">₾32</span></li>
+                                    <li><span>Pro<span class="price-note">[+]</span></span><span class="sub-price">₾35</span></li>
+                                    <li><span>Pro for Workstations<span class="price-note">[+]</span></span><span class="sub-price">₾40</span></li>
+                                </ul>
+                            </details>
+                        </li>
+                        
+                        <li class="price-item5"><span class="price-name5">NanoWin10 23H1 NTDEV (LTSC)</span><span class="price-tag5">₾45 <span class="price-note">[+]</span></span></li>
+                        <li class="price-item7"><span class="price-name7">Windows 10 Enterprise LTSC</span><span class="price-tag7">₾55 <span class="price-note">[+]</span></span></li>
+
+                        <!-- UPDATED: Hiren's BootCD Item (red line is removed via CSS) -->
+                        <li class="price-item6 special-item">
+                            <span class="price-name6">Hiren's BootCD PE x64</span>
+                            <span class="price-tag6">₾80 <span class="warning-tag">x64 Only</span></span>
+                        </li>
                     </ul>
                     <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="order-windows">Windows-ის ინსტალაციის შეკვეთა</button></a>
                 </section>
@@ -138,7 +163,9 @@
             <section class="glass-card contact-section">
                 <h2 class="section-title" data-i18n="contact-title">გჭირდებათ დახმარება არჩევაში?</h2>
                 <p class="intro-text" data-i18n="contact-text">დაგვიკავშირდით პერსონალური რეკომენდაციებისთვის თქვენი საჭიროებებისა და ტექნიკური მახასიათებლების მიხედვით.</p>
-                <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="contact-support">დაგვიკავშირდით</button></a>
+                
+                <!-- UPDATED LINE: Added #question to the link -->
+                <a href="WinSO-Contact.html#question"><button class="btn-primary" data-i18n="contact-support">დაგვიკავშირდით</button></a>
             </section>
         </div>
     </main>
