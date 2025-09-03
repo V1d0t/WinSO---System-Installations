@@ -54,8 +54,9 @@
             <!-- Order Form Section -->
             <div id="order-form-section">
                 <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
-                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST">
-                    <input type="hidden" name="_subject" value="New Order Submission!">
+                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST" autocomplete="off">
+                    <input type="hidden" name="_subject" id="order-subject" value="New Order Submission!">
+                    <input type="hidden" name="_next" value="https://v1d0t.github.io/thank-you.html">  
                     <div class="form-group"><label for="first-name">სახელი:</label><input type="text" id="first-name" name="first_name" placeholder="მაგ: გიორგი" required></div>
                     <div class="form-group"><label for="last-name">გვარი:</label><input type="text" id="last-name" name="last_name" placeholder="მაგ: ბერიძე" required></div>
                     <div class="form-group"><label for="order-email">თქვენი ელ.ფოსტა:</label><input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
@@ -163,8 +164,9 @@
             <!-- Question Form Section -->
             <div id="question-form-section" style="display: none;">
                 <p class="intro-text">გთხოვთ, დასვით თქვენი კითხვა. ჩვენ მალე დაგიკავშირდებით.</p>
-                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="_subject" value="New Contact Question!">
+                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <input type="hidden" name="_subject" id="question-subject" value="New Contact Question!">
+                    <input type="hidden" name="_next" value="https://v1d0t.github.io/thank-you.html">
                     <div class="form-group"><label for="question-email">თქვენი ელ.ფოსტა:</label><input type="email" id="question-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
                     <div class="form-group"><label for="message">თქვენი შეტყობინება:</label><textarea id="message" name="message" rows="6" placeholder="აკრიფეთ თქვენი კითხვა აქ..." required></textarea></div>
                     <div class="form-group"><label for="attachments">ფაილების მიმაგრება (სურათი/ვიდეო):</label><input type="file" id="attachments" name="attachment" accept="image/*,video/*" multiple></div>
@@ -188,128 +190,137 @@
         </div>
     </footer>
 
-    <script>
-        // --- SCRIPT FOR FORM TOGGLING ---
-        document.getElementById('show-order-btn').addEventListener('click', () => {
-            document.getElementById('order-form-section').style.display = 'block';
-            document.getElementById('question-form-section').style.display = 'none';
-            document.getElementById('show-order-btn').classList.add('active');
-            document.getElementById('show-question-btn').classList.remove('active');
-        });
-        document.getElementById('show-question-btn').addEventListener('click', () => {
+<script>
+    // --- SCRIPT FOR FORM TOGGLING ---
+    document.getElementById('show-order-btn').addEventListener('click', () => {
+        document.getElementById('order-form-section').style.display = 'block';
+        document.getElementById('question-form-section').style.display = 'none';
+        document.getElementById('show-order-btn').classList.add('active');
+        document.getElementById('show-question-btn').classList.remove('active');
+    });
+    document.getElementById('show-question-btn').addEventListener('click', () => {
+        document.getElementById('order-form-section').style.display = 'none';
+        document.getElementById('question-form-section').style.display = 'block';
+        document.getElementById('show-order-btn').classList.remove('active');
+        document.getElementById('show-question-btn').classList.add('active');
+    });
+
+    // --- FINAL, SMART SCRIPT FOR DYNAMIC ADDONS ---
+    const osSelection = document.getElementById('iso-selection');
+    const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
+    const addonsNotice = document.getElementById('addons-notice');
+    const addonAntivirus = document.getElementById('addon-wrapper-antivirus');
+    const addonOffice = document.getElementById('addon-wrapper-office');
+    const addonOptimization = document.getElementById('addon-wrapper-optimization');
+    const addonDrivers = document.getElementById('addon-wrapper-drivers');
+    const addonCustomApps = document.getElementById('addon-wrapper-custom-apps');
+    const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
+    const appWrapperChrome = document.getElementById('app-wrapper-chrome');
+    const appWrapperFirefoxESR = document.getElementById('app-wrapper-firefoxesr');
+
+    function setAllAddonsVisibility(show) {
+        const visibility = show ? 'block' : 'none';
+        addonAntivirus.style.display = visibility;
+        addonOffice.style.display = visibility;
+        addonOptimization.style.display = visibility;
+        addonDrivers.style.display = visibility;
+        addonCustomApps.style.display = visibility;
+    }
+
+    osSelection.addEventListener('change', function() {
+        const selectedValue = this.value;
+        const isWindows = this.options[this.selectedIndex].parentElement.label === 'Windows ISOs';
+        const isHiren = selectedValue.includes("Hiren's BootCD PE x64");
+
+        hirensPreinstalledSection.style.display = 'none';
+        if (appWrapperChrome) appWrapperChrome.style.display = 'flex';
+        if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'flex';
+
+        if (isWindows) {
+            addonsCheckboxesContainer.style.display = 'block';
+            addonsNotice.style.display = 'none';
+            if (isHiren) {
+                setAllAddonsVisibility(false);
+                addonOffice.style.display = 'block';
+                addonCustomApps.style.display = 'block';
+                hirensPreinstalledSection.style.display = 'block';
+                if (appWrapperChrome) appWrapperChrome.style.display = 'none';
+                if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'none';
+            } else {
+                setAllAddonsVisibility(true);
+            }
+        } else {
+            addonsCheckboxesContainer.style.display = 'none';
+            addonsNotice.style.display = 'block';
+        }
+    });
+
+    // --- CUSTOM APPS & DISCLAIMER LOGIC ---
+    const customAppsCheckbox = document.getElementById('custom-apps-check');
+    const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
+    const appsDisclaimerNotice = document.getElementById('apps-disclaimer-notice');
+    customAppsCheckbox.addEventListener('change', function() {
+        const show = this.checked;
+        customAppsSelectionContainer.style.display = show ? 'block' : 'none';
+        appsDisclaimerNotice.style.display = show ? 'block' : 'none';
+    });
+
+    // --- OTHER APPS TEXTAREA LOGIC ---
+    const otherAppsCheckbox = document.getElementById('app-other-check');
+    const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
+    otherAppsCheckbox.addEventListener('change', function() {
+        otherAppsTextarea.style.display = this.checked ? 'block' : 'none';
+    });
+
+    // --- CLEAR SELECTION BUTTON LOGIC ---
+    document.getElementById('clear-apps-btn').addEventListener('click', () => {
+        customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        otherAppsTextarea.style.display = 'none';
+    });
+
+    // --- MOBILE MENU LOGIC ---
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // --- NEW SCRIPT TO CREATE UNIQUE EMAIL SUBJECTS ---
+    function setUniqueSubject(formId, subjectInputId) {
+        const form = document.querySelector(formId);
+        const subjectInput = document.getElementById(subjectInputId);
+
+        if (form && subjectInput) {
+            form.addEventListener('submit', () => {
+                // Get the base subject text (e.g., "New Order Submission!")
+                const baseSubject = subjectInput.value;
+                
+                // Get the current date and time
+                const now = new Date();
+                const timestamp = now.getFullYear() + '-' +
+                                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                                String(now.getDate()).padStart(2, '0') + ' ' +
+                                String(now.getHours()).padStart(2, '0') + ':' +
+                                String(now.getMinutes()).padStart(2, '0') + ':' +
+                                String(now.getSeconds()).padStart(2, '0');
+
+                // Combine them to create a unique subject
+                subjectInput.value = `${baseSubject} [${timestamp}]`;
+            });
+        }
+    }
+
+    // Activate the script for both forms
+    setUniqueSubject('#order-form-section .order-form', 'order-subject');
+    setUniqueSubject('#question-form-section .order-form', 'question-subject');
+
+    // --- NEW SCRIPT TO ACTIVATE TAB FROM URL HASH ---
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.location.hash === '#question') {
             document.getElementById('order-form-section').style.display = 'none';
             document.getElementById('question-form-section').style.display = 'block';
             document.getElementById('show-order-btn').classList.remove('active');
             document.getElementById('show-question-btn').classList.add('active');
-        });
-
-        // --- FINAL, SMART SCRIPT FOR DYNAMIC ADDONS ---
-        const osSelection = document.getElementById('iso-selection');
-        const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
-        const addonsNotice = document.getElementById('addons-notice');
-        
-        const addonAntivirus = document.getElementById('addon-wrapper-antivirus');
-        const addonOffice = document.getElementById('addon-wrapper-office');
-        const addonOptimization = document.getElementById('addon-wrapper-optimization');
-        const addonDrivers = document.getElementById('addon-wrapper-drivers');
-        const addonCustomApps = document.getElementById('addon-wrapper-custom-apps');
-        
-        const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
-        
-        const appWrapperChrome = document.getElementById('app-wrapper-chrome');
-        const appWrapperFirefoxESR = document.getElementById('app-wrapper-firefoxesr');
-
-        function setAllAddonsVisibility(show) {
-            const visibility = show ? 'block' : 'none';
-            addonAntivirus.style.display = visibility;
-            addonOffice.style.display = visibility;
-            addonOptimization.style.display = visibility;
-            addonDrivers.style.display = visibility;
-            addonCustomApps.style.display = visibility;
         }
-
-        osSelection.addEventListener('change', function() {
-            const selectedValue = this.value;
-            const isWindows = this.options[this.selectedIndex].parentElement.label === 'Windows ISOs';
-            const isHiren = selectedValue.includes("Hiren's BootCD PE x64");
-
-            hirensPreinstalledSection.style.display = 'none';
-            if (appWrapperChrome) appWrapperChrome.style.display = 'flex';
-            if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'flex';
-
-            if (isWindows) {
-                addonsCheckboxesContainer.style.display = 'block';
-                addonsNotice.style.display = 'none';
-
-                if (isHiren) {
-                    setAllAddonsVisibility(false);
-                    addonOffice.style.display = 'block';
-                    addonCustomApps.style.display = 'block';
-                    hirensPreinstalledSection.style.display = 'block';
-                    if (appWrapperChrome) appWrapperChrome.style.display = 'none';
-                    if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'none';
-                } else {
-                    setAllAddonsVisibility(true);
-                }
-            } else {
-                addonsCheckboxesContainer.style.display = 'none';
-                addonsNotice.style.display = 'block';
-            }
-        });
-
-        // --- NEW SCRIPT TO ACTIVATE TAB FROM URL HASH ---
-
-        // This command tells the script to wait until the entire page is fully loaded
-        // before it tries to do anything. This is important to prevent errors.
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // This checks if the URL's "post-it note" (the hash) is exactly '#question'.
-            if (window.location.hash === '#question') {
-            
-                // If it is, we run the exact same code that runs when a user
-                // manually clicks on the "კითხვის დასმა" button.
-                
-                // 1. Hide the order form
-                document.getElementById('order-form-section').style.display = 'none';
-                
-                // 2. Show the question form
-                document.getElementById('question-form-section').style.display = 'block';
-                
-                // 3. Make the "Order" button look deselected
-                document.getElementById('show-order-btn').classList.remove('active');
-                
-                // 4. Make the "Question" button look selected
-                document.getElementById('show-question-btn').classList.add('active');
-            }
-        });
-
-        // --- CUSTOM APPS & DISCLAIMER LOGIC ---
-        const customAppsCheckbox = document.getElementById('custom-apps-check');
-        const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
-        const appsDisclaimerNotice = document.getElementById('apps-disclaimer-notice');
-        customAppsCheckbox.addEventListener('change', function() {
-            const show = this.checked;
-            customAppsSelectionContainer.style.display = show ? 'block' : 'none';
-            appsDisclaimerNotice.style.display = show ? 'block' : 'none';
-        });
-
-        // --- OTHER APPS TEXTAREA LOGIC ---
-        const otherAppsCheckbox = document.getElementById('app-other-check');
-        const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
-        otherAppsCheckbox.addEventListener('change', function() {
-            otherAppsTextarea.style.display = this.checked ? 'block' : 'none';
-        });
-
-        // --- CLEAR SELECTION BUTTON LOGIC ---
-        document.getElementById('clear-apps-btn').addEventListener('click', () => {
-            customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            otherAppsTextarea.style.display = 'none';
-        });
-        
-        // --- MOBILE MENU LOGIC ---
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
