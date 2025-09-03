@@ -54,7 +54,7 @@
             <!-- Order Form Section -->
             <div id="order-form-section">
                 <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
-                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST" autocomplete="off">
+                <form class="order-form" action="https://formsubmit.co/winso.contact@gmail.com" method="POST" autocomplete="off" onsubmit="return updateSubject('order-subject')">
                     <input type="hidden" name="_subject" id="order-subject" value="New Order Submission!">
                     <input type="hidden" name="_next" value="https://v1d0t.github.io/thank-you.html">  
                     <div class="form-group"><label for="first-name">სახელი:</label><input type="text" id="first-name" name="first_name" placeholder="მაგ: გიორგი" required></div>
@@ -107,10 +107,12 @@
                                             <div class="app-categories-container">
                                                 <h4 class="app-category-title">Browsers</h4>
                                                 <div class="app-selection-grid">
+                                                    <!-- ADD ID HERE -->
                                                     <div class="checkbox-item" id="app-wrapper-chrome"><input type="checkbox" id="app-chrome" name="app_chrome" value="Chrome"><label for="app-chrome">Chrome</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-chromium" name="app_chromium" value="Chromium"><label for="app-chromium">Chromium</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-falkon" name="app_falkon" value="Falkon"><label for="app-falkon">Falkon</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-firefox" name="app_firefox" value="Firefox"><label for="app-firefox">Firefox</label></div>
+                                                    <!-- AND ADD ID HERE -->
                                                     <div class="checkbox-item" id="app-wrapper-firefoxesr"><input type="checkbox" id="app-firefoxesr" name="app_firefoxesr" value="Firefox ESR"><label for="app-firefoxesr">Firefox ESR</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-Brave" name="app_Brave" value="Brave"><label for="app-Brave">Brave Browser</label></div>
                                                 </div>
@@ -164,7 +166,7 @@
             <!-- Question Form Section -->
             <div id="question-form-section" style="display: none;">
                 <p class="intro-text">გთხოვთ, დასვით თქვენი კითხვა. ჩვენ მალე დაგიკავშირდებით.</p>
-                <form class="order-form" action="https://formsubmit.co/50421e08a3c4fafafb2c9f9315eab5c0" method="POST" enctype="multipart/form-data" autocomplete="off">
+                <form class="order-form" action="https://formsubmit.co/winso.contact@gmail.com" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return updateSubject('question-subject')">
                     <input type="hidden" name="_subject" id="question-subject" value="New Contact Question!">
                     <input type="hidden" name="_next" value="https://v1d0t.github.io/thank-you.html">
                     <div class="form-group"><label for="question-email">თქვენი ელ.ფოსტა:</label><input type="email" id="question-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
@@ -218,6 +220,14 @@
     const appWrapperChrome = document.getElementById('app-wrapper-chrome');
     const appWrapperFirefoxESR = document.getElementById('app-wrapper-firefoxesr');
 
+    // NEW HELPER FUNCTION: This will enable or disable all addon inputs.
+    function setAddonInputsDisabled(isDisabled) {
+        const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
+        inputsToToggle.forEach(input => {
+            input.disabled = isDisabled;
+        });
+    }
+
     function setAllAddonsVisibility(show) {
         const visibility = show ? 'block' : 'none';
         addonAntivirus.style.display = visibility;
@@ -239,6 +249,8 @@
         if (isWindows) {
             addonsCheckboxesContainer.style.display = 'block';
             addonsNotice.style.display = 'none';
+            setAddonInputsDisabled(false); // Enable all inputs for Windows
+
             if (isHiren) {
                 setAllAddonsVisibility(false);
                 addonOffice.style.display = 'block';
@@ -250,8 +262,10 @@
                 setAllAddonsVisibility(true);
             }
         } else {
+            // This is the FIX: For Linux, hide the container AND disable all addon inputs.
             addonsCheckboxesContainer.style.display = 'none';
             addonsNotice.style.display = 'block';
+            setAddonInputsDisabled(true); // Disable all inputs for Linux
         }
     });
 
@@ -278,41 +292,23 @@
         otherAppsTextarea.style.display = 'none';
     });
 
+    // --- UNIQUE EMAIL SUBJECT LOGIC ---
+    function updateSubject(subjectInputId) {
+        const subjectInput = document.getElementById(subjectInputId);
+        if (subjectInput) {
+            const baseSubject = subjectInput.value.split(' [')[0]; // Get original subject
+            const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+            subjectInput.value = `${baseSubject} [${timestamp}]`;
+        }
+        return true;
+    }
+
     // --- MOBILE MENU LOGIC ---
     document.getElementById('menu-toggle').addEventListener('click', () => {
         document.getElementById('mobile-menu').classList.toggle('hidden');
     });
 
-    // --- NEW SCRIPT TO CREATE UNIQUE EMAIL SUBJECTS ---
-    function setUniqueSubject(formId, subjectInputId) {
-        const form = document.querySelector(formId);
-        const subjectInput = document.getElementById(subjectInputId);
-
-        if (form && subjectInput) {
-            form.addEventListener('submit', () => {
-                // Get the base subject text (e.g., "New Order Submission!")
-                const baseSubject = subjectInput.value;
-                
-                // Get the current date and time
-                const now = new Date();
-                const timestamp = now.getFullYear() + '-' +
-                                String(now.getMonth() + 1).padStart(2, '0') + '-' +
-                                String(now.getDate()).padStart(2, '0') + ' ' +
-                                String(now.getHours()).padStart(2, '0') + ':' +
-                                String(now.getMinutes()).padStart(2, '0') + ':' +
-                                String(now.getSeconds()).padStart(2, '0');
-
-                // Combine them to create a unique subject
-                subjectInput.value = `${baseSubject} [${timestamp}]`;
-            });
-        }
-    }
-
-    // Activate the script for both forms
-    setUniqueSubject('#order-form-section .order-form', 'order-subject');
-    setUniqueSubject('#question-form-section .order-form', 'question-subject');
-
-    // --- NEW SCRIPT TO ACTIVATE TAB FROM URL HASH ---
+    // --- URL HASH READER LOGIC ---
     document.addEventListener('DOMContentLoaded', () => {
         if (window.location.hash === '#question') {
             document.getElementById('order-form-section').style.display = 'none';
