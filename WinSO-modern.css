@@ -219,6 +219,17 @@ html, body {
 .order-form { display: flex; flex-direction: column; gap: 20px; }
 .form-group { display: flex; flex-direction: column; gap: 8px; }
 .form-group label { font-weight: 600; font-size: 1.1em; }
+/* ========================================= */
+/* === FIX for Name/Lastname Input Fields === */
+/* ========================================= */
+.form-group input[type="text"] {
+    padding: 12px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+    font-family: 'Segoe UI', sans-serif; 
+    font-size: 1em; 
+    width: 100%;
+}
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group select,
@@ -228,6 +239,146 @@ html, body {
 .form-group input[type="checkbox"] { width: 18px; height: 18px; }
 .form-divider { border: none; border-top: 1px solid #e2e8f0; margin: 15px 0; }
 .addons-message { padding: 15px; border-radius: 8px; background-color: #f0f4f8; border: 1px solid #cdd8e3; text-align: center; font-style: italic; color: #4a5568; margin-bottom: 15px; }
+
+/* ========================================= */
+/* ===    FINAL Corrected Dropdown Styles   === */
+/* ========================================= */
+.price-item-interactive {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.price-item-interactive summary {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    list-style: none; /* Hides the default browser arrow */
+}
+.price-item-interactive summary::-webkit-details-marker {
+    display: none; /* Hides arrow in Chrome/Safari */
+}
+/* This is the main layout container now */
+.summary-content {
+    display: flex;
+    justify-content: space-between; /* Pushes children to opposite ends */
+    align-items: center;
+    width: 100%; /* Ensures it takes up the full space */
+}
+/* The name now contains its own arrow */
+.price-name-main {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between text and arrow */
+    font-weight: 500;
+    color: var(--text-primary);
+}
+/* THE ARROW IS NOW ATTACHED HERE */
+.price-name-main::after {
+    content: '▶';
+    font-size: 0.7em;
+    color: var(--text-secondary);
+    transition: transform 0.2s ease-in-out;
+}
+/* The rotation now targets the arrow in its new position */
+.price-item-interactive details[open] .price-name-main::after {
+    transform: rotate(90deg);
+}
+.price-tag-main {
+    background-color: #60A5FA;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.sub-edition-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.sub-edition-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+.sub-price {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ========================================= */
+/* ===    UPDATED Hiren's BootCD Styles       === */
+/* ========================================= */
+.special-item {
+    /* The red border-top is GONE */
+    margin-top: 8px;
+    padding-top: 12px !important; /* Retains vertical spacing */
+}
+.warning-tag {
+    background-color: #c53030;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* ===    NEW Hiren's Pre-installed App List Styles   === */
+/* ========================================= */
+
+/* The green message box */
+.preinstalled-notice {
+    background-color: #f0fff4; /* Light green background */
+    border: 1px solid #9ae6b4; /* Green border */
+    color: #2f855a; /* Dark green text */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* The container for the app list */
+.preinstalled-apps-container {
+    padding: 15px;
+    background-color: #f7fafc; /* Very light gray background */
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.preinstalled-category-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.preinstalled-category-title:first-child {
+    margin-top: 0;
+}
+
+/* The grid for the individual app names */
+.preinstalled-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 8px 20px;
+    font-size: 0.9em;
+    color: var(--text-secondary); /* Grayed-out text */
+}
+
+/* Responsive adjustment for the grid on smaller screens */
+@media (max-width: 500px) {
+    .preinstalled-apps-grid {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+}
 
 /* --- CORRECTED Warning Message Style --- */
 .addons-message.addons-message-warning {
