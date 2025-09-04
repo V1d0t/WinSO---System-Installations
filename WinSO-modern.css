@@ -115,18 +115,21 @@ html, body {
 .price-list {
     list-style: none;
 }
-.price-item1, .price-item2, .price-item3, .price-item4, .price-item5, .price-item6, .price-item7, .price-item8, .price-item9, .price-item10 {
+/* ADDED .price-item-new to this list */
+.price-item1, .price-item2, .price-item3, .price-item4, .price-item5, .price-item6, .price-item7, .price-item8, .price-item9, .price-item10, .price-item-new {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.price-name1, .price-name2, .price-name3, .price-name4, .price-name5, .price-name6, .price-name7, .price-name8, .price-name9, .price-name10 {
+/* ADDED .price-name-new to this list */
+.price-name1, .price-name2, .price-name3, .price-name4, .price-name5, .price-name6, .price-name7, .price-name8, .price-name9, .price-name10, .price-name-new {
     font-weight: 500;
     color: var(--text-primary);
 }
-.price-tag1, .price-tag2, .price-tag3, .price-tag4, .price-tag5, .price-tag6, .price-tag7, .price-tag8, .price-tag9, .price-tag10 {
+/* ADDED .price-tag-new to this list */
+.price-tag1, .price-tag2, .price-tag3, .price-tag4, .price-tag5, .price-tag6, .price-tag7, .price-tag8, .price-tag9, .price-tag10, .price-tag-new {
     background-color: var(--accent-primary);
     color: white;
     padding: 4px 12px;
@@ -137,6 +140,7 @@ html, body {
     text-align: center;
     flex-shrink: 0;
 }
+
 .price-note {
     font-size: 0.75rem;
     color: var(--text-secondary);
@@ -240,9 +244,9 @@ html, body {
 .form-divider { border: none; border-top: 1px solid #e2e8f0; margin: 15px 0; }
 .addons-message { padding: 15px; border-radius: 8px; background-color: #f0f4f8; border: 1px solid #cdd8e3; text-align: center; font-style: italic; color: #4a5568; margin-bottom: 15px; }
 
-/* ========================================= */
-/* ===    FINAL Corrected Dropdown Styles   === */
-/* ========================================= */
+/* ======================================================== */
+/* ===    MODIFIED Styles for Always-Open Dropdown       === */
+/* ======================================================== */
 .price-item-interactive {
     display: block;
     padding: 12px 0;
@@ -251,38 +255,30 @@ html, body {
 .price-item-interactive summary {
     display: flex;
     align-items: center;
-    cursor: pointer;
     list-style: none; /* Hides the default browser arrow */
+    /* pointer-events: none; This would make it non-clickable */
 }
 .price-item-interactive summary::-webkit-details-marker {
     display: none; /* Hides arrow in Chrome/Safari */
 }
-/* This is the main layout container now */
 .summary-content {
     display: flex;
-    justify-content: space-between; /* Pushes children to opposite ends */
+    justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensures it takes up the full space */
+    width: 100%;
 }
-/* The name now contains its own arrow */
 .price-name-main {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between text and arrow */
+    gap: 10px;
     font-weight: 500;
     color: var(--text-primary);
 }
-/* THE ARROW IS NOW ATTACHED HERE */
+/* This removes the arrow */
 .price-name-main::after {
-    content: '▶';
-    font-size: 0.7em;
-    color: var(--text-secondary);
-    transition: transform 0.2s ease-in-out;
+    content: '';
 }
-/* The rotation now targets the arrow in its new position */
-.price-item-interactive details[open] .price-name-main::after {
-    transform: rotate(90deg);
-}
+/* Rotation effect is no longer needed */
 .price-tag-main {
     background-color: #60A5FA;
     color: white;
@@ -307,6 +303,7 @@ html, body {
     font-weight: 600;
     color: var(--text-primary);
 }
+
 
 /* ========================================= */
 /* ===    UPDATED Hiren's BootCD Styles       === */
