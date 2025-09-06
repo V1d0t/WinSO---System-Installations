@@ -328,7 +328,6 @@
     const addonDrivers = document.getElementById('addon-wrapper-drivers');
     const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
     const driverLabel = document.querySelector('label[for="drivers"]');
-    // NEW: Get references to the info boxes
     const ltscInfoBox = document.getElementById('ltsc-info-box');
     const unattendedInfoBox = document.getElementById('unattended-info-box');
 
@@ -352,7 +351,6 @@
                 const option = new Option(version.text, version.value);
                 isoVersionSelection.add(option);
             });
-            // NEW: Add a listener to the VERSION dropdown now
             isoVersionSelection.addEventListener('change', handleAaddonVisibility);
         } else {
             versionSelectionContainer.style.display = 'none';
@@ -360,7 +358,6 @@
             isoVersionSelection.required = false;
             osCategorySelection.setAttribute('name', 'Operating_System');
             isoVersionSelection.removeAttribute('name');
-            // Remove the second event listener if not needed
             isoVersionSelection.removeEventListener('change', handleAaddonVisibility);
         }
         handleAaddonVisibility();
@@ -371,7 +368,6 @@
         const isWindows = selectedOption.parentElement.label === 'Windows ISOs';
         const categoryValue = osCategorySelection.value;
         
-        // Determine the final selected value, whether it's from the first or second dropdown
         let finalSelectionValue = categoryValue;
         if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
             finalSelectionValue = isoVersionSelection.value;
@@ -385,7 +381,6 @@
         const allAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group > div');
         allAddons.forEach(addon => addon.style.display = 'block');
         hirensPreinstalledSection.style.display = 'none';
-        // NEW: Hide info boxes by default on every change
         ltscInfoBox.style.display = 'none';
         unattendedInfoBox.style.display = 'none';
 
@@ -409,9 +404,9 @@
                 hirensPreinstalledSection.style.display = 'block';
             } else if (isLTSC) {
                 addonDrivers.style.display = 'none';
-                ltscInfoBox.style.display = 'flex'; // Show LTSC info
+                ltscInfoBox.style.display = 'flex';
             } else if (isUnattended) {
-                unattendedInfoBox.style.display = 'flex'; // Show Unattended info
+                unattendedInfoBox.style.display = 'flex';
             }
 
         } else {
@@ -429,8 +424,10 @@
     // --- Other form scripts ---
     const customAppsCheckbox = document.getElementById('custom-apps-check');
     const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
+    
+    // THIS IS THE FIXED LINE
     customAppsCheckbox.addEventListener('change', function() {
-        customAppsSelectionContainer.style.display = this.checked ? 'block' - null : 'none';
+        customAppsSelectionContainer.style.display = this.checked ? 'block' : 'none';
         document.getElementById('apps-disclaimer-notice').style.display = this.checked ? 'block' : 'none';
     });
 
