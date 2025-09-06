@@ -61,49 +61,75 @@
                     <div class="form-group"><label for="last-name">გვარი:</label><input type="text" id="last-name" name="last_name" placeholder="მაგ: დოე" required></div>
                     <div class="form-group"><label for="order-email">თქვენი ელ.ფოსტა:</label><input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
                     <div class="form-group"><label for="phone">ტელეფონის ნომერი:</label><input type="tel" id="phone" name="phone" placeholder="555 123 456" pattern="^(5\d{8}|\+995\s?5\d{8})$" title="შეიყვანეთ 9-ნიშნა ნომერი (მაგ: 555123456) ან სრული ფორმატით (+995 555123456)" required></div>
+                    
                     <div class="form-group">
-                        <label for="iso-selection">აირჩიეთ ოპერაციული სისტემა:</label>
-                        <select id="iso-selection" name="Operating_System" required>
+                        <label for="os-category-selection">აირჩიეთ ოპერაციული სისტემა:</label>
+                        <select id="os-category-selection" name="Operating_System" required>
                             <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
                             <optgroup label="Windows ISOs">
-                                <option value="Windows 7 Home Basic - ₾10">Windows 7 Home Basic - ₾10</option>
-                                <option value="Windows 7 Ultimate SP1 - ₾15">Windows 7 Ultimate SP1 - ₾15</option>
-                                <option value="Windows 10 Home N/SL - ₾23">Windows 10 Home N / Single Language - ₾23</option>
-                                <option value="Windows 10 Home - ₾25">Windows 10 Home - ₾25</option>
-                                <option value="Windows 10 Education N - ₾28">Windows 10 Education N - ₾28</option>
-                                <option value="Windows 10 Education - ₾30">Windows 10 Education - ₾30</option>
-                                <option value="Windows 10 Pro N - ₾32">Windows 10 Pro N - ₾32</option>
-                                <option value="Windows 10 Pro - ₾35">Windows 10 Pro - ₾35</option>
-                                <option value="Windows 10 Pro for Workstations - ₾40">Windows 10 Pro for Workstations - ₾40</option>
+                                <option value="win7">Windows 7 Editions (აირჩიეთ ვერსიების სანახავად.)</option>
+                                <option value="win10">Windows 10 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
+                                <option value="win11">Windows 11 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
                                 <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
                                 <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
-
-                                <!-- NEWLY ADDED WINDOWS 11 OPTIONS -->
-                                <option value="Windows 11 Unattended Install - ₾60">Windows 11 Unattended Install - ₾60</option>
-                                <option value="Windows 11 Home N/SL - ₾30">Windows 11 Home N / Home Single Language - ₾30</option>
-                                <option value="Windows 11 Home - ₾32">Windows 11 Home - ₾32</option>
-                                <option value="Windows 11 Education N - ₾35">Windows 11 Education N - ₾35</option>
-                                <option value="Windows 11 Education - ₾38">Windows 11 Education - ₾38</option>
-                                <option value="Windows 11 Pro N - ₾40">Windows 11 Pro N - ₾40</option>
-                                <option value="Windows 11 Pro - ₾42">Windows 11 Pro - ₾42</option>
-                                <option value="Windows 11 Pro Education N - ₾45">Windows 11 Pro Education N - ₾45</option>
-                                <option value="Windows 11 Pro Education - ₾48">Windows 11 Pro Education - ₾48</option>
-                                <option value="Windows 11 Pro N for Workstations - ₾50">Windows 11 Pro N for Workstations - ₾50</option>
-                                <option value="Windows 11 Pro for Workstations - ₾55">Windows 11 Pro for Workstations - ₾55</option>
                                 <option value="Windows 11 IoT Enterprise LTSC 2024 - ₾80">Windows 11 IoT Enterprise LTSC 2024 - ₾80</option>
-                                <!-- END OF NEW OPTIONS -->
-
                                 <option value="Hiren's BootCD PE x64 - ₾80">Hiren's BootCD PE x64 - ₾80</option>
                             </optgroup>
                             <optgroup label="Linux ISOs">
                                 <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
                                 <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
                                 <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
+                                <!-- NEWLY ADDED OPTIONS -->
+                                <option value="Fedora Workstation V41 - ₾30">Fedora Workstation V41 - ₾30</option>
+                                <option value="Linux Kali V2025.2 - ₾40">Linux Kali V2025.2 (Ethical Hacking) - ₾40</option>
                             </optgroup>
                         </select>
                     </div>
 
-                    <!-- CORRECTED ADDONS CONTAINER STRUCTURE -->
+                    <!-- Dynamic Version Selector (for consumer editions only) -->
+                    <div class="form-group" id="version-selection-container" style="display: none;">
+                        <label for="iso-version-selection">აირჩიეთ ვერსია:</label>
+                        <select id="iso-version-selection" name="Operating_System_Version"></select>
+                    </div>
+
+                    <!-- NEW: Info Boxes for Specialty OSes (Initially Hidden) -->
+                    <div id="ltsc-info-box" class="info-box" style="display: none;">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>LTSC ვერსიის შესახებ:</strong> ეს არის Windows-ის სპეციალიზებული ვერსია, შექმნილი მაქსიმალური სტაბილურობისა და წარმადობისთვის.
+                            <ul>
+                                <li><b>არასასურველი პროგრამების გარეშე:</b> ამოღებულია Microsoft Store, Edge, Cortana, Xbox-ის და სხვა ჩაშენებული აპლიკაციები.</li>
+                                <li><b>სტაბილური განახლებები:</b> იღებს მხოლოდ უსაფრთხოების და სტაბილურობის განახლებებს, ფუნქციური სიახლეების გარეშე, რაც ამცირებს პრობლემების რისკს.</li>
+                                <li><b>ვისთვის არის განკუთვნილი?</b> იდეალურია პროფესიონალებისთვის, ენთუზიასტებისთვის და სპეციალური დანიშნულების კომპიუტერებისთვის (მაგ: სამუშაო სადგურები, სათამაშო სისტემები), სადაც მთავარია სისწრაფე და საიმედოობა.</li>
+                            </ul>
+
+                            <!-- NEW: Red Warning Box for Drivers -->
+                            <div class="info-box-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div>
+                                    <strong>მნიშვნელოვანი ინფორმაცია დრაივერებზე:</strong> NVIDIA-ს ახალი (DCH) დრაივერების დაყენებისას, NVIDIA Control Panel არ იმუშავებს, რადგან ის Microsoft Store-დან უნდა ჩამოიტვირთოს, რომელიც LTSC ვერსიას არ მოყვება. <strong>ჩვენ ვიყენებთ სპეციალურ მეთოდებს ამ პრობლემის მოსაგვარებლად თქვენი ინსტალაციის დროს.</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="unattended-info-box" class="info-box" style="display: none;">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Unattended ინსტალაციის შესახებ:</strong> ეს არის სრულად ავტომატიზირებული და ოპტიმიზირებული ინსტალაცია. ის არა მხოლოდ გამოტოვებს ყველა საწყის კითხვას, არამედ:
+                            <ul>
+                                <li>აყენებს სისტემას ძველ კომპიუტერებზე (TPM, Secure Boot-ის გარეშე).</li>
+                                <li>შლის არასასურველ პროგრამებს (bloatware).</li>
+                                <li>აუმჯობესებს კონფიდენციალურობას და წარმადობას.</li>
+                                <li>გითიშავთ Windows Defender-ს. -[შესაძლებელია ჩართვა]-</li> 
+                                <li>გამოტოვებს Microsoft-ის ექაუნთის შექმნას.</li>
+                            </ul>
+                            იდეალურია მაქსიმალური სისწრაფისა და სუფთა სისტემის მისაღებად.
+                        </div>
+                    </div>
+                    <!-- End of New Info Boxes -->
+
+                    <!-- ADDONS CONTAINER STRUCTURE -->
                     <div id="addons-container">
                         <div id="addons-checkboxes" style="display: none;">
                             <div class="form-group">
@@ -123,12 +149,10 @@
                                             <div class="app-categories-container">
                                                 <h4 class="app-category-title">Browsers</h4>
                                                 <div class="app-selection-grid">
-                                                    <!-- ADD ID HERE -->
                                                     <div class="checkbox-item" id="app-wrapper-chrome"><input type="checkbox" id="app-chrome" name="app_chrome" value="Chrome"><label for="app-chrome">Chrome</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-chromium" name="app_chromium" value="Chromium"><label for="app-chromium">Chromium</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-falkon" name="app_falkon" value="Falkon"><label for="app-falkon">Falkon</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-firefox" name="app_firefox" value="Firefox"><label for="app-firefox">Firefox</label></div>
-                                                    <!-- AND ADD ID HERE -->
                                                     <div class="checkbox-item" id="app-wrapper-firefoxesr"><input type="checkbox" id="app-firefoxesr" name="app_firefoxesr" value="Firefox ESR"><label for="app-firefoxesr">Firefox ESR</label></div>
                                                     <div class="checkbox-item"><input type="checkbox" id="app-Brave" name="app_Brave" value="Brave"><label for="app-Brave">Brave Browser</label></div>
                                                 </div>
@@ -195,18 +219,59 @@
     </div>
     </main>
 
-    <!-- Footer Section -->
-    <footer class="footer-main">
-        <div class="container-main">
-            <div class="footer-content">
-                <div class="footer-info"><h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3><p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია.</p></div>
-                <div class="footer-links"><h4 class="footer-subtitle">წარმმართველი პრინციპები</h4><a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a><a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a></div>
-                <div class="footer-contact"><h4 class="footer-subtitle">დაგვიკავშირდით</h4><ul class="contact-list"><li class="contact-item"><i class="fas fa-phone"></i><span>+995 XXX XX XX XX</span></li><li class="contact-item"><i class="fas fa-envelope"></i><span>winso.contact@gmail.com</span></li><li class="contact-item"><i class="fas fa-map-marker-alt"></i><span>ქუთაისი, საქართველო</span></li></ul></div>
-                <div class="footer-socials"><h4 class="footer-subtitle">გამოგვყევით</h4><div class="social-icons-container"><a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a></div></div>
+<!-- Footer Section -->
+<footer class="footer-main">
+    <div class="container-main">
+        <div class="footer-content">
+            <!-- Column 1: Info -->
+            <div class="footer-info">
+                <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
+                <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
             </div>
-            <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
+
+            <!-- Column 2: Links -->
+            <div class="footer-links">
+                <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
+                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
+                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
+            </div>
+
+            <!-- Column 3: Contact Details with Icons -->
+            <div class="footer-contact">
+                <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+995 XXX XX XX XX</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>winso.contact@gmail.com</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ქუთაისი, საქართველო</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- UPDATED: Column 4: Social Media Links -->
+            <div class="footer-socials">
+                <h4 class="footer-subtitle">გამოგვყევით</h4>
+                <div class="social-icons-container">
+                    <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- NEW: Instagram Icon -->
+                    <a href="https://www.instagram.com/winso.services/"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </footer>
+        <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
+    </div>
+</footer>
 
 <script>
     // --- SCRIPT FOR FORM TOGGLING ---
@@ -223,108 +288,177 @@
         document.getElementById('show-question-btn').classList.add('active');
     });
 
-    // --- FINAL, SMART SCRIPT FOR DYNAMIC ADDONS ---
-    const osSelection = document.getElementById('iso-selection');
+    // --- OS SELECTION & ADDON LOGIC ---
+    const osVersionData = {
+        win7: [
+            { value: "Windows 7 Starter - ₾15", text: "Windows 7 Starter - ₾15" },
+            { value: "Windows 7 Home Premium - ₾20", text: "Windows 7 Home Premium - ₾20" },
+            { value: "Windows 7 Professional - ₾25", text: "Windows 7 Professional - ₾25" },
+            { value: "Windows 7 Ultimate - ₾30", text: "Windows 7 Ultimate - ₾30" }
+        ],
+        win10: [
+            { value: "Windows 10 Home N/SL - ₾23", text: "Windows 10 Home N / Single Language - ₾23" },
+            { value: "Windows 10 Home - ₾25", text: "Windows 10 Home - ₾25" },
+            { value: "Windows 10 Education N - ₾28", text: "Windows 10 Education N - ₾28" },
+            { value: "Windows 10 Education - ₾30", text: "Windows 10 Education - ₾30" },
+            { value: "Windows 10 Pro N - ₾32", text: "Windows 10 Pro N - ₾32" },
+            { value: "Windows 10 Pro - ₾35", text: "Windows 10 Pro - ₾35" },
+            { value: "Windows 10 Pro for Workstations - ₾40", text: "Windows 10 Pro for Workstations - ₾40" }
+        ],
+        win11: [
+            { value: "Windows 11 Home N/SL - ₾30", text: "Windows 11 Home N / Home Single Language - ₾30" },
+            { value: "Windows 11 Home - ₾32", text: "Windows 11 Home - ₾32" },
+            { value: "Windows 11 Education N - ₾35", text: "Windows 11 Education N - ₾35" },
+            { value: "Windows 11 Education - ₾38", text: "Windows 11 Education - ₾38" },
+            { value: "Windows 11 Pro N - ₾40", text: "Windows 11 Pro N - ₾40" },
+            { value: "Windows 11 Pro - ₾42", text: "Windows 11 Pro - ₾42" },
+            { value: "Windows 11 Pro Education N - ₾45", text: "Windows 11 Pro Education N - ₾45" },
+            { value: "Windows 11 Pro Education - ₾48", text: "Windows 11 Pro Education - ₾48" },
+            { value: "Windows 11 Pro N for Workstations - ₾50", text: "Windows 11 Pro N for Workstations - ₾50" },
+            { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾55" },
+            { value: "Windows 11 Unattended Install - ₾60", text: "Windows 11 Unattended Install - ₾60" },
+        ]
+    };
+
+    const osCategorySelection = document.getElementById('os-category-selection');
+    const versionSelectionContainer = document.getElementById('version-selection-container');
+    const isoVersionSelection = document.getElementById('iso-version-selection');
     const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
     const addonsNotice = document.getElementById('addons-notice');
-    const addonAntivirus = document.getElementById('addon-wrapper-antivirus');
-    const addonOffice = document.getElementById('addon-wrapper-office');
-    const addonOptimization = document.getElementById('addon-wrapper-optimization');
     const addonDrivers = document.getElementById('addon-wrapper-drivers');
-    const addonCustomApps = document.getElementById('addon-wrapper-custom-apps');
     const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
-    const appWrapperChrome = document.getElementById('app-wrapper-chrome');
-    const appWrapperFirefoxESR = document.getElementById('app-wrapper-firefoxesr');
+    const driverLabel = document.querySelector('label[for="drivers"]');
+    // NEW: Get references to the info boxes
+    const ltscInfoBox = document.getElementById('ltsc-info-box');
+    const unattendedInfoBox = document.getElementById('unattended-info-box');
 
-    // NEW HELPER FUNCTION: This will enable or disable all addon inputs.
-    function setAddonInputsDisabled(isDisabled) {
-        const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
-        inputsToToggle.forEach(input => {
-            input.disabled = isDisabled;
-        });
-    }
+    osCategorySelection.addEventListener('change', function() {
+        const selectedCategoryValue = this.value;
+        const versions = osVersionData[selectedCategoryValue];
 
-    function setAllAddonsVisibility(show) {
-        const visibility = show ? 'block' : 'none';
-        addonAntivirus.style.display = visibility;
-        addonOffice.style.display = visibility;
-        addonOptimization.style.display = visibility;
-        addonDrivers.style.display = visibility;
-        addonCustomApps.style.display = visibility;
-    }
+        if (versions) {
+            versionSelectionContainer.style.display = 'block';
+            isoVersionSelection.innerHTML = '';
+            isoVersionSelection.required = true;
+            osCategorySelection.removeAttribute('name');
+            isoVersionSelection.setAttribute('name', 'Operating_System');
 
-    osSelection.addEventListener('change', function() {
-        const selectedValue = this.value;
-        const isWindows = this.options[this.selectedIndex].parentElement.label === 'Windows ISOs';
-        const isHiren = selectedValue.includes("Hiren's BootCD PE x64");
+            const placeholder = new Option('-- აირჩიეთ ვერსია --', '');
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            isoVersionSelection.add(placeholder);
 
+            versions.forEach(version => {
+                const option = new Option(version.text, version.value);
+                isoVersionSelection.add(option);
+            });
+            // NEW: Add a listener to the VERSION dropdown now
+            isoVersionSelection.addEventListener('change', handleAaddonVisibility);
+        } else {
+            versionSelectionContainer.style.display = 'none';
+            isoVersionSelection.innerHTML = '';
+            isoVersionSelection.required = false;
+            osCategorySelection.setAttribute('name', 'Operating_System');
+            isoVersionSelection.removeAttribute('name');
+            // Remove the second event listener if not needed
+            isoVersionSelection.removeEventListener('change', handleAaddonVisibility);
+        }
+        handleAaddonVisibility();
+    });
+
+    function handleAaddonVisibility() {
+        const selectedOption = osCategorySelection.options[osCategorySelection.selectedIndex];
+        const isWindows = selectedOption.parentElement.label === 'Windows ISOs';
+        const categoryValue = osCategorySelection.value;
+        
+        // Determine the final selected value, whether it's from the first or second dropdown
+        let finalSelectionValue = categoryValue;
+        if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
+            finalSelectionValue = isoVersionSelection.value;
+        }
+
+        const isHiren = finalSelectionValue.includes("Hiren's BootCD");
+        const isLTSC = finalSelectionValue.includes("LTSC");
+        const isWin7 = categoryValue === 'win7';
+        const isUnattended = finalSelectionValue.includes("Unattended");
+
+        const allAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group > div');
+        allAddons.forEach(addon => addon.style.display = 'block');
         hirensPreinstalledSection.style.display = 'none';
-        if (appWrapperChrome) appWrapperChrome.style.display = 'flex';
-        if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'flex';
+        // NEW: Hide info boxes by default on every change
+        ltscInfoBox.style.display = 'none';
+        unattendedInfoBox.style.display = 'none';
+
+        if (driverLabel) {
+            driverLabel.textContent = "დრაივერების დაყენება - ₾10";
+        }
 
         if (isWindows) {
             addonsCheckboxesContainer.style.display = 'block';
             addonsNotice.style.display = 'none';
-            setAddonInputsDisabled(false); // Enable all inputs for Windows
+            setAddonInputsDisabled(false);
 
-            if (isHiren) {
-                setAllAddonsVisibility(false);
-                addonOffice.style.display = 'block';
-                addonCustomApps.style.display = 'block';
+            if (isWin7) {
+                if (driverLabel) {
+                    driverLabel.textContent = "არსებული დრაივერების განახლება - ₾10";
+                }
+            } else if (isHiren) {
+                allAddons.forEach(addon => addon.style.display = 'none');
+                document.getElementById('addon-wrapper-office').style.display = 'block';
+                document.getElementById('addon-wrapper-custom-apps').style.display = 'block';
                 hirensPreinstalledSection.style.display = 'block';
-                if (appWrapperChrome) appWrapperChrome.style.display = 'none';
-                if (appWrapperFirefoxESR) appWrapperFirefoxESR.style.display = 'none';
-            } else {
-                setAllAddonsVisibility(true);
+            } else if (isLTSC) {
+                addonDrivers.style.display = 'none';
+                ltscInfoBox.style.display = 'flex'; // Show LTSC info
+            } else if (isUnattended) {
+                unattendedInfoBox.style.display = 'flex'; // Show Unattended info
             }
+
         } else {
-            // This is the FIX: For Linux, hide the container AND disable all addon inputs.
             addonsCheckboxesContainer.style.display = 'none';
             addonsNotice.style.display = 'block';
-            setAddonInputsDisabled(true); // Disable all inputs for Linux
+            setAddonInputsDisabled(true);
         }
-    });
+    }
 
-    // --- CUSTOM APPS & DISCLAIMER LOGIC ---
+    function setAddonInputsDisabled(isDisabled) {
+        const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
+        inputsToToggle.forEach(input => { input.disabled = isDisabled; });
+    }
+    
+    // --- Other form scripts ---
     const customAppsCheckbox = document.getElementById('custom-apps-check');
     const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
-    const appsDisclaimerNotice = document.getElementById('apps-disclaimer-notice');
     customAppsCheckbox.addEventListener('change', function() {
-        const show = this.checked;
-        customAppsSelectionContainer.style.display = show ? 'block' : 'none';
-        appsDisclaimerNotice.style.display = show ? 'block' : 'none';
+        customAppsSelectionContainer.style.display = this.checked ? 'block' - null : 'none';
+        document.getElementById('apps-disclaimer-notice').style.display = this.checked ? 'block' : 'none';
     });
 
-    // --- OTHER APPS TEXTAREA LOGIC ---
     const otherAppsCheckbox = document.getElementById('app-other-check');
     const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
     otherAppsCheckbox.addEventListener('change', function() {
         otherAppsTextarea.style.display = this.checked ? 'block' : 'none';
     });
 
-    // --- CLEAR SELECTION BUTTON LOGIC ---
     document.getElementById('clear-apps-btn').addEventListener('click', () => {
         customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         otherAppsTextarea.style.display = 'none';
     });
 
-    // --- UNIQUE EMAIL SUBJECT LOGIC ---
     function updateSubject(subjectInputId) {
         const subjectInput = document.getElementById(subjectInputId);
         if (subjectInput) {
-            const baseSubject = subjectInput.value.split(' [')[0]; // Get original subject
+            const baseSubject = subjectInput.value.split(' [')[0];
             const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
             subjectInput.value = `${baseSubject} [${timestamp}]`;
         }
         return true;
     }
 
-    // --- MOBILE MENU LOGIC ---
     document.getElementById('menu-toggle').addEventListener('click', () => {
         document.getElementById('mobile-menu').classList.toggle('hidden');
     });
 
-    // --- URL HASH READER LOGIC ---
     document.addEventListener('DOMContentLoaded', () => {
         if (window.location.hash === '#question') {
             document.getElementById('order-form-section').style.display = 'none';
