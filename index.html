@@ -71,16 +71,31 @@
                 <section id="windows-section" class="glass-card glass-card-hover">
                     <h2 class="section-title" data-i18n="windows-title">Windows ISO-ები</h2>
                     <ul class="price-list">
-                        <li class="price-item1"><span class="price-name1">Windows 7 Home Basic</span><span class="price-tag1">₾10</span></li>
-                        <li class="price-item2"><span class="price-name2">Windows 7 Ultimate SP1</span><span class="price-tag2">₾15</span></li>
-                        
+                        <!-- NEW Windows 7 Interactive Dropdown -->
+                        <li class="price-item-interactive">
+                            <details open>
+                                <summary>
+                                    <div class="summary-content">
+                                        <span class="price-name-main">Windows 7 Consumer Edition</span>
+                                        <span class="price-tag-main">₾15-დან<span class="price-note">[+]</span></span>
+                                    </div>
+                                </summary>
+                                <ul class="sub-edition-list">
+                                    <li><span>Windows 7 Starter</span><span class="sub-price">₾15</span></li>
+                                    <li><span>Windows 7 Home Premium</span><span class="sub-price">₾20</span></li>
+                                    <li><span>Windows 7 Professional</span><span class="sub-price">₾25</span></li>
+                                    <li><span>Windows 7 Ultimate</span><span class="sub-price">₾30</span></li>
+                                </ul>
+                            </details>
+                        </li>
+
                         <!-- Windows 10 Interactive Dropdown -->
                         <li class="price-item-interactive">
                             <details open>
                                 <summary>
                                     <div class="summary-content">
                                         <span class="price-name-main">Windows 10 Consumer Edition</span>
-                                        <span class="price-tag-main">₾25-დან<span class="price-note">[+]</span></span>
+                                        <span class="price-tag-main">₾23-დან<span class="price-note">[+]</span></span>
                                     </div>
                                 </summary>
                                 <ul class="sub-edition-list">
@@ -141,16 +156,22 @@
                 <section id="linux-section" class="glass-card glass-card-hover">
                     <h2 class="section-title" data-i18n="linux-title">Linux ISO-ები</h2>
                     <ul class="price-list">
+                        <!-- Main Desktop Distros -->
                         <li class="price-item1"><span class="price-name1">Linux Mint-Debian V6 Cinnamon 64bit</span><span class="price-tag1">₾20</span></li>
                         <li class="price-item2"><span class="price-name2">Linux Mint-Ubuntu V22 Cinnamon 64bit</span><span class="price-tag2">₾22</span></li>
                         <li class="price-item3"><span class="price-name3">Linux Ubuntu-Desktop V24.04 64bit</span><span class="price-tag3">₾25</span></li>
-                        <li class="price-item4"><div class="divider-text">- - - TroubleShooting Setups - - -</div></li>
-                        <li class="price-item5"><span class="price-name5">Linux ArchLinux V2025.08.01 86-64bit</span><span class="price-tag5">₾--</span></li>
-                        <li class="price-item6"><span class="price-name6">Linux Kali V2025.2 64bit</span><span class="price-tag6">₾--</span></li>
-                        <li class="price-item7"><span class="price-name7">Linux Kali Netinst V2025.2 64bit</span><span class="price-tag7">₾--</span></li>
-                        <li class="price-item8"><span class="price-name8">Linux Kali Purple V2025.2 64bit</span><span class="price-tag8">₾--</span></li>
-                        <li class="price-item9"><span class="price-name9">Fedora Workstation Live V41 86-64bit</span><span class="price-tag9">₾--</span></li>
-                        <li class="price-item10"><span class="price-name10">Fedora Server Netinst V41 86-64bit Red Hat Edition</span><span class="price-tag10">₾--</span></li>
+                        <li class="price-item-new"><span class="price-name-new">Fedora Workstation V41 64bit (ახალი)</span><span class="price-tag-new">₾30</span></li>
+                        
+                        <!-- Advanced / Specialty Setups -->
+                        <li class="price-item4"><div class="divider-text">- - - Advanced & Specialty Setups - - -</div></li>
+                        <li class="price-item5"><span class="price-name5">Linux Kali V2025.2 (Ethical Hacking) (ახალი)</span><span class="price-tag5">₾40</span></li>
+                        <li class="price-item6"><span class="price-name6">Linux ArchLinux V2025.08 (Expert Users)</span><span class="price-tag6">₾--</span></li>
+
+                        <!-- Other / Non-Desktop Setups -->
+                        <li class="price-item7"><div class="divider-text">- - - TroubleShooting Setups - - -</div></li>
+                        <li class="price-item8"><span class="price-name8">Linux Kali Netinst V2025.2</span><span class="price-tag8">₾--</span></li>
+                        <li class="price-item9"><span class="price-name9">Linux Kali Purple V2025.2</span><span class="price-tag9">₾--</span></li>
+                        <li class="price-item10"><span class="price-name10">Fedora Server Netinst V41 (No Desktop)</span><span class="price-tag10">₾--</span></li>
                     </ul>
                     <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="order-linux">Linux-ის ინსტალაციის შეკვეთა</button></a>
                 </section>
@@ -236,14 +257,17 @@
                 </ul>
             </div>
 
-            <!-- NEW: Column 4: Social Media Links -->
+            <!-- UPDATED: Column 4: Social Media Links -->
             <div class="footer-socials">
                 <h4 class="footer-subtitle">გამოგვყევით</h4>
                 <div class="social-icons-container">
                     <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <!-- You can add more icons here later -->
+                    <!-- NEW: Instagram Icon -->
+                    <a href="https://www.instagram.com/winso.services/"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
         </div>
