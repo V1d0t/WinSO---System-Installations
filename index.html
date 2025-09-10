@@ -1,285 +1,237 @@
-<!DOCTYPE html>
-<html lang="ka">
+<!doctype html>
+<html lang=ka>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Windows & Linux Installation Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="WinSO-modern.css">
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title data-i18n=title>Windows & Linux Installation Services</title>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
+<link rel=stylesheet href=WinSO-modern.css>
 </head>
-<body class="body-container">
-    <!-- Header Section with Navigation -->
-    <header class="header-main">
-        <div class="container-main">
-            <div class="header-content">
-                <a href="index.html" class="logo-container">
-                    <i class="fab fa-windows"></i>
-                    <i class="fab fa-linux"></i>
-                    <h1 class="logo-text" data-i18n="title">OS ინსტალაცია</h1>
-                </a>
-
-                <nav class="desktop-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-                        <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-                        <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
-                    </ul>
-                </nav>  
-
-                <div class="mobile-menu-button-container">
-                    <button id="menu-toggle" class="mobile-menu-button">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!--Mobile Section-->
-
-        <nav id="mobile-menu" class="mobile-nav hidden">
-            <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-            <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-            <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
-        </nav>
-
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="hero-section">
-        <div class="container-main">
-            <div class="hero-content-container">
-                <div class="hero-text-content">
-                    <h2 class="hero-title" data-i18n="intro-title">პროფესიონალური ოპერაციული სისტემების ინსტალაციის სერვისები</h2>
-                    <p class="hero-subtitle" data-i18n="intro-text-1">ჩვენ გთავაზობთ მაღალი ხარისხის Windows და Linux ოპერაციული სისტემების ინსტალაციის სერვისებს დამატებითი ფუნქციებით თქვენი კომპიუტერის გამოცდილების გასაუმჯობესებლად.</p>
-                </div>
-                <div class="hero-image-container">
-                    <img src="https://cdn-icons-png.flaticon.com/512/888/888954.png" alt="Windows and Linux" class="hero-image" width="250" height="250">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-        <div class="container-main">
-            <!-- Operating Systems Grid Layout -->
-            <div class="os-grid">
-                <!-- Windows Installation Services Section -->
-                <section id="windows-section" class="glass-card glass-card-hover">
-                    <h2 class="section-title" data-i18n="windows-title">Windows ISO-ები</h2>
-                    <ul class="price-list">
-                        <!-- NEW Windows 7 Interactive Dropdown -->
-                        <li class="price-item-interactive">
-                            <details open>
-                                <summary>
-                                    <div class="summary-content">
-                                        <span class="price-name-main">Windows 7 Consumer Edition</span>
-                                        <span class="price-tag-main">₾15-დან<span class="price-note">[+]</span></span>
-                                    </div>
-                                </summary>
-                                <ul class="sub-edition-list">
-                                    <li><span>Windows 7 Starter</span><span class="sub-price">₾15</span></li>
-                                    <li><span>Windows 7 Home Premium</span><span class="sub-price">₾20</span></li>
-                                    <li><span>Windows 7 Professional</span><span class="sub-price">₾25</span></li>
-                                    <li><span>Windows 7 Ultimate</span><span class="sub-price">₾30</span></li>
-                                </ul>
-                            </details>
-                        </li>
-
-                        <!-- Windows 10 Interactive Dropdown -->
-                        <li class="price-item-interactive">
-                            <details open>
-                                <summary>
-                                    <div class="summary-content">
-                                        <span class="price-name-main">Windows 10 Consumer Edition</span>
-                                        <span class="price-tag-main">₾23-დან<span class="price-note">[+]</span></span>
-                                    </div>
-                                </summary>
-                                <ul class="sub-edition-list">
-                                    <li><span>Home N / Single Language<span class="price-note">[+]</span></span><span class="sub-price">₾23</span></li>
-                                    <li><span>Home<span class="price-note">[+]</span></span><span class="sub-price">₾25</span></li>
-                                    <li><span>Education N<span class="price-note">[+]</span></span><span class="sub-price">₾28</span></li>
-                                    <li><span>Education<span class="price-note">[+]</span></span><span class="sub-price">₾30</span></li>
-                                    <li><span>Pro N<span class="price-note">[+]</span></span><span class="sub-price">₾32</span></li>
-                                    <li><span>Pro<span class="price-note">[+]</span></span><span class="sub-price">₾35</span></li>
-                                    <li><span>Pro for Workstations<span class="price-note">[+]</span></span><span class="sub-price">₾40</span></li>
-                                </ul>
-                            </details>
-                        </li>
-                        
-                        <li class="price-item5"><span class="price-name5">NanoWin10 23H1 NTDEV (LTSC)</span><span class="price-tag5">₾45 <span class="price-note">[+]</span></span></li>
-                        <li class="price-item7"><span class="price-name7">Windows 10 Enterprise LTSC</span><span class="price-tag7">₾70 <span class="price-note">[+]</span></span></li>
-
-                        <!-- NEW: Windows 11 Unattended Installation -->
-                        <li class="price-item-new"><span class="price-name-new">Windows 11 Unattended Install (ახალი)</span><span class="price-tag-new">₾60 <span class="price-note">[ავტომატური]<span class="price-note">[+]</span></span></span></li>
-
-                        <!-- UPDATED: Windows 11 Consumer Edition Dropdown -->
-                        <li class="price-item-interactive">
-                            <details open>
-                                <summary>
-                                    <div class="summary-content">
-                                        <span class="price-name-main">Windows 11 Consumer Edition (ახალი)</span>
-                                        <span class="price-tag-main">₾30-დან<span class="price-note">[+]</span></span>
-                                    </div>
-                                </summary>
-                                <ul class="sub-edition-list">
-                                    <li><span>Home N / Home Single Language<span class="price-note">[+]</span></span><span class="sub-price">₾30</span></li>
-                                    <li><span>Home<span class="price-note">[+]</span></span><span class="sub-price">₾32</span></li>
-                                    <li><span>Education N<span class="price-note">[+]</span></span><span class="sub-price">₾35</span></li>
-                                    <li><span>Education<span class="price-note">[+]</span></span><span class="sub-price">₾38</span></li>
-                                    <li><span>Pro N<span class="price-note">[+]</span></span><span class="sub-price">₾40</span></li>
-                                    <li><span>Pro<span class="price-note">[+]</span></span><span class="sub-price">₾42</span></li>
-                                    <li><span>Pro Education N<span class="price-note">[+]</span></span><span class="sub-price">₾45</span></li>
-                                    <li><span>Pro Education<span class="price-note">[+]</span></span><span class="sub-price">₾48</span></li>
-                                    <li><span>Pro N for Workstations<span class="price-note">[+]</span></span><span class="sub-price">₾50</span></li>
-                                    <li><span>Pro for Workstations<span class="price-note">[+]</span></span><span class="sub-price">₾55</span></li>
-                                </ul>
-                            </details>
-                        </li>
-                        
-                        <!-- NEW: Windows 11 IoT Enterprise LTSC -->
-                        <li class="price-item8"><span class="price-name8">Windows 11 IoT Enterprise LTSC 2024 (ახალი)</span><span class="price-tag8">₾80 <span class="price-note">[+]</span></span></li>
-
-                        <!-- Hiren's BootCD Item -->
-                        <li class="price-item6 special-item">
-                            <span class="price-name6">Hiren's BootCD PE x64</span>
-                            <span class="price-tag6">₾90 <span class="warning-tag">x64 Only</span><span class="price-note">[+]</span></span>
-                        </li>
-                    </ul>
-                    <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="order-windows">Windows-ის ინსტალაციის შეკვეთა</button></a>
-                </section>
-
-                <!-- Linux Installation Services Section -->
-                <section id="linux-section" class="glass-card glass-card-hover">
-                    <h2 class="section-title" data-i18n="linux-title">Linux ISO-ები</h2>
-                    <ul class="price-list">
-                        <!-- Main Desktop Distros -->
-                        <li class="price-item1"><span class="price-name1">Linux Mint-Debian V6 Cinnamon 64bit</span><span class="price-tag1">₾20</span></li>
-                        <li class="price-item2"><span class="price-name2">Linux Mint-Ubuntu V22 Cinnamon 64bit</span><span class="price-tag2">₾22</span></li>
-                        <li class="price-item3"><span class="price-name3">Linux Ubuntu-Desktop V24.04 64bit</span><span class="price-tag3">₾25</span></li>
-                        <li class="price-item-new"><span class="price-name-new">Fedora Workstation V41 64bit (ახალი)</span><span class="price-tag-new">₾30</span></li>
-                        
-                        <!-- Advanced / Specialty Setups -->
-                        <li class="price-item4"><div class="divider-text">- - - Advanced & Specialty Setups - - -</div></li>
-                        <li class="price-item5"><span class="price-name5">Linux Kali V2025.2 (Ethical Hacking) (ახალი)</span><span class="price-tag5">₾40</span></li>
-                        <li class="price-item6"><span class="price-name6">Linux ArchLinux V2025.08 (Expert Users)</span><span class="price-tag6">₾--</span></li>
-
-                        <!-- Other / Non-Desktop Setups -->
-                        <li class="price-item7"><div class="divider-text">- - - TroubleShooting Setups - - -</div></li>
-                        <li class="price-item8"><span class="price-name8">Linux Kali Netinst V2025.2</span><span class="price-tag8">₾--</span></li>
-                        <li class="price-item9"><span class="price-name9">Linux Kali Purple V2025.2</span><span class="price-tag9">₾--</span></li>
-                        <li class="price-item10"><span class="price-name10">Fedora Server Netinst V41 (No Desktop)</span><span class="price-tag10">₾--</span></li>
-                    </ul>
-                    <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="order-linux">Linux-ის ინსტალაციის შეკვეთა</button></a>
-                </section>
-            </div>
-
-            <!-- Add-ons Services Section -->
-            <section id="addons-section" class="glass-card glass-card-hover">
-                <h2 class="section-title" data-i18n="addons-title">დამატებები</h2>
-                <div class="addons-grid">
-                    <div class="addon-card1">
-                        <h3 class="addon-title1" data-i18n="addon-antivirus-title">ანტივირუსი</h3>
-                        <p class="addon-description1" data-i18n="addon-antivirus-desc">მაღალ ხარისხიანი და სანდო.</p>
-                        <span class="addon-price1">₾5</span>
-                    </div>
-                    <div class="addon-card2">
-                        <h3 class="addon-title2" data-i18n="addon-office-title">Microsoft Office</h3>
-                        <p class="addon-description2" data-i18n="addon-office-desc">Microsoft Office-ის სრული ინსტალაცია</p>
-                        <span class="addon-price2">₾15</span>
-                    </div>
-                    <div class="addon-card3">
-                        <h3 class="addon-title3" data-i18n="addon-optimization-title">კომპიუტერის ოპტიმიზაცია</h3>
-                        <p class="addon-description3" data-i18n="addon-optimization-desc">კომპიუტერის გაწმენდა / ოპტიმიზაცია</p>
-                        <span class="addon-price3">₾10–15</span>
-                    </div>
-                    <div class="addon-card4">
-                        <h3 class="addon-title4" data-i18n="addon-drivers-title">დრაივერების დაყენება</h3>
-                        <p class="addon-description4" data-i18n="addon-drivers-desc">დრაივერების სრული დაყენება (მხოლოდ LTSC და NTDEV-სთვის)</p>
-                        <span class="addon-price4">₾10</span>
-                    </div>
-                    <div class="addon-card5">
-                        <h3 class="addon-title5" data-i18n="addon-apps-title">პერსონალური აპლიკაციების ნაკრები</h3>
-                        <p class="addon-description5" data-i18n="addon-apps-desc">დაგიყენებთ თქვენთვის სასურველ პროგრამებს (ბრაუზერები, თამაშები და ა.შ). ფასი 1 ლარი თითო პროგრამაზე.</p>
-                        <span class="addon-price5">₾1 (თითო)</span>
-                    </div>
-                </div>
-                <a href="WinSO-Contact.html"><button class="btn-primary" data-i18n="order-addons">დამატებების შეკვეთა</button></a>
-            </section>
-
-            <!-- Contact Support Section -->
-            <section class="glass-card contact-section">
-                <h2 class="section-title" data-i18n="contact-title">გჭირდებათ დახმარება არჩევაში?</h2>
-                <p class="intro-text" data-i18n="contact-text">დაგვიკავშირდით პერსონალური რეკომენდაციებისთვის თქვენი საჭიროებებისა და ტექნიკური მახასიათებლების მიხედვით.</p>
-                
-                <!-- UPDATED LINE: Added #question to the link -->
-                <a href="WinSO-Contact.html#question"><button class="btn-primary" data-i18n="contact-support">დაგვიკავშირდით</button></a>
-            </section>
-        </div>
-    </main>
-
-<!-- Footer Section -->
-<footer class="footer-main">
-    <div class="container-main">
-        <div class="footer-content">
-            <!-- Column 1: Info -->
-            <div class="footer-info">
-                <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
-                <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
-            </div>
-
-            <!-- Column 2: Links -->
-            <div class="footer-links">
-                <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
-                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
-                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
-            </div>
-
-            <!-- Column 3: Contact Details with Icons -->
-            <div class="footer-contact">
-                <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+995 XXX XX XX XX</span>
-                    </li>
-                    <li class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>winso.contact@gmail.com</span>
-                    </li>
-                    <li class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>ქუთაისი, საქართველო</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- UPDATED: Column 4: Social Media Links -->
-            <div class="footer-socials">
-                <h4 class="footer-subtitle">გამოგვყევით</h4>
-                <div class="social-icons-container">
-                    <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <!-- NEW: Instagram Icon -->
-                    <a href="https://www.instagram.com/winso.services/"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
-    </div>
-</footer>
+<body class=body-container>
+<header class=header-main>
+<div class=container-main>
+<div class=header-content>
+<a href=index.html class=logo-container>
+<i class="fab fa-windows"></i>
+<i class="fab fa-linux"></i>
+<h1 class=logo-text data-i18n=title>OS ინსტალაცია</h1>
+</a>
+<nav class=desktop-nav>
+<ul class=nav-list>
+<li class=nav-item><a href=index.html class=nav-link data-i18n=home>მთავარი</a></li>
+<li class=nav-item><a href=#windows-section class=nav-link data-i18n=merchandise>პროდუქცია</a></li>
+<li class=nav-item><a href=#addons-section class=nav-link data-i18n=addons>დამატებები</a></li>
+<li class=nav-item><button id=theme-toggle class=theme-toggle-btn>Theme: Light</button>
+</li></ul>
+</nav>
+<div class=mobile-menu-button-container>
+<button id=menu-toggle class=mobile-menu-button>
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-nav hidden">
+<li class=nav-item><a href=index.html class=nav-link data-i18n=home>მთავარი</a></li>
+<li class=nav-item><a href=#windows-section class=nav-link data-i18n=merchandise>პროდუქცია</a></li>
+<li class=nav-item><a href=#addons-section class=nav-link data-i18n=addons>დამატებები</a></li>
+<li class=nav-item><button id=mobile-theme-toggle class=theme-toggle-btn>Theme: Light</button></li>
+</nav>
+</header>
+<section id=home class=hero-section>
+<div class=container-main>
+<div class=hero-content-container>
+<div class=hero-text-content>
+<h2 class=hero-title data-i18n=intro-title>პროფესიონალური ოპერაციული სისტემების ინსტალაციის სერვისები</h2>
+<p class=hero-subtitle data-i18n=intro-text-1>ჩვენ გთავაზობთ მაღალი ხარისხის Windows და Linux ოპერაციული სისტემების ინსტალაციის სერვისებს დამატებითი ფუნქციებით თქვენი კომპიუტერის გამოცდილების გასაუმჯობესებლად.</p>
+</div>
+<div class=hero-image-container>
+<img src=https://cdn-icons-png.flaticon.com/512/888/888954.png alt="Windows and Linux" class=hero-image width=250 height=250>
+</div>
+</div>
+</div>
+</section>
+<main class=main-content>
+<div class=container-main>
+<div class=os-grid>
+<section id=windows-section class="glass-card glass-card-hover">
+<h2 class=section-title data-i18n=windows-title>Windows ISO-ები</h2>
+<ul class=price-list>
+<li class=price-item-interactive>
+<details open>
+<summary>
+<div class=summary-content>
+<span class=price-name-main>Windows 7 Consumer Edition</span>
+<span class=price-tag-main>₾15-დან<span class=price-note>[+]</span></span>
+</div>
+</summary>
+<ul class=sub-edition-list>
+<li><span>Windows 7 Starter</span><span class=sub-price>₾15</span></li>
+<li><span>Windows 7 Home Premium</span><span class=sub-price>₾20</span></li>
+<li><span>Windows 7 Professional</span><span class=sub-price>₾25</span></li>
+<li><span>Windows 7 Ultimate</span><span class=sub-price>₾30</span></li>
+</ul>
+</details>
+</li>
+<li class=price-item-interactive>
+<details open>
+<summary>
+<div class=summary-content>
+<span class=price-name-main>Windows 10 Consumer Edition</span>
+<span class=price-tag-main>₾23-დან<span class=price-note>[+]</span></span>
+</div>
+</summary>
+<ul class=sub-edition-list>
+<li><span>Home N / Single Language<span class=price-note>[+]</span></span><span class=sub-price>₾23</span></li>
+<li><span>Home<span class=price-note>[+]</span></span><span class=sub-price>₾25</span></li>
+<li><span>Education N<span class=price-note>[+]</span></span><span class=sub-price>₾28</span></li>
+<li><span>Education<span class=price-note>[+]</span></span><span class=sub-price>₾30</span></li>
+<li><span>Pro N<span class=price-note>[+]</span></span><span class=sub-price>₾32</span></li>
+<li><span>Pro<span class=price-note>[+]</span></span><span class=sub-price>₾35</span></li>
+<li><span>Pro for Workstations<span class=price-note>[+]</span></span><span class=sub-price>₾40</span></li>
+</ul>
+</details>
+</li>
+<li class=price-item5><span class=price-name5>NanoWin10 23H1 NTDEV (LTSC)</span><span class=price-tag5>₾45 <span class=price-note>[+]</span></span></li>
+<li class=price-item7><span class=price-name7>Windows 10 Enterprise LTSC</span><span class=price-tag7>₾70 <span class=price-note>[+]</span></span></li>
+<li class=price-item-new><span class=price-name-new>Windows 11 Unattended Install (ახალი)</span><span class=price-tag-new>₾60 <span class=price-note>[ავტომატური]<span class=price-note>[+]</span></span></span></li>
+<li class=price-item-interactive>
+<details open>
+<summary>
+<div class=summary-content>
+<span class=price-name-main>Windows 11 Consumer Edition (ახალი)</span>
+<span class=price-tag-main>₾30-დან<span class=price-note>[+]</span></span>
+</div>
+</summary>
+<ul class=sub-edition-list>
+<li><span>Home N / Home Single Language<span class=price-note>[+]</span></span><span class=sub-price>₾30</span></li>
+<li><span>Home<span class=price-note>[+]</span></span><span class=sub-price>₾32</span></li>
+<li><span>Education N<span class=price-note>[+]</span></span><span class=sub-price>₾35</span></li>
+<li><span>Education<span class=price-note>[+]</span></span><span class=sub-price>₾38</span></li>
+<li><span>Pro N<span class=price-note>[+]</span></span><span class=sub-price>₾40</span></li>
+<li><span>Pro<span class=price-note>[+]</span></span><span class=sub-price>₾42</span></li>
+<li><span>Pro Education N<span class=price-note>[+]</span></span><span class=sub-price>₾45</span></li>
+<li><span>Pro Education<span class=price-note>[+]</span></span><span class=sub-price>₾48</span></li>
+<li><span>Pro N for Workstations<span class=price-note>[+]</span></span><span class=sub-price>₾50</span></li>
+<li><span>Pro for Workstations<span class=price-note>[+]</span></span><span class=sub-price>₾55</span></li>
+</ul>
+</details>
+</li>
+<li class=price-item8><span class=price-name8>Windows 11 IoT Enterprise LTSC 2024 (ახალი)</span><span class=price-tag8>₾80 <span class=price-note>[+]</span></span></li>
+<li class="price-item6 special-item">
+<span class=price-name6>Hiren's BootCD PE x64</span>
+<span class=price-tag6>₾90 <span class=warning-tag>x64 Only</span><span class=price-note>[+]</span></span>
+</li>
+</ul>
+<a href=WinSO-Contact.html><button class=btn-primary data-i18n=order-windows>Windows-ის ინსტალაციის შეკვეთა</button></a>
+</section>
+<section id=linux-section class="glass-card glass-card-hover">
+<h2 class=section-title data-i18n=linux-title>Linux ISO-ები</h2>
+<ul class=price-list>
+<li class=price-item1><span class=price-name1>Linux Mint-Debian V6 Cinnamon 64bit</span><span class=price-tag1>₾20</span></li>
+<li class=price-item2><span class=price-name2>Linux Mint-Ubuntu V22 Cinnamon 64bit</span><span class=price-tag2>₾22</span></li>
+<li class=price-item3><span class=price-name3>Linux Ubuntu-Desktop V24.04 64bit</span><span class=price-tag3>₾25</span></li>
+<li class=price-item-new><span class=price-name-new>Fedora Workstation V41 64bit (ახალი)</span><span class=price-tag-new>₾30</span></li>
+<li class=price-item4><div class=divider-text>- - - Advanced & Specialty Setups - - -</div></li>
+<li class=price-item5><span class=price-name5>Linux Kali V2025.2 (Ethical Hacking) (ახალი)</span><span class=price-tag5>₾40</span></li>
+<li class=price-item6><span class=price-name6>Linux ArchLinux V2025.08 (Expert Users)</span><span class=price-tag6>₾--</span></li>
+<li class=price-item7><div class=divider-text>- - - TroubleShooting Setups - - -</div></li>
+<li class=price-item8><span class=price-name8>Linux Kali Netinst V2025.2</span><span class=price-tag8>₾--</span></li>
+<li class=price-item9><span class=price-name9>Linux Kali Purple V2025.2</span><span class=price-tag9>₾--</span></li>
+<li class=price-item10><span class=price-name10>Fedora Server Netinst V41 (No Desktop)</span><span class=price-tag10>₾--</span></li>
+</ul>
+<a href=WinSO-Contact.html><button class=btn-primary data-i18n=order-linux>Linux-ის ინსტალაციის შეკვეთა</button></a>
+</section>
+</div>
+<section id=addons-section class="glass-card glass-card-hover">
+<h2 class=section-title data-i18n=addons-title>დამატებები</h2>
+<div class=addons-grid>
+<div class=addon-card1>
+<h3 class=addon-title1 data-i18n=addon-antivirus-title>ანტივირუსი</h3>
+<p class=addon-description1 data-i18n=addon-antivirus-desc>მაღალ ხარისხიანი და სანდო.</p>
+<span class=addon-price1>₾5</span>
+</div>
+<div class=addon-card2>
+<h3 class=addon-title2 data-i18n=addon-office-title>Microsoft Office</h3>
+<p class=addon-description2 data-i18n=addon-office-desc>Microsoft Office-ის სრული ინსტალაცია</p>
+<span class=addon-price2>₾15</span>
+</div>
+<div class=addon-card3>
+<h3 class=addon-title3 data-i18n=addon-optimization-title>კომპიუტერის ოპტიმიზაცია</h3>
+<p class=addon-description3 data-i18n=addon-optimization-desc>კომპიუტერის გაწმენდა / ოპტიმიზაცია</p>
+<span class=addon-price3>₾10–15</span>
+</div>
+<div class=addon-card4>
+<h3 class=addon-title4 data-i18n=addon-drivers-title>დრაივერების დაყენება</h3>
+<p class=addon-description4 data-i18n=addon-drivers-desc>დრაივერების სრული დაყენება (მხოლოდ LTSC და NTDEV-სთვის)</p>
+<span class=addon-price4>₾10</span>
+</div>
+<div class=addon-card5>
+<h3 class=addon-title5 data-i18n=addon-apps-title>პერსონალური აპლიკაციების ნაკრები</h3>
+<p class=addon-description5 data-i18n=addon-apps-desc>დაგიყენებთ თქვენთვის სასურველ პროგრამებს (ბრაუზერები, თამაშები და ა.შ). ფასი 1 ლარი თითო პროგრამაზე.</p>
+<span class=addon-price5>₾1 (თითო)</span>
+</div>
+</div>
+<a href=WinSO-Contact.html><button class=btn-primary data-i18n=order-addons>დამატებების შეკვეთა</button></a>
+</section>
+<section class="glass-card contact-section">
+<h2 class=section-title data-i18n=contact-title>გჭირდებათ დახმარება არჩევაში?</h2>
+<p class=intro-text data-i18n=contact-text>დაგვიკავშირდით პერსონალური რეკომენდაციებისთვის თქვენი საჭიროებებისა და ტექნიკური მახასიათებლების მიხედვით.</p>
+<a href=WinSO-Contact.html#question><button class=btn-primary data-i18n=contact-support>დაგვიკავშირდით</button></a>
+</section>
+</div>
+</main>
+<footer class=footer-main>
+<div class=container-main>
+<div class=footer-content>
+<div class=footer-info>
+<h3 class=footer-title data-i18n=footer-title>Windows & Linux ინსტალაციის სერვისები</h3>
+<p class=footer-description data-i18n=footer-desc>პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
+</div>
+<div class=footer-links>
+<h4 class=footer-subtitle>წარმმართველი პრინციპები</h4>
+<a href=WinSO-Terms.html class=footer-link data-i18n=terms>მომსახურების პირობები</a>
+<a href=WinSO-Privacy.html class=footer-link data-i18n=privacy>კონფიდენციალურობის პოლიტიკა</a>
+</div>
+<div class=footer-contact>
+<h4 class=footer-subtitle>დაგვიკავშირდით</h4>
+<ul class=contact-list>
+<li class=contact-item>
+<i class="fas fa-phone"></i>
+<span>+995 XXX XX XX XX</span>
+</li>
+<li class=contact-item>
+<i class="fas fa-envelope"></i>
+<span>winso.contact@gmail.com</span>
+</li>
+<li class=contact-item>
+<i class="fas fa-map-marker-alt"></i>
+<span>ქუთაისი, საქართველო</span>
+</li>
+</ul>
+</div>
+<div class=footer-socials>
+<h4 class=footer-subtitle>გამოგვყევით</h4>
+<div class=social-icons-container>
+<a href="https://www.facebook.com/profile.php?id=100081595650312" target=_blank class=social-icon aria-label="Follow us on Facebook">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a href=https://www.instagram.com/winso.services/ target=_blank class=social-icon aria-label="Follow us on Instagram">
+<i class="fab fa-instagram"></i>
+</a>
+</div>
+</div>
+</div>
+<div class=footer-copyright data-i18n=copyright>&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
+</div>
+</footer></body></html>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+function _0x59dc(){const _0x5110db=['menu-toggle','22150CgFltB','Theme:\x20Light','light','mobile-menu','mobile-theme-toggle','dark-theme','311277rfFZkS','body','theme-toggle','dark','classList','2667160MqtkrN','1360954TeaSdQ','getElementById','3KatzXh','click','toggle','5384336EgZcBN','hidden','setItem','3467240wUAaiQ','addEventListener','add','300dDArKW','10ZEunSq','textContent','getItem','26997561TJTHay','theme'];_0x59dc=function(){return _0x5110db;};return _0x59dc();}const _0x265772=_0x4169;function _0x4169(_0x32d0ad,_0x5d6f3d){const _0x59dcde=_0x59dc();return _0x4169=function(_0x416922,_0x569dd5){_0x416922=_0x416922-0xd6;let _0x14a7e1=_0x59dcde[_0x416922];return _0x14a7e1;},_0x4169(_0x32d0ad,_0x5d6f3d);}(function(_0x5e5012,_0x16317e){const _0x521abd=_0x4169,_0x2314a0=_0x5e5012();while(!![]){try{const _0x1ea207=parseInt(_0x521abd(0xf0))/0x1+-parseInt(_0x521abd(0xd8))/0x2+-parseInt(_0x521abd(0xda))/0x3*(parseInt(_0x521abd(0xd7))/0x4)+parseInt(_0x521abd(0xea))/0x5*(-parseInt(_0x521abd(0xe3))/0x6)+-parseInt(_0x521abd(0xe0))/0x7+-parseInt(_0x521abd(0xdd))/0x8+parseInt(_0x521abd(0xe7))/0x9*(parseInt(_0x521abd(0xe4))/0xa);if(_0x1ea207===_0x16317e)break;else _0x2314a0['push'](_0x2314a0['shift']());}catch(_0x4a9aa9){_0x2314a0['push'](_0x2314a0['shift']());}}}(_0x59dc,0x8c1b5));function setupThemeToggle(){const _0x48bdd6=_0x4169;let _0x1a8436=document['getElementById'](_0x48bdd6(0xf2)),_0xa1a150=document[_0x48bdd6(0xd9)](_0x48bdd6(0xee)),_0x4a2a11=document[_0x48bdd6(0xf1)],_0x20f4c7=localStorage[_0x48bdd6(0xe6)](_0x48bdd6(0xe8));function _0x48114f(){const _0x18418a=_0x48bdd6;_0x4a2a11[_0x18418a(0xd6)]['toggle'](_0x18418a(0xef));let _0x54bfaf=_0x4a2a11[_0x18418a(0xd6)]['contains'](_0x18418a(0xef));_0x1a8436['textContent']=_0x54bfaf?'Theme:\x20Dark':_0x18418a(0xeb),_0xa1a150&&(_0xa1a150['textContent']=_0x54bfaf?'Theme:\x20Dark':_0x18418a(0xeb)),localStorage[_0x18418a(0xdf)](_0x18418a(0xe8),_0x54bfaf?_0x18418a(0xf3):_0x18418a(0xec));}_0x48bdd6(0xf3)===_0x20f4c7?(_0x4a2a11[_0x48bdd6(0xd6)][_0x48bdd6(0xe2)](_0x48bdd6(0xef)),_0x1a8436[_0x48bdd6(0xe5)]='Theme:\x20Dark',_0xa1a150&&(_0xa1a150['textContent']='Theme:\x20Dark')):(_0x1a8436[_0x48bdd6(0xe5)]=_0x48bdd6(0xeb),_0xa1a150&&(_0xa1a150['textContent']=_0x48bdd6(0xeb))),_0x1a8436['addEventListener']('click',_0x48114f),_0xa1a150&&_0xa1a150['addEventListener'](_0x48bdd6(0xdb),_0x48114f);}document[_0x265772(0xd9)](_0x265772(0xe9))[_0x265772(0xe1)](_0x265772(0xdb),function(){const _0x19ba85=_0x265772;document['getElementById'](_0x19ba85(0xed))[_0x19ba85(0xd6)][_0x19ba85(0xdc)](_0x19ba85(0xde));}),setupThemeToggle();
     </script>
 </body>
 </html>
+
