@@ -1,283 +1,248 @@
-<!DOCTYPE html>
-<html lang="ka">
+<!doctype html>
+<html lang=ka>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Windows & Linux Installation Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="WinSO-modern.css">
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title data-i18n=title>Windows & Linux Installation Services</title>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel=stylesheet>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>
+<link rel=stylesheet href=WinSO-modern.css>
 </head>
-<body class="body-container">
-    <!-- Header Section -->
-    <header class="header-main">
-        <div class="container-main">
-            <div class="header-content">
-                <a href="index.html" class="logo-container">
-                    <i class="fab fa-windows"></i>
-                    <i class="fab fa-linux"></i>
-                    <h1 class="logo-text" data-i18n="title">OS ინსტალაცია</h1>
-                </a>
-
-                <nav class="desktop-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-                        <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-                        <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
-                        <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn">Theme: Light</button>
-                    </ul>
-                </nav>   
-
-                <div class="mobile-menu-button-container">
-                    <button id="menu-toggle" class="mobile-menu-button">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <nav id="mobile-menu" class="mobile-nav hidden">
-            <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-            <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-            <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
-            <li class="nav-item"><button id="mobile-theme-toggle" class="theme-toggle-btn">Theme: Light</button></li>
-        </nav>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-    <div class="container-main">
-        <section class="glass-card">
-            <h2 class="section-title" data-i18n="contact-title">დაგვიკავშირდით</h2>
-            <div class="form-choice-container">
-                <button id="show-order-btn" class="form-choice-btn active">შეკვეთის გაფორმება</button>
-                <button id="show-question-btn" class="form-choice-btn">კითხვის დასმა</button>
-            </div>
-
-            <!-- Order Form Section -->
-            <div id="order-form-section">
-                <p class="intro-text">გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
-                <form class="order-form" action="https://formsubmit.co/winso.contact@gmail.com" method="POST" autocomplete="off" onsubmit="return updateSubject('order-subject')">
-                    <input type="hidden" name="_subject" id="order-subject" value="New Order Submission!">
-                    <input type="hidden" name="_next" value="https://v1d0t.github.io/WinSO---System-Installations/thank-you.html">
-                    <div class="form-group"><label for="first-name">სახელი:</label><input type="text" id="first-name" name="first_name" placeholder="მაგ: ჯონ" required></div>
-                    <div class="form-group"><label for="last-name">გვარი:</label><input type="text" id="last-name" name="last_name" placeholder="მაგ: დოე" required></div>
-                    <div class="form-group"><label for="order-email">თქვენი ელ.ფოსტა:</label><input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
-                    <div class="form-group"><label for="phone">ტელეფონის ნომერი:</label><input type="tel" id="phone" name="phone" placeholder="555 123 456" pattern="^(5\d{8}|\+995\s?5\d{8})$" title="შეიყვანეთ 9-ნიშნა ნომერი (მაგ: 555123456) ან სრული ფორმატით (+995 555123456)" required></div>
-                    
-                    <div class="form-group">
-                        <label for="os-category-selection">აირჩიეთ ოპერაციული სისტემა:</label>
-                        <select id="os-category-selection" name="Operating_System" required>
-                            <option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
-                            <optgroup label="Windows ISOs">
-                                <option value="win7">Windows 7 Editions (აირჩიეთ ვერსიების სანახავად.)</option>
-                                <option value="win10">Windows 10 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
-                                <option value="win11">Windows 11 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
-                                <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
-                                <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
-                                <option value="Windows 11 IoT Enterprise LTSC 2024 - ₾80">Windows 11 IoT Enterprise LTSC 2024 - ₾80</option>
-                               <!-- <option value="Hiren's BootCD PE x64 - ₾80">Hiren's BootCD PE x64 - ₾80</option> Removed from the list due to it being Utility & a bootable rescue environment. -->
-                            </optgroup>
-                            <optgroup label="Linux ISOs">
-                                <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
-                                <option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
-                                <option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
-                                <!-- NEWLY ADDED OPTIONS -->
-                                <option value="Fedora Workstation V41 - ₾30">Fedora Workstation V41 - ₾30</option>
-                                <option value="Linux Kali V2025.2 - ₾40">Linux Kali V2025.2 (Ethical Hacking) - ₾40</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <!-- Dynamic Version Selector (for consumer editions only) -->
-                    <div class="form-group" id="version-selection-container" style="display: none;">
-                        <label for="iso-version-selection">აირჩიეთ ვერსია:</label>
-                        <select id="iso-version-selection" name="Operating_System_Version"></select>
-                    </div>
-
-                    <!-- NEW: Info Boxes for Specialty OSes (Initially Hidden) -->
-                    <div id="ltsc-info-box" class="info-box" style="display: none;">
-                        <i class="fas fa-info-circle"></i>
-                        <div>
-                            <strong>LTSC ვერსიის შესახებ:</strong> ეს არის Windows-ის სპეციალიზებული ვერსია, შექმნილი მაქსიმალური სტაბილურობისა და წარმადობისთვის.
-                            <ul>
-                                <li><b>არასასურველი პროგრამების გარეშე:</b> ამოღებულია Microsoft Store, Edge, Cortana, Xbox-ის და სხვა ჩაშენებული აპლიკაციები.</li>
-                                <li><b>სტაბილური განახლებები:</b> იღებს მხოლოდ უსაფრთხოების და სტაბილურობის განახლებებს, ფუნქციური სიახლეების გარეშე, რაც ამცირებს პრობლემების რისკს.</li>
-                                <li><b>ვისთვის არის განკუთვნილი?</b> იდეალურია პროფესიონალებისთვის, ენთუზიასტებისთვის და სპეციალური დანიშნულების კომპიუტერებისთვის (მაგ: სამუშაო სადგურები, სათამაშო სისტემები), სადაც მთავარია სისწრაფე და საიმედოობა.</li>
-                            </ul>
-
-                            <!-- NEW: Red Warning Box for Drivers -->
-                            <div class="info-box-warning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <div>
-                                    <strong>მნიშვნელოვანი ინფორმაცია დრაივერებზე:</strong> NVIDIA-ს ახალი (DCH) დრაივერების დაყენებისას, NVIDIA Control Panel არ იმუშავებს, რადგან ის Microsoft Store-დან უნდა ჩამოიტვირთოს, რომელიც LTSC ვერსიას არ მოყვება. <strong>ჩვენ ვიყენებთ სპეციალურ მეთოდებს ამ პრობლემის მოსაგვარებლად თქვენი ინსტალაციის დროს.</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="unattended-info-box" class="info-box" style="display: none;">
-                        <i class="fas fa-info-circle"></i>
-                        <div>
-                            <strong>Unattended ინსტალაციის შესახებ:</strong> ეს არის სრულად ავტომატიზირებული და ოპტიმიზირებული ინსტალაცია. ის არა მხოლოდ გამოტოვებს ყველა საწყის კითხვას, არამედ:
-                            <ul>
-                                <li>აყენებს სისტემას ძველ კომპიუტერებზე (TPM, Secure Boot-ის გარეშე).</li>
-                                <li>შლის არასასურველ პროგრამებს (bloatware).</li>
-                                <li>აუმჯობესებს კონფიდენციალურობას და წარმადობას.</li>
-                                <li>გითიშავთ Windows Defender-ს. -[შესაძლებელია ჩართვა]-</li> 
-                                <li>გამოტოვებს Microsoft-ის ექაუნთის შექმნას.</li>
-                            </ul>
-                            იდეალურია მაქსიმალური სისწრაფისა და სუფთა სისტემის მისაღებად.
-                        </div>
-                    </div>
-                    <!-- End of New Info Boxes -->
-
-                    <!-- ADDONS CONTAINER STRUCTURE -->
-                    <div id="addons-container">
-                        <div id="addons-checkboxes" style="display: none;">
-                            <div class="form-group">
-                                <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
-                                <div class="checkbox-group">
-                                    <div id="addon-wrapper-antivirus"><div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL"><label for="antivirus">ანტივირუსი - ₾5</label></div></div>
-                                    <div id="addon-wrapper-office"><div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL"><label for="office">Microsoft Office - ₾15</label></div></div>
-                                    <div id="addon-wrapper-optimization"><div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL"><label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div></div>
-                                    <div id="addon-wrapper-drivers"><div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - ₾10</label></div></div>
-                                    <div id="addon-wrapper-custom-apps">
-                                        <hr class="form-divider">
-                                        <div class="checkbox-item"><input type="checkbox" id="custom-apps-check" name="addon_custom_apps_service" value="Custom App Installation Service requested"><label for="custom-apps-check"><b>მომხმარებლის აპლიკაციების დაყენება (₾1 თითო)</b></label></div>
-                                        <div id="custom-apps-selection-container" style="display: none; margin-left: 28px;">
-                                            <div id="apps-disclaimer-notice" class="addons-message addons-message-warning" style="display: none;"><strong>ყურადღება:</strong> თქვენ ხართ პასუხისმგებელი თქვენს მიერ არჩეული პროგრამების ლიცენზირებაზე და კანონიერ გამოყენებაზე. !!  
-                                                                                                                                                        <br>ჩვენ დაგიკავშირდებით მეილით ან პირადად თქვენ მიერ ჩაწერილ პროგრამებზე გვაქვს თუ არა ისინი. !!</div>
-                                            <div class="app-selection-header"><p>აირჩიეთ სასურველი პროგრამები (თითოეული ₾1):</p><button type="button" id="clear-apps-btn" class="btn-clear-selection">გასუფთავება</button></div>
-                                            <div class="app-categories-container">
-                                                <h4 class="app-category-title">Browsers</h4>
-                                                <div class="app-selection-grid">
-                                                    <div class="checkbox-item" id="app-wrapper-chrome"><input type="checkbox" id="app-chrome" name="app_chrome" value="Chrome"><label for="app-chrome">Chrome</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-chromium" name="app_chromium" value="Chromium"><label for="app-chromium">Chromium</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-falkon" name="app_falkon" value="Falkon"><label for="app-falkon">Falkon</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-firefox" name="app_firefox" value="Firefox"><label for="app-firefox">Firefox</label></div>
-                                                    <div class="checkbox-item" id="app-wrapper-firefoxesr"><input type="checkbox" id="app-firefoxesr" name="app_firefoxesr" value="Firefox ESR"><label for="app-firefoxesr">Firefox ESR</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-Brave" name="app_Brave" value="Brave"><label for="app-Brave">Brave Browser</label></div>
-                                                </div>
-                                                <h4 class="app-category-title">Communications</h4>
-                                                <div class="app-selection-grid">
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-discord" name="app_discord" value="Discord"><label for="app-discord">Discord</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-teams" name="app_teams" value="Teams"><label for="app-teams">Teams</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-telegram" name="app_telegram" value="Telegram"><label for="app-telegram">Telegram</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-viber" name="app_viber" value="Viber"><label for="app-viber">Viber</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-zoom" name="app_zoom" value="Zoom"><label for="app-zoom">Zoom</label></div>
-                                                </div>
-                                                <h4 class="app-category-title">Development</h4>
-                                                <div class="app-selection-grid">
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-dockerdesktop" name="app_dockerdesktop" value="Docker Desktop"><label for="app-dockerdesktop">Docker Desktop</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-git" name="app_git" value="Git"><label for="app-git">Git</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-gitbutler" name="app_gitbutler" value="Git Butler"><label for="app-gitbutler">Git Butler</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-gitextensions" name="app_gitextensions" value="Git Extensions"><label for="app-gitextensions">Git Extensions</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-githubcli" name="app_githubcli" value="GitHub CLI"><label for="app-githubcli">GitHub CLI</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-githubdesktop" name="app_githubdesktop" value="GitHub Desktop"><label for="app-githubdesktop">GitHub Desktop</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-nodejs" name="app_nodejs" value="NodeJS"><label for="app-nodejs">NodeJS</label></div>
-                                                    <div class="checkbox-item"><input type="checkbox" id="app-vscode" name="app_vscode" value="VS Code"><label for="app-vscode">VS Code</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="checkbox-item" style="margin-top: 15px;"><input type="checkbox" id="app-other-check" name="app_other" value="Other apps requested"><label for="app-other-check"><b>- სხვა (ჩაწერეთ ქვემოთ) -</b></label></div>
-                                            <div id="other-apps-textarea-container" style="display: none;"><textarea name="other_apps_list" rows="3" placeholder="ჩაწერეთ სხვა პროგრამების სია აქ... მაგ: (Steam, GOG Launcher, Prism, Adobe, ETC... ) "></textarea></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div id="hirens-preinstalled-section" style="display: none;">
-                                    <div class="preinstalled-notice"><strong>შემდეგი პროგრამები უკვე მოყვება Hiren's BootCD-ს:</strong></div>
-                                    <div class="preinstalled-apps-container">
-                                        <h4 class="preinstalled-category-title">სისტემის და ქსელის პროგრამები</h4>
-                                        <div class="preinstalled-apps-grid"><span>BootIce, EasyBCD</span><span>CPU-Z, GPU-Z, HWInfo</span><span>Speccy, WinNTSetup</span><span>SysInternals Suite, PowerShell</span><span>Total Commander, 7-Zip</span><span>Google Chrome, Firefox ESR</span><span>Anydesk, WinSCP, Putty</span></div>
-                                        <h4 class="preinstalled-category-title">მყარი დისკი და მონაცემთა აღდგენა</h4>
-                                        <div class="preinstalled-apps-grid"><span>CheckDisk, Lazesoft Data Recovery</span><span>Recuva, DMDE, PhotoRec</span><span>Defraggler, HDDScan, HDTune</span><span>Crystal Disk Info, Test Disk</span><span>Acronis, AOMEI Backupper</span><span>Macrium Reflect, Drive Snapshot</span><span>DiskGenius, EaseUS Partition Master</span><span>HDD Low Level Format, VeraCrypt</span></div>
-                                        <h4 class="preinstalled-category-title">უსაფრთხოების და პაროლის პროგრამები</h4>
-                                        <div class="preinstalled-apps-grid"><span>ESET Online Scanner, McAfee Stinger</span><span>ShowKeyPlus, Lazesoft Password Recovery</span><span>NT Password Edit, Windows Login Unlocker</span></div>
-                                        <h4 class="preinstalled-category-title">სხვა კომუნალური მომსახურება</h4>
-                                        <div class="preinstalled-apps-grid"><span>Free Office, Sumatra PDF</span><span>Notepad++, VLC Media Player</span><span>IrfanView, Rufus, CDBurnerXP</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="addons-notice" class="addons-message" style="display: none;">დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
-                    <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
-                </form>
-            </div>
-
-            <!-- Question Form Section -->
-            <div id="question-form-section" style="display: none;">
-                <p class="intro-text">გთხოვთ, დასვით თქვენი კითხვა. ჩვენ მალე დაგიკავშირდებით.</p>
-                <form class="order-form" action="https://formsubmit.co/winso.contact@gmail.com" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return updateSubject('question-subject')">
-                    <input type="hidden" name="_subject" id="question-subject" value="New Contact Question!">
-                    <input type="hidden" name="_next" value="https://v1d0t.github.io/WinSO---System-Installations/thank-you.html">
-                    <div class="form-group"><label for="question-email">თქვენი ელ.ფოსტა:</label><input type="email" id="question-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
-                    <div class="form-group"><label for="message">თქვენი შეტყობინება:</label><textarea id="message" name="message" rows="6" placeholder="აკრიფეთ თქვენი კითხვა აქ..." required></textarea></div>
-                    <div class="form-group"><label for="attachments">ფაილების მიმაგრება (სურათი/ვიდეო):</label><input type="file" id="attachments" name="attachment" accept="image/*,video/*" multiple></div>
-                    <button type="submit" class="btn-primary">შეტყობინების გაგზავნა</button>
-                </form>
-            </div>
-        </section>
-    </div>
-    </main>
-
-<!-- Footer Section -->
-<footer class="footer-main">
-    <div class="container-main">
-        <div class="footer-content">
-            <!-- Column 1: Info -->
-            <div class="footer-info">
-                <h3 class="footer-title" data-i18n="footer-title">Windows & Linux ინსტალაციის სერვისები</h3>
-                <p class="footer-description" data-i18n="footer-desc">პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
-            </div>
-
-            <!-- Column 2: Links -->
-            <div class="footer-links">
-                <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
-                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
-                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
-            </div>
-
-            <!-- Column 3: Contact Details with Icons -->
-            <div class="footer-contact">
-                <h4 class="footer-subtitle">დაგვიკავშირდით</h4>
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+995 XXX XX XX XX</span>
-                    </li>
-                    <li class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>winso.contact@gmail.com</span>
-                    </li>
-                    <li class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>ქუთაისი, საქართველო</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- UPDATED: Column 4: Social Media Links -->
-            <div class="footer-socials">
-                <h4 class="footer-subtitle">გამოგვყევით</h4>
-                <div class="social-icons-container">
-                    <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <!-- NEW: Instagram Icon -->
-                    <a href="https://www.instagram.com/winso.services/"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
-    </div>
+<body class=body-container>
+<header class=header-main>
+<div class=container-main>
+<div class=header-content>
+<a href=index.html class=logo-container>
+<i class="fab fa-windows"></i>
+<i class="fab fa-linux"></i>
+<h1 class=logo-text data-i18n=title>OS ინსტალაცია</h1>
+</a>
+<nav class=desktop-nav>
+<ul class=nav-list>
+<li class=nav-item><a href=index.html class=nav-link data-i18n=home>მთავარი</a></li>
+<li class=nav-item><a href=#windows-section class=nav-link data-i18n=merchandise>პროდუქცია</a></li>
+<li class=nav-item><a href=#addons-section class=nav-link data-i18n=addons>დამატებები</a></li>
+<li class=nav-item><button id=theme-toggle class=theme-toggle-btn>Theme: Light</button>
+</li></ul>
+</nav>
+<div class=mobile-menu-button-container>
+<button id=menu-toggle class=mobile-menu-button>
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-nav hidden">
+<li class=nav-item><a href=index.html class=nav-link data-i18n=home>მთავარი</a></li>
+<li class=nav-item><a href=index.html#windows-section class=nav-link data-i18n=merchandise>პროდუქცია</a></li>
+<li class=nav-item><a href=index.html#addons-section class=nav-link data-i18n=addons>დამატებები</a></li>
+<li class=nav-item><button id=mobile-theme-toggle class=theme-toggle-btn>Theme: Light</button></li>
+</nav>
+</header>
+<main class=main-content>
+<div class=container-main>
+<section class=glass-card>
+<h2 class=section-title data-i18n=contact-title>დაგვიკავშირდით</h2>
+<div class=form-choice-container>
+<button id=show-order-btn class="form-choice-btn active">შეკვეთის გაფორმება</button>
+<button id=show-question-btn class=form-choice-btn>კითხვის დასმა</button>
+</div>
+<div id=order-form-section>
+<p class=intro-text>გთხოვთ, შეავსოთ ფორმა თქვენი შეკვეთის დეტალებით.</p>
+<form class=order-form action=https://formsubmit.co/winso.contact@gmail.com method=POST autocomplete=off onsubmit='return updateSubject("order-subject")'>
+<input type=hidden name=_subject id=order-subject value="New Order Submission!">
+<input type=hidden name=_next value=https://v1d0t.github.io/WinSO---System-Installations/thank-you.html>
+<div class=form-group><label for=first-name>სახელი:</label><input id=first-name name=first_name placeholder="მაგ: ჯონ" required></div>
+<div class=form-group><label for=last-name>გვარი:</label><input id=last-name name=last_name placeholder="მაგ: დოე" required></div>
+<div class=form-group><label for=order-email>თქვენი ელ.ფოსტა:</label><input type=email id=order-email name=email placeholder=customer@example.com maxlength=30 required></div>
+<div class=form-group><label for=phone>ტელეფონის ნომერი:</label><input type=tel id=phone name=phone placeholder="555 123 456" pattern=^(5\d{8}|\+995\s?5\d{8})$ title="შეიყვანეთ 9-ნიშნა ნომერი (მაგ: 555123456) ან სრული ფორმატით (+995 555123456)" required></div>
+<div class=form-group>
+<label for=os-category-selection>აირჩიეთ ოპერაციული სისტემა:</label>
+<select id=os-category-selection name=Operating_System required>
+<option value="" disabled selected>-- გთხოვთ აირჩიოთ --</option>
+<optgroup label="Windows ISOs">
+<option value=win7>Windows 7 Editions (აირჩიეთ ვერსიების სანახავად.)</option>
+<option value=win10>Windows 10 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
+<option value=win11>Windows 11 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
+<option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
+<option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
+<option value="Windows 11 IoT Enterprise LTSC 2024 - ₾80">Windows 11 IoT Enterprise LTSC 2024 - ₾80</option>
+</optgroup>
+<optgroup label="Linux ISOs">
+<option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
+<option value="Linux Mint-Ubuntu V22 - ₾22">Linux Mint-Ubuntu V22 - ₾22</option>
+<option value="Linux Ubuntu-Desktop V24.04 - ₾25">Linux Ubuntu-Desktop V24.04 - ₾25</option>
+<option value="Fedora Workstation V41 - ₾30">Fedora Workstation V41 - ₾30</option>
+<option value="Linux Kali V2025.2 - ₾40">Linux Kali V2025.2 (Ethical Hacking) - ₾40</option>
+</optgroup>
+</select>
+</div>
+<div class=form-group id=version-selection-container style=display:none>
+<label for=iso-version-selection>აირჩიეთ ვერსია:</label>
+<select id=iso-version-selection name=Operating_System_Version></select>
+</div>
+<div id=ltsc-info-box class=info-box style=display:none>
+<i class="fas fa-info-circle"></i>
+<div>
+<strong>LTSC ვერსიის შესახებ:</strong> ეს არის Windows-ის სპეციალიზებული ვერსია, შექმნილი მაქსიმალური სტაბილურობისა და წარმადობისთვის.
+<ul>
+<li><b>არასასურველი პროგრამების გარეშე:</b> ამოღებულია Microsoft Store, Edge, Cortana, Xbox-ის და სხვა ჩაშენებული აპლიკაციები.</li>
+<li><b>სტაბილური განახლებები:</b> იღებს მხოლოდ უსაფრთხოების და სტაბილურობის განახლებებს, ფუნქციური სიახლეების გარეშე, რაც ამცირებს პრობლემების რისკს.</li>
+<li><b>ვისთვის არის განკუთვნილი?</b> იდეალურია პროფესიონალებისთვის, ენთუზიასტებისთვის და სპეციალური დანიშნულების კომპიუტერებისთვის (მაგ: სამუშაო სადგურები, სათამაშო სისტემები), სადაც მთავარია სისწრაფე და საიმედოობა.</li>
+</ul>
+<div class=info-box-warning>
+<i class="fas fa-exclamation-triangle"></i>
+<div>
+<strong>მნიშვნელოვანი ინფორმაცია დრაივერებზე:</strong> NVIDIA-ს ახალი (DCH) დრაივერების დაყენებისას, NVIDIA Control Panel არ იმუშავებს, რადგან ის Microsoft Store-დან უნდა ჩამოიტვირთოს, რომელიც LTSC ვერსიას არ მოყვება. <strong>ჩვენ ვიყენებთ სპეციალურ მეთოდებს ამ პრობლემის მოსაგვარებლად თქვენი ინსტალაციის დროს.</strong>
+</div>
+</div>
+</div>
+</div>
+<div id=unattended-info-box class=info-box style=display:none>
+<i class="fas fa-info-circle"></i>
+<div>
+<strong>Unattended ინსტალაციის შესახებ:</strong> ეს არის სრულად ავტომატიზირებული და ოპტიმიზირებული ინსტალაცია. ის არა მხოლოდ გამოტოვებს ყველა საწყის კითხვას, არამედ:
+<ul>
+<li>აყენებს სისტემას ძველ კომპიუტერებზე (TPM, Secure Boot-ის გარეშე).</li>
+<li>შლის არასასურველ პროგრამებს (bloatware).</li>
+<li>აუმჯობესებს კონფიდენციალურობას და წარმადობას.</li>
+<li>გითიშავთ Windows Defender-ს. -[შესაძლებელია ჩართვა]-</li>
+<li>გამოტოვებს Microsoft-ის ექაუნთის შექმნას.</li>
+</ul>
+იდეალურია მაქსიმალური სისწრაფისა და სუფთა სისტემის მისაღებად.
+</div>
+</div>
+<div id=addons-container>
+<div id=addons-checkboxes style=display:none>
+<div class=form-group>
+<label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
+<div class=checkbox-group>
+<div id=addon-wrapper-antivirus><div class=checkbox-item><input type=checkbox id=antivirus name=addon_antivirus value="Antivirus - 5 GEL"><label for=antivirus>ანტივირუსი - ₾5</label></div></div>
+<div id=addon-wrapper-office><div class=checkbox-item><input type=checkbox id=office name=addon_office value="Microsoft Office - 15 GEL"><label for=office>Microsoft Office - ₾15</label></div></div>
+<div id=addon-wrapper-optimization><div class=checkbox-item><input type=checkbox id=optimization name=addon_optimization value="PC Optimization - 10-15 GEL"><label for=optimization>კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div></div>
+<div id=addon-wrapper-drivers><div class=checkbox-item><input type=checkbox id=drivers name=addon_drivers value="Driver Installation - 10 GEL"><label for=drivers>დრაივერების დაყენება - ₾10</label></div></div>
+<div id=addon-wrapper-custom-apps>
+<hr class=form-divider>
+<div class=checkbox-item><input type=checkbox id=custom-apps-check name=addon_custom_apps_service value="Custom App Installation Service requested"><label for=custom-apps-check><b>მომხმარებლის აპლიკაციების დაყენება (₾1 თითო)</b></label></div>
+<div id=custom-apps-selection-container style=display:none;margin-left:28px>
+<div id=apps-disclaimer-notice class="addons-message addons-message-warning" style=display:none><strong>ყურადღება:</strong> თქვენ ხართ პასუხისმგებელი თქვენს მიერ არჩეული პროგრამების ლიცენზირებაზე და კანონიერ გამოყენებაზე. !!
+<br>ჩვენ დაგიკავშირდებით მეილით ან პირადად თქვენ მიერ ჩაწერილ პროგრამებზე გვაქვს თუ არა ისინი. !!</div>
+<div class=app-selection-header><p>აირჩიეთ სასურველი პროგრამები (თითოეული ₾1):</p><button type=button id=clear-apps-btn class=btn-clear-selection>გასუფთავება</button></div>
+<div class=app-categories-container>
+<h4 class=app-category-title>Browsers</h4>
+<div class=app-selection-grid>
+<div class=checkbox-item id=app-wrapper-chrome><input type=checkbox id=app-chrome name=app_chrome value=Chrome><label for=app-chrome>Chrome</label></div>
+<div class=checkbox-item><input type=checkbox id=app-chromium name=app_chromium value=Chromium><label for=app-chromium>Chromium</label></div>
+<div class=checkbox-item><input type=checkbox id=app-falkon name=app_falkon value=Falkon><label for=app-falkon>Falkon</label></div>
+<div class=checkbox-item><input type=checkbox id=app-firefox name=app_firefox value=Firefox><label for=app-firefox>Firefox</label></div>
+<div class=checkbox-item id=app-wrapper-firefoxesr><input type=checkbox id=app-firefoxesr name=app_firefoxesr value="Firefox ESR"><label for=app-firefoxesr>Firefox ESR</label></div>
+<div class=checkbox-item><input type=checkbox id=app-Brave name=app_Brave value=Brave><label for=app-Brave>Brave Browser</label></div>
+</div>
+<h4 class=app-category-title>Communications</h4>
+<div class=app-selection-grid>
+<div class=checkbox-item><input type=checkbox id=app-discord name=app_discord value=Discord><label for=app-discord>Discord</label></div>
+<div class=checkbox-item><input type=checkbox id=app-teams name=app_teams value=Teams><label for=app-teams>Teams</label></div>
+<div class=checkbox-item><input type=checkbox id=app-telegram name=app_telegram value=Telegram><label for=app-telegram>Telegram</label></div>
+<div class=checkbox-item><input type=checkbox id=app-viber name=app_viber value=Viber><label for=app-viber>Viber</label></div>
+<div class=checkbox-item><input type=checkbox id=app-zoom name=app_zoom value=Zoom><label for=app-zoom>Zoom</label></div>
+</div>
+<h4 class=app-category-title>Development</h4>
+<div class=app-selection-grid>
+<div class=checkbox-item><input type=checkbox id=app-dockerdesktop name=app_dockerdesktop value="Docker Desktop"><label for=app-dockerdesktop>Docker Desktop</label></div>
+<div class=checkbox-item><input type=checkbox id=app-git name=app_git value=Git><label for=app-git>Git</label></div>
+<div class=checkbox-item><input type=checkbox id=app-gitbutler name=app_gitbutler value="Git Butler"><label for=app-gitbutler>Git Butler</label></div>
+<div class=checkbox-item><input type=checkbox id=app-gitextensions name=app_gitextensions value="Git Extensions"><label for=app-gitextensions>Git Extensions</label></div>
+<div class=checkbox-item><input type=checkbox id=app-githubcli name=app_githubcli value="GitHub CLI"><label for=app-githubcli>GitHub CLI</label></div>
+<div class=checkbox-item><input type=checkbox id=app-githubdesktop name=app_githubdesktop value="GitHub Desktop"><label for=app-githubdesktop>GitHub Desktop</label></div>
+<div class=checkbox-item><input type=checkbox id=app-nodejs name=app_nodejs value=NodeJS><label for=app-nodejs>NodeJS</label></div>
+<div class=checkbox-item><input type=checkbox id=app-vscode name=app_vscode value="VS Code"><label for=app-vscode>VS Code</label></div>
+</div>
+</div>
+<div class=checkbox-item style=margin-top:15px><input type=checkbox id=app-other-check name=app_other value="Other apps requested"><label for=app-other-check><b>- სხვა (ჩაწერეთ ქვემოთ) -</b></label></div>
+<div id=other-apps-textarea-container style=display:none><textarea name=other_apps_list rows=3 placeholder="ჩაწერეთ სხვა პროგრამების სია აქ... მაგ: (Steam, GOG Launcher, Prism, Adobe, ETC... ) "></textarea></div>
+</div>
+</div>
+</div>
+<div id=hirens-preinstalled-section style=display:none>
+<div class=preinstalled-notice><strong>შემდეგი პროგრამები უკვე მოყვება Hiren's BootCD-ს:</strong></div>
+<div class=preinstalled-apps-container>
+<h4 class=preinstalled-category-title>სისტემის და ქსელის პროგრამები</h4>
+<div class=preinstalled-apps-grid><span>BootIce, EasyBCD</span><span>CPU-Z, GPU-Z, HWInfo</span><span>Speccy, WinNTSetup</span><span>SysInternals Suite, PowerShell</span><span>Total Commander, 7-Zip</span><span>Google Chrome, Firefox ESR</span><span>Anydesk, WinSCP, Putty</span></div>
+<h4 class=preinstalled-category-title>მყარი დისკი და მონაცემთა აღდგენა</h4>
+<div class=preinstalled-apps-grid><span>CheckDisk, Lazesoft Data Recovery</span><span>Recuva, DMDE, PhotoRec</span><span>Defraggler, HDDScan, HDTune</span><span>Crystal Disk Info, Test Disk</span><span>Acronis, AOMEI Backupper</span><span>Macrium Reflect, Drive Snapshot</span><span>DiskGenius, EaseUS Partition Master</span><span>HDD Low Level Format, VeraCrypt</span></div>
+<h4 class=preinstalled-category-title>უსაფრთხოების და პაროლის პროგრამები</h4>
+<div class=preinstalled-apps-grid><span>ESET Online Scanner, McAfee Stinger</span><span>ShowKeyPlus, Lazesoft Password Recovery</span><span>NT Password Edit, Windows Login Unlocker</span></div>
+<h4 class=preinstalled-category-title>სხვა კომუნალური მომსახურება</h4>
+<div class=preinstalled-apps-grid><span>Free Office, Sumatra PDF</span><span>Notepad++, VLC Media Player</span><span>IrfanView, Rufus, CDBurnerXP</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id=addons-notice class=addons-message style=display:none>დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
+<button type=submit class=btn-primary>შეკვეთის გაგზავნა</button>
+</form>
+</div>
+<div id=question-form-section style=display:none>
+<p class=intro-text>გთხოვთ, დასვით თქვენი კითხვა. ჩვენ მალე დაგიკავშირდებით.</p>
+<form class=order-form action=https://formsubmit.co/winso.contact@gmail.com method=POST enctype=multipart/form-data autocomplete=off onsubmit='return updateSubject("question-subject")'>
+<input type=hidden name=_subject id=question-subject value="New Contact Question!">
+<input type=hidden name=_next value=https://v1d0t.github.io/WinSO---System-Installations/thank-you.html>
+<div class=form-group><label for=question-email>თქვენი ელ.ფოსტა:</label><input type=email id=question-email name=email placeholder=customer@example.com maxlength=30 required></div>
+<div class=form-group><label for=message>თქვენი შეტყობინება:</label><textarea id=message name=message rows=6 placeholder="აკრიფეთ თქვენი კითხვა აქ..." required></textarea></div>
+<div class=form-group><label for=attachments>ფაილების მიმაგრება (სურათი/ვიდეო):</label><input type=file id=attachments name=attachment accept=image/*,video/* multiple></div>
+<button type=submit class=btn-primary>შეტყობინების გაგზავნა</button>
+</form>
+</div>
+</section>
+</div>
+</main>
+<footer class=footer-main>
+<div class=container-main>
+<div class=footer-content>
+<div class=footer-info>
+<h3 class=footer-title data-i18n=footer-title>Windows & Linux ინსტალაციის სერვისები</h3>
+<p class=footer-description data-i18n=footer-desc>პროფესიონალური ოპერაციული სისტემების ინსტალაცია დამატებითი ფუნქციებით</p>
+</div>
+<div class=footer-links>
+<h4 class=footer-subtitle>წარმმართველი პრინციპები</h4>
+<a href=WinSO-Terms.html class=footer-link data-i18n=terms>მომსახურების პირობები</a>
+<a href=WinSO-Privacy.html class=footer-link data-i18n=privacy>კონფიდენციალურობის პოლიტიკა</a>
+</div>
+<div class=footer-contact>
+<h4 class=footer-subtitle>დაგვიკავშირდით</h4>
+<ul class=contact-list>
+<li class=contact-item>
+<i class="fas fa-phone"></i>
+<span>+995 XXX XX XX XX</span>
+</li>
+<li class=contact-item>
+<i class="fas fa-envelope"></i>
+<span>winso.contact@gmail.com</span>
+</li>
+<li class=contact-item>
+<i class="fas fa-map-marker-alt"></i>
+<span>ქუთაისი, საქართველო</span>
+</li>
+</ul>
+</div>
+<div class=footer-socials>
+<h4 class=footer-subtitle>გამოგვყევით</h4>
+<div class=social-icons-container>
+<a href="https://www.facebook.com/profile.php?id=100081595650312" target=_blank class=social-icon aria-label="Follow us on Facebook">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a href=https://www.instagram.com/winso.services/ target=_blank class=social-icon aria-label="Follow us on Instagram">
+<i class="fab fa-instagram"></i>
+</a>
+</div>
+</div>
+</div>
+<div class=footer-copyright data-i18n=copyright>&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
+</div>
 </footer>
-<script>
-    const _0xd2e231=_0x50a6;(function(_0x2ead03,_0xe4439e){const _0x26b5d9=_0x50a6,_0x546f50=_0x2ead03();while(!![]){try{const _0x41dd5c=parseInt(_0x26b5d9(0x15b))/0x1*(parseInt(_0x26b5d9(0x13f))/0x2)+parseInt(_0x26b5d9(0x15e))/0x3+parseInt(_0x26b5d9(0x176))/0x4+parseInt(_0x26b5d9(0x114))/0x5+parseInt(_0x26b5d9(0x149))/0x6+parseInt(_0x26b5d9(0x146))/0x7+-parseInt(_0x26b5d9(0x152))/0x8;if(_0x41dd5c===_0xe4439e)break;else _0x546f50['push'](_0x546f50['shift']());}catch(_0x194b3a){_0x546f50['push'](_0x546f50['shift']());}}}(_0x34e8,0x6f1b6),(document[_0xd2e231(0x17c)](_0xd2e231(0x153))['addEventListener']('click',()=>{const _0xb5c832=_0xd2e231;document[_0xb5c832(0x17c)](_0xb5c832(0x12d))[_0xb5c832(0x172)]['display']=_0xb5c832(0x158),document[_0xb5c832(0x17c)](_0xb5c832(0x154))[_0xb5c832(0x172)]['display']='none',document['getElementById'](_0xb5c832(0x153))[_0xb5c832(0x161)][_0xb5c832(0x11c)](_0xb5c832(0x175)),document[_0xb5c832(0x17c)](_0xb5c832(0x17a))['classList'][_0xb5c832(0x142)](_0xb5c832(0x175));}),document[_0xd2e231(0x17c)]('show-question-btn')[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x5838a3=_0xd2e231;document[_0x5838a3(0x17c)]('order-form-section')[_0x5838a3(0x172)][_0x5838a3(0x157)]='none',document[_0x5838a3(0x17c)](_0x5838a3(0x154))[_0x5838a3(0x172)][_0x5838a3(0x157)]='block',document['getElementById']('show-order-btn')['classList'][_0x5838a3(0x142)]('active'),document[_0x5838a3(0x17c)](_0x5838a3(0x17a))[_0x5838a3(0x161)][_0x5838a3(0x11c)]('active');})));const osVersionData={'win7':[{'value':_0xd2e231(0x13d),'text':_0xd2e231(0x13d)},{'value':_0xd2e231(0x159),'text':'Windows\x207\x20Home\x20Premium\x20-\x20₾20'},{'value':_0xd2e231(0x14f),'text':_0xd2e231(0x14f)},{'value':'Windows\x207\x20Ultimate\x20-\x20₾30','text':_0xd2e231(0x141)}],'win10':[{'value':_0xd2e231(0x17b),'text':_0xd2e231(0x15a)},{'value':_0xd2e231(0x126),'text':_0xd2e231(0x126)},{'value':_0xd2e231(0x11b),'text':_0xd2e231(0x11b)},{'value':_0xd2e231(0x16f),'text':_0xd2e231(0x16f)},{'value':_0xd2e231(0x124),'text':_0xd2e231(0x124)},{'value':'Windows\x2010\x20Pro\x20-\x20₾35','text':_0xd2e231(0x168)},{'value':'Windows\x2010\x20Pro\x20for\x20Workstations\x20-\x20₾40','text':'Windows\x2010\x20Pro\x20for\x20Workstations\x20-\x20₾40'}],'win11':[{'value':_0xd2e231(0x165),'text':_0xd2e231(0x12f)},{'value':_0xd2e231(0x14e),'text':_0xd2e231(0x14e)},{'value':'Windows\x2011\x20Education\x20N\x20-\x20₾35','text':_0xd2e231(0x135)},{'value':_0xd2e231(0x111),'text':_0xd2e231(0x111)},{'value':_0xd2e231(0x14d),'text':'Windows\x2011\x20Pro\x20N\x20-\x20₾40'},{'value':_0xd2e231(0x145),'text':_0xd2e231(0x145)},{'value':_0xd2e231(0x156),'text':_0xd2e231(0x156)},{'value':_0xd2e231(0x14a),'text':_0xd2e231(0x14a)},{'value':_0xd2e231(0x179),'text':_0xd2e231(0x179)},{'value':_0xd2e231(0x170),'text':'Windows\x2011\x20Pro\x20for\x20Workstations\x20-\x20₾55'},{'value':'Windows\x2011\x20Unattended\x20Install\x20-\x20₾60','text':_0xd2e231(0x137)}]},osCategorySelection=document[_0xd2e231(0x17c)](_0xd2e231(0x14b)),versionSelectionContainer=document['getElementById']('version-selection-container'),isoVersionSelection=document['getElementById']('iso-version-selection'),addonsCheckboxesContainer=document[_0xd2e231(0x17c)](_0xd2e231(0x143)),addonsNotice=document['getElementById'](_0xd2e231(0x127)),addonDrivers=document[_0xd2e231(0x17c)](_0xd2e231(0x12c)),hirensPreinstalledSection=document[_0xd2e231(0x17c)]('hirens-preinstalled-section'),driverLabel=document[_0xd2e231(0x133)]('label[for=\x22drivers\x22]'),ltscInfoBox=document[_0xd2e231(0x17c)]('ltsc-info-box'),unattendedInfoBox=document[_0xd2e231(0x17c)](_0xd2e231(0x155));function handleAaddonVisibility(){const _0x3de84b=_0xd2e231;let _0xafeef3=osCategorySelection['options'][osCategorySelection[_0x3de84b(0x117)]],_0x30f2c5=_0x3de84b(0x15f)===_0xafeef3[_0x3de84b(0x15d)][_0x3de84b(0x138)],_0x47f413=osCategorySelection[_0x3de84b(0x160)],_0xa9edde=_0x47f413;_0x3de84b(0x158)===versionSelectionContainer[_0x3de84b(0x172)][_0x3de84b(0x157)]&&isoVersionSelection['value']&&(_0xa9edde=isoVersionSelection['value']);let _0x1a36d4=_0xa9edde['includes'](_0x3de84b(0x116)),_0x3c0d4f=_0xa9edde[_0x3de84b(0x12e)](_0x3de84b(0x171)),_0x1a37c0=_0xa9edde[_0x3de84b(0x12e)](_0x3de84b(0x13e)),_0x47c828=addonsCheckboxesContainer[_0x3de84b(0x178)]('.checkbox-group\x20>\x20div');_0x47c828[_0x3de84b(0x11e)](_0x128f9e=>_0x128f9e[_0x3de84b(0x172)]['display']='block'),hirensPreinstalledSection[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x121),ltscInfoBox['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),unattendedInfoBox[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x121),driverLabel&&(driverLabel[_0x3de84b(0x17d)]=_0x3de84b(0x12b)),_0x30f2c5?(addonsCheckboxesContainer[_0x3de84b(0x172)]['display']=_0x3de84b(0x158),addonsNotice['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),setAddonInputsDisabled(!0x1),_0x3de84b(0x15c)===_0x47f413?driverLabel&&(driverLabel[_0x3de84b(0x17d)]=_0x3de84b(0x162)):_0x1a36d4?(_0x47c828[_0x3de84b(0x11e)](_0x5ccbd7=>_0x5ccbd7[_0x3de84b(0x172)]['display']='none'),document[_0x3de84b(0x17c)](_0x3de84b(0x115))[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158),document[_0x3de84b(0x17c)](_0x3de84b(0x134))[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158),hirensPreinstalledSection[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158)):_0x3c0d4f?(addonDrivers['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),ltscInfoBox['style'][_0x3de84b(0x157)]=_0x3de84b(0x119)):_0x1a37c0&&(unattendedInfoBox[_0x3de84b(0x172)]['display']='flex')):(addonsCheckboxesContainer[_0x3de84b(0x172)][_0x3de84b(0x157)]='none',addonsNotice['style'][_0x3de84b(0x157)]='block',setAddonInputsDisabled(!0x0));}function _0x34e8(){const _0x5b7309=['clear-apps-btn','Windows\x2010\x20Education\x20-\x20₾30','Windows\x2011\x20Pro\x20for\x20Workstations\x20-\x20₾55','LTSC','style','removeEventListener','hash','active','601516qHsuMN','mobile-theme-toggle','querySelectorAll','Windows\x2011\x20Pro\x20N\x20for\x20Workstations\x20-\x20₾50','show-question-btn','Windows\x2010\x20Home\x20N/SL\x20-\x20₾23','getElementById','textContent','Windows\x2011\x20Education\x20-\x20₾38','selected','name','145855cAYeWb','addon-wrapper-office','Hiren\x27s\x20BootCD','selectedIndex','location','flex','theme','Windows\x2010\x20Education\x20N\x20-\x20₾28','add','app-other-check','forEach','change','custom-apps-selection-container','none','removeAttribute','--\x20აირჩიეთ\x20ვერსია\x20--','Windows\x2010\x20Pro\x20N\x20-\x20₾32','toggle','Windows\x2010\x20Home\x20-\x20₾25','addons-notice','Theme:\x20Light','innerHTML','toISOString','დრაივერების\x20დაყენება\x20-\x20₾10','addon-wrapper-drivers','order-form-section','includes','Windows\x2011\x20Home\x20N\x20/\x20Home\x20Single\x20Language\x20-\x20₾30','split','Theme:\x20Dark','setItem','querySelector','addon-wrapper-custom-apps','Windows\x2011\x20Education\x20N\x20-\x20₾35','other-apps-textarea-container','Windows\x2011\x20Unattended\x20Install\x20-\x20₾60','label','custom-apps-check','dark','Operating_System','apps-disclaimer-notice','Windows\x207\x20Starter\x20-\x20₾15','Unattended','2NJvrLL','input,\x20textarea','Windows\x207\x20Ultimate\x20-\x20₾30','remove','addons-checkboxes','text','Windows\x2011\x20Pro\x20-\x20₾42','2279431wRWNYf','getItem','dark-theme','783162dgphKa','Windows\x2011\x20Pro\x20Education\x20-\x20₾48','os-category-selection','theme-toggle','Windows\x2011\x20Pro\x20N\x20-\x20₾40','Windows\x2011\x20Home\x20-\x20₾32','Windows\x207\x20Professional\x20-\x20₾25','input[type=\x22checkbox\x22]','disabled','8955224LNTdtZ','show-order-btn','question-form-section','unattended-info-box','Windows\x2011\x20Pro\x20Education\x20N\x20-\x20₾45','display','block','Windows\x207\x20Home\x20Premium\x20-\x20₾20','Windows\x2010\x20Home\x20N\x20/\x20Single\x20Language\x20-\x20₾23','650269pxrGvY','win7','parentElement','865554oOcaVd','Windows\x20ISOs','value','classList','არსებული\x20დრაივერების\x20განახლება\x20-\x20₾10','menu-toggle','required','Windows\x2011\x20Home\x20N/SL\x20-\x20₾30','addEventListener','light','Windows\x2010\x20Pro\x20-\x20₾35','body','setAttribute','checked','mobile-menu','click'];_0x34e8=function(){return _0x5b7309;};return _0x34e8();}function setAddonInputsDisabled(_0x35c4d3){const _0x53ce8a=_0xd2e231;let _0x30d3da=addonsCheckboxesContainer[_0x53ce8a(0x178)](_0x53ce8a(0x140));_0x30d3da[_0x53ce8a(0x11e)](_0x182925=>{_0x182925['disabled']=_0x35c4d3;});}function _0x50a6(_0x26a17e,_0x7705b7){const _0x34e8be=_0x34e8();return _0x50a6=function(_0x50a66b,_0x1bb23e){_0x50a66b=_0x50a66b-0x111;let _0x2ff8eb=_0x34e8be[_0x50a66b];return _0x2ff8eb;},_0x50a6(_0x26a17e,_0x7705b7);}osCategorySelection['addEventListener'](_0xd2e231(0x11f),function(){const _0x26dfbe=_0xd2e231;let _0x182318=this[_0x26dfbe(0x160)],_0x2c4530=osVersionData[_0x182318];if(_0x2c4530){versionSelectionContainer[_0x26dfbe(0x172)]['display']=_0x26dfbe(0x158),isoVersionSelection[_0x26dfbe(0x129)]='',isoVersionSelection[_0x26dfbe(0x164)]=!0x0,osCategorySelection[_0x26dfbe(0x122)](_0x26dfbe(0x113)),isoVersionSelection[_0x26dfbe(0x16a)](_0x26dfbe(0x113),_0x26dfbe(0x13b));let _0xb674b9=new Option(_0x26dfbe(0x123),'');_0xb674b9[_0x26dfbe(0x151)]=!0x0,_0xb674b9[_0x26dfbe(0x112)]=!0x0,isoVersionSelection[_0x26dfbe(0x11c)](_0xb674b9),_0x2c4530[_0x26dfbe(0x11e)](_0x53ea46=>{const _0x316247=_0x26dfbe;let _0xf301e5=new Option(_0x53ea46[_0x316247(0x144)],_0x53ea46['value']);isoVersionSelection[_0x316247(0x11c)](_0xf301e5);}),isoVersionSelection[_0x26dfbe(0x166)](_0x26dfbe(0x11f),handleAaddonVisibility);}else versionSelectionContainer['style'][_0x26dfbe(0x157)]=_0x26dfbe(0x121),isoVersionSelection[_0x26dfbe(0x129)]='',isoVersionSelection[_0x26dfbe(0x164)]=!0x1,osCategorySelection[_0x26dfbe(0x16a)](_0x26dfbe(0x113),_0x26dfbe(0x13b)),isoVersionSelection[_0x26dfbe(0x122)](_0x26dfbe(0x113)),isoVersionSelection[_0x26dfbe(0x173)](_0x26dfbe(0x11f),handleAaddonVisibility);handleAaddonVisibility();});const customAppsCheckbox=document[_0xd2e231(0x17c)](_0xd2e231(0x139)),customAppsSelectionContainer=document[_0xd2e231(0x17c)](_0xd2e231(0x120));customAppsCheckbox[_0xd2e231(0x166)](_0xd2e231(0x11f),function(){const _0x3b3f7a=_0xd2e231;customAppsSelectionContainer['style']['display']=this['checked']?_0x3b3f7a(0x158):_0x3b3f7a(0x121),document[_0x3b3f7a(0x17c)](_0x3b3f7a(0x13c))[_0x3b3f7a(0x172)][_0x3b3f7a(0x157)]=this[_0x3b3f7a(0x16b)]?_0x3b3f7a(0x158):_0x3b3f7a(0x121);});const otherAppsCheckbox=document[_0xd2e231(0x17c)](_0xd2e231(0x11d)),otherAppsTextarea=document[_0xd2e231(0x17c)](_0xd2e231(0x136));function updateSubject(_0x3faf31){const _0x28da29=_0xd2e231;let _0x136597=document[_0x28da29(0x17c)](_0x3faf31);if(_0x136597){let _0x24a91e=_0x136597[_0x28da29(0x160)][_0x28da29(0x130)]('\x20[')[0x0],_0x4fbb9f=new Date()[_0x28da29(0x12a)]()['replace']('T','\x20')['substring'](0x0,0x13);_0x136597[_0x28da29(0x160)]=_0x24a91e+'\x20['+_0x4fbb9f+']';}return!0x0;}function setupThemeToggle(){const _0xc5ef2=_0xd2e231;let _0xb0d580=document[_0xc5ef2(0x17c)](_0xc5ef2(0x14c)),_0x39ce9a=document['getElementById'](_0xc5ef2(0x177)),_0x4441aa=document[_0xc5ef2(0x169)],_0x33f7d2=localStorage[_0xc5ef2(0x147)](_0xc5ef2(0x11a));function _0x4af1c7(){const _0x4e6ece=_0xc5ef2;_0x4441aa[_0x4e6ece(0x161)]['toggle'](_0x4e6ece(0x148));let _0x47228f=_0x4441aa[_0x4e6ece(0x161)]['contains']('dark-theme');_0xb0d580[_0x4e6ece(0x17d)]=_0x47228f?_0x4e6ece(0x131):'Theme:\x20Light',_0x39ce9a&&(_0x39ce9a['textContent']=_0x47228f?_0x4e6ece(0x131):_0x4e6ece(0x128)),localStorage[_0x4e6ece(0x132)](_0x4e6ece(0x11a),_0x47228f?_0x4e6ece(0x13a):_0x4e6ece(0x167));}_0xc5ef2(0x13a)===_0x33f7d2?(_0x4441aa[_0xc5ef2(0x161)]['add']('dark-theme'),_0xb0d580[_0xc5ef2(0x17d)]=_0xc5ef2(0x131),_0x39ce9a&&(_0x39ce9a[_0xc5ef2(0x17d)]=_0xc5ef2(0x131))):(_0xb0d580[_0xc5ef2(0x17d)]=_0xc5ef2(0x128),_0x39ce9a&&(_0x39ce9a[_0xc5ef2(0x17d)]=_0xc5ef2(0x128))),_0xb0d580['addEventListener'](_0xc5ef2(0x16d),_0x4af1c7),_0x39ce9a&&_0x39ce9a['addEventListener'](_0xc5ef2(0x16d),_0x4af1c7);}otherAppsCheckbox[_0xd2e231(0x166)](_0xd2e231(0x11f),function(){const _0x5175c0=_0xd2e231;otherAppsTextarea['style'][_0x5175c0(0x157)]=this[_0x5175c0(0x16b)]?_0x5175c0(0x158):'none';}),document['getElementById'](_0xd2e231(0x16e))[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x42f503=_0xd2e231;customAppsSelectionContainer[_0x42f503(0x178)](_0x42f503(0x150))[_0x42f503(0x11e)](_0x56b327=>_0x56b327[_0x42f503(0x16b)]=!0x1),otherAppsTextarea[_0x42f503(0x172)]['display']=_0x42f503(0x121);}),document[_0xd2e231(0x17c)](_0xd2e231(0x163))[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x4274d9=_0xd2e231;document['getElementById'](_0x4274d9(0x16c))[_0x4274d9(0x161)][_0x4274d9(0x125)]('hidden');}),document['addEventListener']('DOMContentLoaded',()=>{const _0x537217=_0xd2e231;'#question'===window[_0x537217(0x118)][_0x537217(0x174)]&&(document[_0x537217(0x17c)](_0x537217(0x12d))[_0x537217(0x172)][_0x537217(0x157)]=_0x537217(0x121),document[_0x537217(0x17c)](_0x537217(0x154))[_0x537217(0x172)][_0x537217(0x157)]=_0x537217(0x158),document[_0x537217(0x17c)]('show-order-btn')[_0x537217(0x161)][_0x537217(0x142)](_0x537217(0x175)),document[_0x537217(0x17c)](_0x537217(0x17a))['classList'][_0x537217(0x11c)](_0x537217(0x175)));}),setupThemeToggle();
-</script>
+<script>const _0xd2e231=_0x50a6;(function(e,t){const o=_0x50a6,n=_0x34e8();for(;;)try{if(455094===parseInt(o(347))/1*(parseInt(o(319))/2)+parseInt(o(350))/3+parseInt(o(374))/4+parseInt(o(276))/5+parseInt(o(329))/6+parseInt(o(326))/7+-parseInt(o(338))/8)break;n.push(n.shift())}catch(e){n.push(n.shift())}})(),document[_0xd2e231(380)](_0xd2e231(339)).addEventListener("click",(()=>{const e=_0xd2e231;document[e(380)](e(301))[e(370)].display=e(344),document[e(380)](e(340))[e(370)].display="none",document.getElementById(e(339))[e(353)][e(284)](e(373)),document[e(380)](e(378)).classList[e(322)](e(373))})),document[_0xd2e231(380)]("show-question-btn")[_0xd2e231(358)](_0xd2e231(365),(()=>{const e=_0xd2e231;document[e(380)]("order-form-section")[e(370)][e(343)]="none",document[e(380)](e(340))[e(370)][e(343)]="block",document.getElementById("show-order-btn").classList[e(322)]("active"),document[e(380)](e(378))[e(353)][e(284)]("active")}));const osVersionData={win7:[{value:_0xd2e231(317),text:_0xd2e231(317)},{value:_0xd2e231(345),text:"Windows 7 Home Premium - ₾20"},{value:_0xd2e231(335),text:_0xd2e231(335)},{value:"Windows 7 Ultimate - ₾30",text:_0xd2e231(321)}],win10:[{value:_0xd2e231(379),text:_0xd2e231(346)},{value:_0xd2e231(294),text:_0xd2e231(294)},{value:_0xd2e231(283),text:_0xd2e231(283)},{value:_0xd2e231(367),text:_0xd2e231(367)},{value:_0xd2e231(292),text:_0xd2e231(292)},{value:"Windows 10 Pro - ₾35",text:_0xd2e231(360)},{value:"Windows 10 Pro for Workstations - ₾40",text:"Windows 10 Pro for Workstations - ₾40"}],win11:[{value:_0xd2e231(357),text:_0xd2e231(303)},{value:_0xd2e231(334),text:_0xd2e231(334)},{value:"Windows 11 Education N - ₾35",text:_0xd2e231(309)},{value:_0xd2e231(273),text:_0xd2e231(273)},{value:_0xd2e231(333),text:"Windows 11 Pro N - ₾40"},{value:_0xd2e231(325),text:_0xd2e231(325)},{value:_0xd2e231(342),text:_0xd2e231(342)},{value:_0xd2e231(330),text:_0xd2e231(330)},{value:_0xd2e231(377),text:_0xd2e231(377)},{value:_0xd2e231(368),text:"Windows 11 Pro for Workstations - ₾55"},{value:"Windows 11 Unattended Install - ₾60",text:_0xd2e231(311)}]},osCategorySelection=document[_0xd2e231(380)](_0xd2e231(331)),versionSelectionContainer=document.getElementById("version-selection-container"),isoVersionSelection=document.getElementById("iso-version-selection"),addonsCheckboxesContainer=document[_0xd2e231(380)](_0xd2e231(323)),addonsNotice=document.getElementById(_0xd2e231(295)),addonDrivers=document[_0xd2e231(380)](_0xd2e231(300)),hirensPreinstalledSection=document[_0xd2e231(380)]("hirens-preinstalled-section"),driverLabel=document[_0xd2e231(307)]('label[for="drivers"]'),ltscInfoBox=document[_0xd2e231(380)]("ltsc-info-box"),unattendedInfoBox=document[_0xd2e231(380)](_0xd2e231(341));function handleAaddonVisibility(){const e=_0xd2e231;let t=osCategorySelection.options[osCategorySelection[e(279)]],o=e(351)===t[e(349)][e(312)],n=osCategorySelection[e(352)],d=n;e(344)===versionSelectionContainer[e(370)][e(343)]&&isoVersionSelection.value&&(d=isoVersionSelection.value);let s=d.includes(e(278)),i=d[e(302)](e(369)),a=d[e(302)](e(318)),c=addonsCheckboxesContainer[e(376)](".checkbox-group > div");c[e(286)]((t=>t[e(370)].display="block")),hirensPreinstalledSection[e(370)][e(343)]=e(289),ltscInfoBox.style[e(343)]=e(289),unattendedInfoBox[e(370)][e(343)]=e(289),driverLabel&&(driverLabel[e(381)]=e(299)),o?(addonsCheckboxesContainer[e(370)].display=e(344),addonsNotice.style[e(343)]=e(289),setAddonInputsDisabled(!1),e(348)===n?driverLabel&&(driverLabel[e(381)]=e(354)):s?(c[e(286)]((t=>t[e(370)].display="none")),document[e(380)](e(277))[e(370)][e(343)]=e(344),document[e(380)](e(308))[e(370)][e(343)]=e(344),hirensPreinstalledSection[e(370)][e(343)]=e(344)):i?(addonDrivers.style[e(343)]=e(289),ltscInfoBox.style[e(343)]=e(281)):a&&(unattendedInfoBox[e(370)].display="flex")):(addonsCheckboxesContainer[e(370)][e(343)]="none",addonsNotice.style[e(343)]="block",setAddonInputsDisabled(!0))}function _0x34e8(){const e=["clear-apps-btn","Windows 10 Education - ₾30","Windows 11 Pro for Workstations - ₾55","LTSC","style","removeEventListener","hash","active","601516qHsuMN","mobile-theme-toggle","querySelectorAll","Windows 11 Pro N for Workstations - ₾50","show-question-btn","Windows 10 Home N/SL - ₾23","getElementById","textContent","Windows 11 Education - ₾38","selected","name","145855cAYeWb","addon-wrapper-office","Hiren's BootCD","selectedIndex","location","flex","theme","Windows 10 Education N - ₾28","add","app-other-check","forEach","change","custom-apps-selection-container","none","removeAttribute","-- აირჩიეთ ვერსია --","Windows 10 Pro N - ₾32","toggle","Windows 10 Home - ₾25","addons-notice","Theme: Light","innerHTML","toISOString","დრაივერების დაყენება - ₾10","addon-wrapper-drivers","order-form-section","includes","Windows 11 Home N / Home Single Language - ₾30","split","Theme: Dark","setItem","querySelector","addon-wrapper-custom-apps","Windows 11 Education N - ₾35","other-apps-textarea-container","Windows 11 Unattended Install - ₾60","label","custom-apps-check","dark","Operating_System","apps-disclaimer-notice","Windows 7 Starter - ₾15","Unattended","2NJvrLL","input, textarea","Windows 7 Ultimate - ₾30","remove","addons-checkboxes","text","Windows 11 Pro - ₾42","2279431wRWNYf","getItem","dark-theme","783162dgphKa","Windows 11 Pro Education - ₾48","os-category-selection","theme-toggle","Windows 11 Pro N - ₾40","Windows 11 Home - ₾32","Windows 7 Professional - ₾25",'input[type="checkbox"]',"disabled","8955224LNTdtZ","show-order-btn","question-form-section","unattended-info-box","Windows 11 Pro Education N - ₾45","display","block","Windows 7 Home Premium - ₾20","Windows 10 Home N / Single Language - ₾23","650269pxrGvY","win7","parentElement","865554oOcaVd","Windows ISOs","value","classList","არსებული დრაივერების განახლება - ₾10","menu-toggle","required","Windows 11 Home N/SL - ₾30","addEventListener","light","Windows 10 Pro - ₾35","body","setAttribute","checked","mobile-menu","click"];return(_0x34e8=function(){return e})()}function setAddonInputsDisabled(e){const t=_0xd2e231;addonsCheckboxesContainer[t(376)](t(320))[t(286)]((t=>{t.disabled=e}))}function _0x50a6(e,t){const o=_0x34e8();return(_0x50a6=function(e,t){return o[e-=273]})(e,t)}osCategorySelection.addEventListener(_0xd2e231(287),(function(){const e=_0xd2e231;let t=this[e(352)],o=osVersionData[t];if(o){versionSelectionContainer[e(370)].display=e(344),isoVersionSelection[e(297)]="",isoVersionSelection[e(356)]=!0,osCategorySelection[e(290)](e(275)),isoVersionSelection[e(362)](e(275),e(315));let t=new Option(e(291),"");t[e(337)]=!0,t[e(274)]=!0,isoVersionSelection[e(284)](t),o[e(286)]((t=>{const o=e;let n=new Option(t[o(324)],t.value);isoVersionSelection[o(284)](n)})),isoVersionSelection[e(358)](e(287),handleAaddonVisibility)}else versionSelectionContainer.style[e(343)]=e(289),isoVersionSelection[e(297)]="",isoVersionSelection[e(356)]=!1,osCategorySelection[e(362)](e(275),e(315)),isoVersionSelection[e(290)](e(275)),isoVersionSelection[e(371)](e(287),handleAaddonVisibility);handleAaddonVisibility()}));const customAppsCheckbox=document[_0xd2e231(380)](_0xd2e231(313)),customAppsSelectionContainer=document[_0xd2e231(380)](_0xd2e231(288));customAppsCheckbox[_0xd2e231(358)](_0xd2e231(287),(function(){const e=_0xd2e231;customAppsSelectionContainer.style.display=this.checked?e(344):e(289),document[e(380)](e(316))[e(370)][e(343)]=this[e(363)]?e(344):e(289)}));const otherAppsCheckbox=document[_0xd2e231(380)](_0xd2e231(285)),otherAppsTextarea=document[_0xd2e231(380)](_0xd2e231(310));function updateSubject(e){const t=_0xd2e231;let o=document[t(380)](e);if(o){let e=o[t(352)][t(304)](" [")[0],n=(new Date)[t(298)]().replace("T"," ").substring(0,19);o[t(352)]=e+" ["+n+"]"}return!0}function setupThemeToggle(){const e=_0xd2e231;let t=document[e(380)](e(332)),o=document.getElementById(e(375)),n=document[e(361)],d=localStorage[e(327)](e(282));function s(){const d=e;n[d(353)].toggle(d(328));let s=n[d(353)].contains("dark-theme");t[d(381)]=s?d(305):"Theme: Light",o&&(o.textContent=d(s?305:296)),localStorage[d(306)](d(282),d(s?314:359))}e(314)===d?(n[e(353)].add("dark-theme"),t[e(381)]=e(305),o&&(o[e(381)]=e(305))):(t[e(381)]=e(296),o&&(o[e(381)]=e(296))),t.addEventListener(e(365),s),o&&o.addEventListener(e(365),s)}otherAppsCheckbox[_0xd2e231(358)](_0xd2e231(287),(function(){const e=_0xd2e231;otherAppsTextarea.style[e(343)]=this[e(363)]?e(344):"none"})),document.getElementById(_0xd2e231(366))[_0xd2e231(358)](_0xd2e231(365),(()=>{const e=_0xd2e231;customAppsSelectionContainer[e(376)](e(336))[e(286)]((t=>t[e(363)]=!1)),otherAppsTextarea[e(370)].display=e(289)})),document[_0xd2e231(380)](_0xd2e231(355))[_0xd2e231(358)](_0xd2e231(365),(()=>{const e=_0xd2e231;document.getElementById(e(364))[e(353)][e(293)]("hidden")})),document.addEventListener("DOMContentLoaded",(()=>{const e=_0xd2e231;"#question"===window[e(280)][e(372)]&&(document[e(380)](e(301))[e(370)][e(343)]=e(289),document[e(380)](e(340))[e(370)][e(343)]=e(344),document[e(380)]("show-order-btn")[e(353)][e(322)](e(373)),document[e(380)](e(378)).classList[e(284)](e(373)))})),setupThemeToggle()</script>
 </body>
 </html> 
