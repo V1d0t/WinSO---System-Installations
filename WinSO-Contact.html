@@ -20,13 +20,16 @@
                     <i class="fab fa-linux"></i>
                     <h1 class="logo-text" data-i18n="title">OS ინსტალაცია</h1>
                 </a>
+
                 <nav class="desktop-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-                        <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-                        <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+                        <li class="nav-item"><a href="#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
+                        <li class="nav-item"><a href="#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+                        <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn">Theme: Light</button>
                     </ul>
-                </nav>  
+                </nav>   
+
                 <div class="mobile-menu-button-container">
                     <button id="menu-toggle" class="mobile-menu-button">
                         <i class="fas fa-bars"></i>
@@ -38,6 +41,7 @@
             <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
             <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
             <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+            <li class="nav-item"><button id="mobile-theme-toggle" class="theme-toggle-btn">Theme: Light</button></li>
         </nav>
     </header>
 
@@ -73,7 +77,7 @@
                                 <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
                                 <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
                                 <option value="Windows 11 IoT Enterprise LTSC 2024 - ₾80">Windows 11 IoT Enterprise LTSC 2024 - ₾80</option>
-                                <option value="Hiren's BootCD PE x64 - ₾80">Hiren's BootCD PE x64 - ₾80</option>
+                               <!-- <option value="Hiren's BootCD PE x64 - ₾80">Hiren's BootCD PE x64 - ₾80</option> Removed from the list due to it being Utility & a bootable rescue environment. -->
                             </optgroup>
                             <optgroup label="Linux ISOs">
                                 <option value="Linux Mint-Debian V6 - ₾20">Linux Mint-Debian V6 - ₾20</option>
@@ -272,198 +276,8 @@
         <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
     </div>
 </footer>
-
 <script>
-    // --- SCRIPT FOR FORM TOGGLING ---
-    document.getElementById('show-order-btn').addEventListener('click', () => {
-        document.getElementById('order-form-section').style.display = 'block';
-        document.getElementById('question-form-section').style.display = 'none';
-        document.getElementById('show-order-btn').classList.add('active');
-        document.getElementById('show-question-btn').classList.remove('active');
-    });
-    document.getElementById('show-question-btn').addEventListener('click', () => {
-        document.getElementById('order-form-section').style.display = 'none';
-        document.getElementById('question-form-section').style.display = 'block';
-        document.getElementById('show-order-btn').classList.remove('active');
-        document.getElementById('show-question-btn').classList.add('active');
-    });
-
-    // --- OS SELECTION & ADDON LOGIC ---
-    const osVersionData = {
-        win7: [
-            { value: "Windows 7 Starter - ₾15", text: "Windows 7 Starter - ₾15" },
-            { value: "Windows 7 Home Premium - ₾20", text: "Windows 7 Home Premium - ₾20" },
-            { value: "Windows 7 Professional - ₾25", text: "Windows 7 Professional - ₾25" },
-            { value: "Windows 7 Ultimate - ₾30", text: "Windows 7 Ultimate - ₾30" }
-        ],
-        win10: [
-            { value: "Windows 10 Home N/SL - ₾23", text: "Windows 10 Home N / Single Language - ₾23" },
-            { value: "Windows 10 Home - ₾25", text: "Windows 10 Home - ₾25" },
-            { value: "Windows 10 Education N - ₾28", text: "Windows 10 Education N - ₾28" },
-            { value: "Windows 10 Education - ₾30", text: "Windows 10 Education - ₾30" },
-            { value: "Windows 10 Pro N - ₾32", text: "Windows 10 Pro N - ₾32" },
-            { value: "Windows 10 Pro - ₾35", text: "Windows 10 Pro - ₾35" },
-            { value: "Windows 10 Pro for Workstations - ₾40", text: "Windows 10 Pro for Workstations - ₾40" }
-        ],
-        win11: [
-            { value: "Windows 11 Home N/SL - ₾30", text: "Windows 11 Home N / Home Single Language - ₾30" },
-            { value: "Windows 11 Home - ₾32", text: "Windows 11 Home - ₾32" },
-            { value: "Windows 11 Education N - ₾35", text: "Windows 11 Education N - ₾35" },
-            { value: "Windows 11 Education - ₾38", text: "Windows 11 Education - ₾38" },
-            { value: "Windows 11 Pro N - ₾40", text: "Windows 11 Pro N - ₾40" },
-            { value: "Windows 11 Pro - ₾42", text: "Windows 11 Pro - ₾42" },
-            { value: "Windows 11 Pro Education N - ₾45", text: "Windows 11 Pro Education N - ₾45" },
-            { value: "Windows 11 Pro Education - ₾48", text: "Windows 11 Pro Education - ₾48" },
-            { value: "Windows 11 Pro N for Workstations - ₾50", text: "Windows 11 Pro N for Workstations - ₾50" },
-            { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾55" },
-            { value: "Windows 11 Unattended Install - ₾60", text: "Windows 11 Unattended Install - ₾60" },
-        ]
-    };
-
-    const osCategorySelection = document.getElementById('os-category-selection');
-    const versionSelectionContainer = document.getElementById('version-selection-container');
-    const isoVersionSelection = document.getElementById('iso-version-selection');
-    const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
-    const addonsNotice = document.getElementById('addons-notice');
-    const addonDrivers = document.getElementById('addon-wrapper-drivers');
-    const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
-    const driverLabel = document.querySelector('label[for="drivers"]');
-    const ltscInfoBox = document.getElementById('ltsc-info-box');
-    const unattendedInfoBox = document.getElementById('unattended-info-box');
-
-    osCategorySelection.addEventListener('change', function() {
-        const selectedCategoryValue = this.value;
-        const versions = osVersionData[selectedCategoryValue];
-
-        if (versions) {
-            versionSelectionContainer.style.display = 'block';
-            isoVersionSelection.innerHTML = '';
-            isoVersionSelection.required = true;
-            osCategorySelection.removeAttribute('name');
-            isoVersionSelection.setAttribute('name', 'Operating_System');
-
-            const placeholder = new Option('-- აირჩიეთ ვერსია --', '');
-            placeholder.disabled = true;
-            placeholder.selected = true;
-            isoVersionSelection.add(placeholder);
-
-            versions.forEach(version => {
-                const option = new Option(version.text, version.value);
-                isoVersionSelection.add(option);
-            });
-            isoVersionSelection.addEventListener('change', handleAaddonVisibility);
-        } else {
-            versionSelectionContainer.style.display = 'none';
-            isoVersionSelection.innerHTML = '';
-            isoVersionSelection.required = false;
-            osCategorySelection.setAttribute('name', 'Operating_System');
-            isoVersionSelection.removeAttribute('name');
-            isoVersionSelection.removeEventListener('change', handleAaddonVisibility);
-        }
-        handleAaddonVisibility();
-    });
-
-    function handleAaddonVisibility() {
-        const selectedOption = osCategorySelection.options[osCategorySelection.selectedIndex];
-        const isWindows = selectedOption.parentElement.label === 'Windows ISOs';
-        const categoryValue = osCategorySelection.value;
-        
-        let finalSelectionValue = categoryValue;
-        if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
-            finalSelectionValue = isoVersionSelection.value;
-        }
-
-        const isHiren = finalSelectionValue.includes("Hiren's BootCD");
-        const isLTSC = finalSelectionValue.includes("LTSC");
-        const isWin7 = categoryValue === 'win7';
-        const isUnattended = finalSelectionValue.includes("Unattended");
-
-        const allAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group > div');
-        allAddons.forEach(addon => addon.style.display = 'block');
-        hirensPreinstalledSection.style.display = 'none';
-        ltscInfoBox.style.display = 'none';
-        unattendedInfoBox.style.display = 'none';
-
-        if (driverLabel) {
-            driverLabel.textContent = "დრაივერების დაყენება - ₾10";
-        }
-
-        if (isWindows) {
-            addonsCheckboxesContainer.style.display = 'block';
-            addonsNotice.style.display = 'none';
-            setAddonInputsDisabled(false);
-
-            if (isWin7) {
-                if (driverLabel) {
-                    driverLabel.textContent = "არსებული დრაივერების განახლება - ₾10";
-                }
-            } else if (isHiren) {
-                allAddons.forEach(addon => addon.style.display = 'none');
-                document.getElementById('addon-wrapper-office').style.display = 'block';
-                document.getElementById('addon-wrapper-custom-apps').style.display = 'block';
-                hirensPreinstalledSection.style.display = 'block';
-            } else if (isLTSC) {
-                addonDrivers.style.display = 'none';
-                ltscInfoBox.style.display = 'flex';
-            } else if (isUnattended) {
-                unattendedInfoBox.style.display = 'flex';
-            }
-
-        } else {
-            addonsCheckboxesContainer.style.display = 'none';
-            addonsNotice.style.display = 'block';
-            setAddonInputsDisabled(true);
-        }
-    }
-
-    function setAddonInputsDisabled(isDisabled) {
-        const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
-        inputsToToggle.forEach(input => { input.disabled = isDisabled; });
-    }
-    
-    // --- Other form scripts ---
-    const customAppsCheckbox = document.getElementById('custom-apps-check');
-    const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
-    
-    // THIS IS THE FIXED LINE
-    customAppsCheckbox.addEventListener('change', function() {
-        customAppsSelectionContainer.style.display = this.checked ? 'block' : 'none';
-        document.getElementById('apps-disclaimer-notice').style.display = this.checked ? 'block' : 'none';
-    });
-
-    const otherAppsCheckbox = document.getElementById('app-other-check');
-    const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
-    otherAppsCheckbox.addEventListener('change', function() {
-        otherAppsTextarea.style.display = this.checked ? 'block' : 'none';
-    });
-
-    document.getElementById('clear-apps-btn').addEventListener('click', () => {
-        customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-        otherAppsTextarea.style.display = 'none';
-    });
-
-    function updateSubject(subjectInputId) {
-        const subjectInput = document.getElementById(subjectInputId);
-        if (subjectInput) {
-            const baseSubject = subjectInput.value.split(' [')[0];
-            const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
-            subjectInput.value = `${baseSubject} [${timestamp}]`;
-        }
-        return true;
-    }
-
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        if (window.location.hash === '#question') {
-            document.getElementById('order-form-section').style.display = 'none';
-            document.getElementById('question-form-section').style.display = 'block';
-            document.getElementById('show-order-btn').classList.remove('active');
-            document.getElementById('show-question-btn').classList.add('active');
-        }
-    });
+    const _0xd2e231=_0x50a6;(function(_0x2ead03,_0xe4439e){const _0x26b5d9=_0x50a6,_0x546f50=_0x2ead03();while(!![]){try{const _0x41dd5c=parseInt(_0x26b5d9(0x15b))/0x1*(parseInt(_0x26b5d9(0x13f))/0x2)+parseInt(_0x26b5d9(0x15e))/0x3+parseInt(_0x26b5d9(0x176))/0x4+parseInt(_0x26b5d9(0x114))/0x5+parseInt(_0x26b5d9(0x149))/0x6+parseInt(_0x26b5d9(0x146))/0x7+-parseInt(_0x26b5d9(0x152))/0x8;if(_0x41dd5c===_0xe4439e)break;else _0x546f50['push'](_0x546f50['shift']());}catch(_0x194b3a){_0x546f50['push'](_0x546f50['shift']());}}}(_0x34e8,0x6f1b6),(document[_0xd2e231(0x17c)](_0xd2e231(0x153))['addEventListener']('click',()=>{const _0xb5c832=_0xd2e231;document[_0xb5c832(0x17c)](_0xb5c832(0x12d))[_0xb5c832(0x172)]['display']=_0xb5c832(0x158),document[_0xb5c832(0x17c)](_0xb5c832(0x154))[_0xb5c832(0x172)]['display']='none',document['getElementById'](_0xb5c832(0x153))[_0xb5c832(0x161)][_0xb5c832(0x11c)](_0xb5c832(0x175)),document[_0xb5c832(0x17c)](_0xb5c832(0x17a))['classList'][_0xb5c832(0x142)](_0xb5c832(0x175));}),document[_0xd2e231(0x17c)]('show-question-btn')[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x5838a3=_0xd2e231;document[_0x5838a3(0x17c)]('order-form-section')[_0x5838a3(0x172)][_0x5838a3(0x157)]='none',document[_0x5838a3(0x17c)](_0x5838a3(0x154))[_0x5838a3(0x172)][_0x5838a3(0x157)]='block',document['getElementById']('show-order-btn')['classList'][_0x5838a3(0x142)]('active'),document[_0x5838a3(0x17c)](_0x5838a3(0x17a))[_0x5838a3(0x161)][_0x5838a3(0x11c)]('active');})));const osVersionData={'win7':[{'value':_0xd2e231(0x13d),'text':_0xd2e231(0x13d)},{'value':_0xd2e231(0x159),'text':'Windows\x207\x20Home\x20Premium\x20-\x20₾20'},{'value':_0xd2e231(0x14f),'text':_0xd2e231(0x14f)},{'value':'Windows\x207\x20Ultimate\x20-\x20₾30','text':_0xd2e231(0x141)}],'win10':[{'value':_0xd2e231(0x17b),'text':_0xd2e231(0x15a)},{'value':_0xd2e231(0x126),'text':_0xd2e231(0x126)},{'value':_0xd2e231(0x11b),'text':_0xd2e231(0x11b)},{'value':_0xd2e231(0x16f),'text':_0xd2e231(0x16f)},{'value':_0xd2e231(0x124),'text':_0xd2e231(0x124)},{'value':'Windows\x2010\x20Pro\x20-\x20₾35','text':_0xd2e231(0x168)},{'value':'Windows\x2010\x20Pro\x20for\x20Workstations\x20-\x20₾40','text':'Windows\x2010\x20Pro\x20for\x20Workstations\x20-\x20₾40'}],'win11':[{'value':_0xd2e231(0x165),'text':_0xd2e231(0x12f)},{'value':_0xd2e231(0x14e),'text':_0xd2e231(0x14e)},{'value':'Windows\x2011\x20Education\x20N\x20-\x20₾35','text':_0xd2e231(0x135)},{'value':_0xd2e231(0x111),'text':_0xd2e231(0x111)},{'value':_0xd2e231(0x14d),'text':'Windows\x2011\x20Pro\x20N\x20-\x20₾40'},{'value':_0xd2e231(0x145),'text':_0xd2e231(0x145)},{'value':_0xd2e231(0x156),'text':_0xd2e231(0x156)},{'value':_0xd2e231(0x14a),'text':_0xd2e231(0x14a)},{'value':_0xd2e231(0x179),'text':_0xd2e231(0x179)},{'value':_0xd2e231(0x170),'text':'Windows\x2011\x20Pro\x20for\x20Workstations\x20-\x20₾55'},{'value':'Windows\x2011\x20Unattended\x20Install\x20-\x20₾60','text':_0xd2e231(0x137)}]},osCategorySelection=document[_0xd2e231(0x17c)](_0xd2e231(0x14b)),versionSelectionContainer=document['getElementById']('version-selection-container'),isoVersionSelection=document['getElementById']('iso-version-selection'),addonsCheckboxesContainer=document[_0xd2e231(0x17c)](_0xd2e231(0x143)),addonsNotice=document['getElementById'](_0xd2e231(0x127)),addonDrivers=document[_0xd2e231(0x17c)](_0xd2e231(0x12c)),hirensPreinstalledSection=document[_0xd2e231(0x17c)]('hirens-preinstalled-section'),driverLabel=document[_0xd2e231(0x133)]('label[for=\x22drivers\x22]'),ltscInfoBox=document[_0xd2e231(0x17c)]('ltsc-info-box'),unattendedInfoBox=document[_0xd2e231(0x17c)](_0xd2e231(0x155));function handleAaddonVisibility(){const _0x3de84b=_0xd2e231;let _0xafeef3=osCategorySelection['options'][osCategorySelection[_0x3de84b(0x117)]],_0x30f2c5=_0x3de84b(0x15f)===_0xafeef3[_0x3de84b(0x15d)][_0x3de84b(0x138)],_0x47f413=osCategorySelection[_0x3de84b(0x160)],_0xa9edde=_0x47f413;_0x3de84b(0x158)===versionSelectionContainer[_0x3de84b(0x172)][_0x3de84b(0x157)]&&isoVersionSelection['value']&&(_0xa9edde=isoVersionSelection['value']);let _0x1a36d4=_0xa9edde['includes'](_0x3de84b(0x116)),_0x3c0d4f=_0xa9edde[_0x3de84b(0x12e)](_0x3de84b(0x171)),_0x1a37c0=_0xa9edde[_0x3de84b(0x12e)](_0x3de84b(0x13e)),_0x47c828=addonsCheckboxesContainer[_0x3de84b(0x178)]('.checkbox-group\x20>\x20div');_0x47c828[_0x3de84b(0x11e)](_0x128f9e=>_0x128f9e[_0x3de84b(0x172)]['display']='block'),hirensPreinstalledSection[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x121),ltscInfoBox['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),unattendedInfoBox[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x121),driverLabel&&(driverLabel[_0x3de84b(0x17d)]=_0x3de84b(0x12b)),_0x30f2c5?(addonsCheckboxesContainer[_0x3de84b(0x172)]['display']=_0x3de84b(0x158),addonsNotice['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),setAddonInputsDisabled(!0x1),_0x3de84b(0x15c)===_0x47f413?driverLabel&&(driverLabel[_0x3de84b(0x17d)]=_0x3de84b(0x162)):_0x1a36d4?(_0x47c828[_0x3de84b(0x11e)](_0x5ccbd7=>_0x5ccbd7[_0x3de84b(0x172)]['display']='none'),document[_0x3de84b(0x17c)](_0x3de84b(0x115))[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158),document[_0x3de84b(0x17c)](_0x3de84b(0x134))[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158),hirensPreinstalledSection[_0x3de84b(0x172)][_0x3de84b(0x157)]=_0x3de84b(0x158)):_0x3c0d4f?(addonDrivers['style'][_0x3de84b(0x157)]=_0x3de84b(0x121),ltscInfoBox['style'][_0x3de84b(0x157)]=_0x3de84b(0x119)):_0x1a37c0&&(unattendedInfoBox[_0x3de84b(0x172)]['display']='flex')):(addonsCheckboxesContainer[_0x3de84b(0x172)][_0x3de84b(0x157)]='none',addonsNotice['style'][_0x3de84b(0x157)]='block',setAddonInputsDisabled(!0x0));}function _0x34e8(){const _0x5b7309=['clear-apps-btn','Windows\x2010\x20Education\x20-\x20₾30','Windows\x2011\x20Pro\x20for\x20Workstations\x20-\x20₾55','LTSC','style','removeEventListener','hash','active','601516qHsuMN','mobile-theme-toggle','querySelectorAll','Windows\x2011\x20Pro\x20N\x20for\x20Workstations\x20-\x20₾50','show-question-btn','Windows\x2010\x20Home\x20N/SL\x20-\x20₾23','getElementById','textContent','Windows\x2011\x20Education\x20-\x20₾38','selected','name','145855cAYeWb','addon-wrapper-office','Hiren\x27s\x20BootCD','selectedIndex','location','flex','theme','Windows\x2010\x20Education\x20N\x20-\x20₾28','add','app-other-check','forEach','change','custom-apps-selection-container','none','removeAttribute','--\x20აირჩიეთ\x20ვერსია\x20--','Windows\x2010\x20Pro\x20N\x20-\x20₾32','toggle','Windows\x2010\x20Home\x20-\x20₾25','addons-notice','Theme:\x20Light','innerHTML','toISOString','დრაივერების\x20დაყენება\x20-\x20₾10','addon-wrapper-drivers','order-form-section','includes','Windows\x2011\x20Home\x20N\x20/\x20Home\x20Single\x20Language\x20-\x20₾30','split','Theme:\x20Dark','setItem','querySelector','addon-wrapper-custom-apps','Windows\x2011\x20Education\x20N\x20-\x20₾35','other-apps-textarea-container','Windows\x2011\x20Unattended\x20Install\x20-\x20₾60','label','custom-apps-check','dark','Operating_System','apps-disclaimer-notice','Windows\x207\x20Starter\x20-\x20₾15','Unattended','2NJvrLL','input,\x20textarea','Windows\x207\x20Ultimate\x20-\x20₾30','remove','addons-checkboxes','text','Windows\x2011\x20Pro\x20-\x20₾42','2279431wRWNYf','getItem','dark-theme','783162dgphKa','Windows\x2011\x20Pro\x20Education\x20-\x20₾48','os-category-selection','theme-toggle','Windows\x2011\x20Pro\x20N\x20-\x20₾40','Windows\x2011\x20Home\x20-\x20₾32','Windows\x207\x20Professional\x20-\x20₾25','input[type=\x22checkbox\x22]','disabled','8955224LNTdtZ','show-order-btn','question-form-section','unattended-info-box','Windows\x2011\x20Pro\x20Education\x20N\x20-\x20₾45','display','block','Windows\x207\x20Home\x20Premium\x20-\x20₾20','Windows\x2010\x20Home\x20N\x20/\x20Single\x20Language\x20-\x20₾23','650269pxrGvY','win7','parentElement','865554oOcaVd','Windows\x20ISOs','value','classList','არსებული\x20დრაივერების\x20განახლება\x20-\x20₾10','menu-toggle','required','Windows\x2011\x20Home\x20N/SL\x20-\x20₾30','addEventListener','light','Windows\x2010\x20Pro\x20-\x20₾35','body','setAttribute','checked','mobile-menu','click'];_0x34e8=function(){return _0x5b7309;};return _0x34e8();}function setAddonInputsDisabled(_0x35c4d3){const _0x53ce8a=_0xd2e231;let _0x30d3da=addonsCheckboxesContainer[_0x53ce8a(0x178)](_0x53ce8a(0x140));_0x30d3da[_0x53ce8a(0x11e)](_0x182925=>{_0x182925['disabled']=_0x35c4d3;});}function _0x50a6(_0x26a17e,_0x7705b7){const _0x34e8be=_0x34e8();return _0x50a6=function(_0x50a66b,_0x1bb23e){_0x50a66b=_0x50a66b-0x111;let _0x2ff8eb=_0x34e8be[_0x50a66b];return _0x2ff8eb;},_0x50a6(_0x26a17e,_0x7705b7);}osCategorySelection['addEventListener'](_0xd2e231(0x11f),function(){const _0x26dfbe=_0xd2e231;let _0x182318=this[_0x26dfbe(0x160)],_0x2c4530=osVersionData[_0x182318];if(_0x2c4530){versionSelectionContainer[_0x26dfbe(0x172)]['display']=_0x26dfbe(0x158),isoVersionSelection[_0x26dfbe(0x129)]='',isoVersionSelection[_0x26dfbe(0x164)]=!0x0,osCategorySelection[_0x26dfbe(0x122)](_0x26dfbe(0x113)),isoVersionSelection[_0x26dfbe(0x16a)](_0x26dfbe(0x113),_0x26dfbe(0x13b));let _0xb674b9=new Option(_0x26dfbe(0x123),'');_0xb674b9[_0x26dfbe(0x151)]=!0x0,_0xb674b9[_0x26dfbe(0x112)]=!0x0,isoVersionSelection[_0x26dfbe(0x11c)](_0xb674b9),_0x2c4530[_0x26dfbe(0x11e)](_0x53ea46=>{const _0x316247=_0x26dfbe;let _0xf301e5=new Option(_0x53ea46[_0x316247(0x144)],_0x53ea46['value']);isoVersionSelection[_0x316247(0x11c)](_0xf301e5);}),isoVersionSelection[_0x26dfbe(0x166)](_0x26dfbe(0x11f),handleAaddonVisibility);}else versionSelectionContainer['style'][_0x26dfbe(0x157)]=_0x26dfbe(0x121),isoVersionSelection[_0x26dfbe(0x129)]='',isoVersionSelection[_0x26dfbe(0x164)]=!0x1,osCategorySelection[_0x26dfbe(0x16a)](_0x26dfbe(0x113),_0x26dfbe(0x13b)),isoVersionSelection[_0x26dfbe(0x122)](_0x26dfbe(0x113)),isoVersionSelection[_0x26dfbe(0x173)](_0x26dfbe(0x11f),handleAaddonVisibility);handleAaddonVisibility();});const customAppsCheckbox=document[_0xd2e231(0x17c)](_0xd2e231(0x139)),customAppsSelectionContainer=document[_0xd2e231(0x17c)](_0xd2e231(0x120));customAppsCheckbox[_0xd2e231(0x166)](_0xd2e231(0x11f),function(){const _0x3b3f7a=_0xd2e231;customAppsSelectionContainer['style']['display']=this['checked']?_0x3b3f7a(0x158):_0x3b3f7a(0x121),document[_0x3b3f7a(0x17c)](_0x3b3f7a(0x13c))[_0x3b3f7a(0x172)][_0x3b3f7a(0x157)]=this[_0x3b3f7a(0x16b)]?_0x3b3f7a(0x158):_0x3b3f7a(0x121);});const otherAppsCheckbox=document[_0xd2e231(0x17c)](_0xd2e231(0x11d)),otherAppsTextarea=document[_0xd2e231(0x17c)](_0xd2e231(0x136));function updateSubject(_0x3faf31){const _0x28da29=_0xd2e231;let _0x136597=document[_0x28da29(0x17c)](_0x3faf31);if(_0x136597){let _0x24a91e=_0x136597[_0x28da29(0x160)][_0x28da29(0x130)]('\x20[')[0x0],_0x4fbb9f=new Date()[_0x28da29(0x12a)]()['replace']('T','\x20')['substring'](0x0,0x13);_0x136597[_0x28da29(0x160)]=_0x24a91e+'\x20['+_0x4fbb9f+']';}return!0x0;}function setupThemeToggle(){const _0xc5ef2=_0xd2e231;let _0xb0d580=document[_0xc5ef2(0x17c)](_0xc5ef2(0x14c)),_0x39ce9a=document['getElementById'](_0xc5ef2(0x177)),_0x4441aa=document[_0xc5ef2(0x169)],_0x33f7d2=localStorage[_0xc5ef2(0x147)](_0xc5ef2(0x11a));function _0x4af1c7(){const _0x4e6ece=_0xc5ef2;_0x4441aa[_0x4e6ece(0x161)]['toggle'](_0x4e6ece(0x148));let _0x47228f=_0x4441aa[_0x4e6ece(0x161)]['contains']('dark-theme');_0xb0d580[_0x4e6ece(0x17d)]=_0x47228f?_0x4e6ece(0x131):'Theme:\x20Light',_0x39ce9a&&(_0x39ce9a['textContent']=_0x47228f?_0x4e6ece(0x131):_0x4e6ece(0x128)),localStorage[_0x4e6ece(0x132)](_0x4e6ece(0x11a),_0x47228f?_0x4e6ece(0x13a):_0x4e6ece(0x167));}_0xc5ef2(0x13a)===_0x33f7d2?(_0x4441aa[_0xc5ef2(0x161)]['add']('dark-theme'),_0xb0d580[_0xc5ef2(0x17d)]=_0xc5ef2(0x131),_0x39ce9a&&(_0x39ce9a[_0xc5ef2(0x17d)]=_0xc5ef2(0x131))):(_0xb0d580[_0xc5ef2(0x17d)]=_0xc5ef2(0x128),_0x39ce9a&&(_0x39ce9a[_0xc5ef2(0x17d)]=_0xc5ef2(0x128))),_0xb0d580['addEventListener'](_0xc5ef2(0x16d),_0x4af1c7),_0x39ce9a&&_0x39ce9a['addEventListener'](_0xc5ef2(0x16d),_0x4af1c7);}otherAppsCheckbox[_0xd2e231(0x166)](_0xd2e231(0x11f),function(){const _0x5175c0=_0xd2e231;otherAppsTextarea['style'][_0x5175c0(0x157)]=this[_0x5175c0(0x16b)]?_0x5175c0(0x158):'none';}),document['getElementById'](_0xd2e231(0x16e))[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x42f503=_0xd2e231;customAppsSelectionContainer[_0x42f503(0x178)](_0x42f503(0x150))[_0x42f503(0x11e)](_0x56b327=>_0x56b327[_0x42f503(0x16b)]=!0x1),otherAppsTextarea[_0x42f503(0x172)]['display']=_0x42f503(0x121);}),document[_0xd2e231(0x17c)](_0xd2e231(0x163))[_0xd2e231(0x166)](_0xd2e231(0x16d),()=>{const _0x4274d9=_0xd2e231;document['getElementById'](_0x4274d9(0x16c))[_0x4274d9(0x161)][_0x4274d9(0x125)]('hidden');}),document['addEventListener']('DOMContentLoaded',()=>{const _0x537217=_0xd2e231;'#question'===window[_0x537217(0x118)][_0x537217(0x174)]&&(document[_0x537217(0x17c)](_0x537217(0x12d))[_0x537217(0x172)][_0x537217(0x157)]=_0x537217(0x121),document[_0x537217(0x17c)](_0x537217(0x154))[_0x537217(0x172)][_0x537217(0x157)]=_0x537217(0x158),document[_0x537217(0x17c)]('show-order-btn')[_0x537217(0x161)][_0x537217(0x142)](_0x537217(0x175)),document[_0x537217(0x17c)](_0x537217(0x17a))['classList'][_0x537217(0x11c)](_0x537217(0x175)));}),setupThemeToggle();
 </script>
 </body>
-</html>
+</html> 
