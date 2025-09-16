@@ -142,14 +142,14 @@
                             <div class="form-group">
                                 <label>აირჩიეთ დამატებები (მხოლოდ Windows-ისთვის):</label>
                                 <div class="checkbox-group">
-                                    <div id="addon-wrapper-antivirus"><div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 GEL"><label for="antivirus">ანტივირუსი - ₾5</label></div></div>
-                                    <div id="addon-wrapper-office"><div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 GEL"><label for="office">Microsoft Office - ₾15</label></div></div>
-                                    <div id="addon-wrapper-design-apps"><div class="checkbox-item"><input type="checkbox" id="design-apps" name="addon_design_apps" value="Graphics and Design Apps - 10 GEL"><label for="design-apps"><b>გრაფიკული და დიზაინის პროგრამები - ₾10 (თითო)</b><br><small>დიზაინის პროგრამები - როგორიცაა Adobe Illustrator, Adobe Photoshop, GIMP etc...</small></label></div></div>
-                                    <div id="addon-wrapper-optimization"><div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10-15 GEL"><label for="optimization">კომპიუტერის ოპტიმიზაცია - ₾10–15</label></div></div>
-                                    <div id="addon-wrapper-drivers"><div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - ₾10</label></div></div>
+                                    <div id="addon-wrapper-antivirus"><div class="checkbox-item"><input type="checkbox" id="antivirus" name="addon_antivirus" value="Antivirus - 5 ₾"><label for="antivirus">ანტივირუსი - ₾5</label></div></div>
+                                    <div id="addon-wrapper-office"><div class="checkbox-item"><input type="checkbox" id="office" name="addon_office" value="Microsoft Office - 15 ₾"><label for="office">Microsoft Office - ₾15</label></div></div>
+                                    <div id="addon-wrapper-design-apps"><div class="checkbox-item"><input type="checkbox" id="design-apps" name="addon_design_apps" value="Graphics and Design Apps - 10 ₾"><label for="design-apps"><b>გრაფიკული და დიზაინის პროგრამები - 10 ₾ (თითო)</b><br><small>დიზაინის პროგრამები - როგორიცაა Adobe Illustrator, Adobe Photoshop, GIMP etc...</small></label></div></div>
+                                    <div id="addon-wrapper-optimization"><div class="checkbox-item"><input type="checkbox" id="optimization" name="addon_optimization" value="PC Optimization - 10 ₾"><label for="optimization">კომპიუტერის ოპტიმიზაცია - 10 ₾</label></div></div>
+                                    <div id="addon-wrapper-drivers"><div class="checkbox-item"><input type="checkbox" id="drivers" name="addon_drivers" value="Driver Installation - 10 GEL"><label for="drivers">დრაივერების დაყენება - 10 ₾</label></div></div>
                                     <div id="addon-wrapper-custom-apps">
                                         <hr class="form-divider">
-                                        <div class="checkbox-item"><input type="checkbox" id="custom-apps-check" name="addon_custom_apps_service" value="Custom App Installation Service requested"><label for="custom-apps-check"><b>მომხმარებლის აპლიკაციების დაყენება (₾1 თითო)</b></label></div>
+                                        <div class="checkbox-item"><input type="checkbox" id="custom-apps-check" name="addon_custom_apps_service" value="Custom App Installation Service requested"><label for="custom-apps-check"><b>მომხმარებლის აპლიკაციების დაყენება (1 ₾ თითო)</b></label></div>
                                         <div id="custom-apps-selection-container" style="display: none; margin-left: 28px;">
                                             <div id="apps-disclaimer-notice" class="addons-message addons-message-warning" style="display: none;"><strong>ყურადღება:</strong> თქვენ ხართ პასუხისმგებელი თქვენს მიერ არჩეული პროგრამების ლიცენზირებაზე და კანონიერ გამოყენებაზე. !!  
                                                                                                                                                         <br>ჩვენ დაგიკავშირდებით მეილით ან პირადად თქვენ მიერ ჩაწერილ პროგრამებზე გვაქვს თუ არა ისინი. !!</div>
@@ -207,6 +207,16 @@
                         </div>
                     </div>
                     <div id="addons-notice" class="addons-message" style="display: none;">დამატებითი სერვისები ხელმისაწვდომია მხოლოდ Windows-ის ინსტალაციისთვის.</div>
+                    <!-- PRICE CALCULATOR SECTION -->
+                    <div id="price-summary-container" class="price-summary-box" style="display: none;">
+                        <h3>ფასის შეჯამება:</h3>
+                        <ul id="price-summary-list"></ul>
+                        <div class="price-total">
+                            <strong>სულ გადასახდელი: </strong><span id="total-price">₾0</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="--- TOTAL PRICE ---" id="price-summary-hidden">                   
+                     <!-- END PRICE CALCULATOR SECTION -->
                     <button type="submit" class="btn-primary">შეკვეთის გაგზავნა</button>
                 </form>
             </div>
@@ -232,8 +242,6 @@
                 </li>
             </ul>
             </div>
-
-
 
             <br>
             
@@ -265,8 +273,18 @@
             <!-- Column 2: Links -->
             <div class="footer-links">
                 <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
-                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
-                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
+                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">
+                    მომსახურების პირობები
+                    <svg class="footer-link-icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h160M336 64h112v112M224 288L448 64"/>
+                    </svg>
+                </a>
+                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">
+                    კონფიდენციალურობის პოლიტიკა
+                    <svg class="footer-link-icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h160M336 64h112v112M224 288L448 64"/>
+                    </svg>
+                </a>
             </div>
 
             <!-- Column 3: Contact Details with Icons -->
@@ -307,296 +325,466 @@
 </footer>
 
 <script>
-    // --- SCRIPT FOR FORM TOGGLING ---
-    document.getElementById('show-order-btn').addEventListener('click', () => {
-        document.getElementById('order-form-section').style.display = 'block';
-        document.getElementById('question-form-section').style.display = 'none';
-        document.getElementById('show-order-btn').classList.add('active');
-        document.getElementById('show-question-btn').classList.remove('active');
-    });
-    document.getElementById('show-question-btn').addEventListener('click', () => {
-        document.getElementById('order-form-section').style.display = 'none';
-        document.getElementById('question-form-section').style.display = 'block';
-        document.getElementById('show-order-btn').classList.remove('active');
-        document.getElementById('show-question-btn').classList.add('active');
-    });
+// --- FORM TOGGLING ---
+document.getElementById('show-order-btn').addEventListener('click', () => {
+    document.getElementById('order-form-section').style.display = 'block';
+    document.getElementById('question-form-section').style.display = 'none';
+    document.getElementById('show-order-btn').classList.add('active');
+    document.getElementById('show-question-btn').classList.remove('active');
+});
 
-    // --- OS SELECTION & ADDON LOGIC ---
-    const osVersionData = {
-        win7: [
-            { value: "Windows 7 Starter - ₾15", text: "Windows 7 Starter - ₾15" },
-            { value: "Windows 7 Home Premium - ₾20", text: "Windows 7 Home Premium - ₾20" },
-            { value: "Windows 7 Professional - ₾25", text: "Windows 7 Professional - ₾25" },
-            { value: "Windows 7 Ultimate - ₾30", text: "Windows 7 Ultimate - ₾30" }
-        ],
-        win10: [
-            { value: "Windows 10 Home N/SL - ₾23", text: "Windows 10 Home N / Single Language - ₾23" },
-            { value: "Windows 10 Home - ₾25", text: "Windows 10 Home - ₾25" },
-            { value: "Windows 10 Education N - ₾28", text: "Windows 10 Education N - ₾28" },
-            { value: "Windows 10 Education - ₾30", text: "Windows 10 Education - ₾30" },
-            { value: "Windows 10 Pro N - ₾32", text: "Windows 10 Pro N - ₾32" },
-            { value: "Windows 10 Pro - ₾35", text: "Windows 10 Pro - ₾35" },
-            { value: "Windows 10 Pro for Workstations - ₾40", text: "Windows 10 Pro for Workstations - ₾40" }
-        ],
+document.getElementById('show-question-btn').addEventListener('click', () => {
+    document.getElementById('order-form-section').style.display = 'none';
+    document.getElementById('question-form-section').style.display = 'block';
+    document.getElementById('show-order-btn').classList.remove('active');
+    document.getElementById('show-question-btn').classList.add('active');
+});
 
-        win11unattended: [
-            { value: "Windows 11 Unattended Install - ₾60", text: "Windows 11 Unattended Install - ₾60" }
-        ],
+// --- OS SELECTION & ADDON LOGIC ---
+const osVersionData = {
+    win7: [
+        { value: "Windows 7 Starter - ₾15", text: "Windows 7 Starter - ₾15" },
+        { value: "Windows 7 Home Premium - ₾20", text: "Windows 7 Home Premium - ₾20" },
+        { value: "Windows 7 Professional - ₾25", text: "Windows 7 Professional - ₾25" },
+        { value: "Windows 7 Ultimate - ₾30", text: "Windows 7 Ultimate - ₾30" }
+    ],
+    win10: [
+        { value: "Windows 10 Home N/SL - ₾23", text: "Windows 10 Home N / Single Language - ₾23" },
+        { value: "Windows 10 Home - ₾25", text: "Windows 10 Home - ₾25" },
+        { value: "Windows 10 Education N - ₾28", text: "Windows 10 Education N - ₾28" },
+        { value: "Windows 10 Education - ₾30", text: "Windows 10 Education - ₾30" },
+        { value: "Windows 10 Pro N - ₾32", text: "Windows 10 Pro N - ₾32" },
+        { value: "Windows 10 Pro - ₾35", text: "Windows 10 Pro - ₾35" },
+        { value: "Windows 10 Pro for Workstations - ₾40", text: "Windows 10 Pro for Workstations - ₾40" }
+    ],
+    win11unattended: [
+        { value: "Windows 11 Unattended Install - ₾60", text: "Windows 11 Unattended Install - ₾60" }
+    ],
+    win11: [
+        { value: "Windows 11 Home N/SL - ₾30", text: "Windows 11 Home N / Home Single Language - ₾30" },
+        { value: "Windows 11 Home - ₾32", text: "Windows 11 Home - ₾32" },
+        { value: "Windows 11 Education N - ₾35", text: "Windows 11 Education N - ₾35" },
+        { value: "Windows 11 Education - ₾38", text: "Windows 11 Education - ₾38" },
+        { value: "Windows 11 Pro N - ₾40", text: "Windows 11 Pro N - ₾40" },
+        { value: "Windows 11 Pro - ₾42", text: "Windows 11 Pro - ₾42" },
+        { value: "Windows 11 Pro Education N - ₾45", text: "Windows 11 Pro Education N - ₾45" },
+        { value: "Windows 11 Pro Education - ₾48", text: "Windows 11 Pro Education - ₾48" },
+        { value: "Windows 11 Pro N for Workstations - ₾50", text: "Windows 11 Pro N for Workstations - ₾50" },
+        { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾55" }
+    ]
+};
 
+const osCategorySelection = document.getElementById('os-category-selection');
+const versionSelectionContainer = document.getElementById('version-selection-container');
+const isoVersionSelection = document.getElementById('iso-version-selection');
+const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
+const addonsNotice = document.getElementById('addons-notice');
+const addonDrivers = document.getElementById('addon-wrapper-drivers');
+const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
+const driverLabel = document.querySelector('label[for="drivers"]');
+const ltscInfoBox = document.getElementById('ltsc-info-box');
+const unattendedInfoBox = document.getElementById('unattended-info-box');
 
-        win11: [
-            { value: "Windows 11 Home N/SL - ₾30", text: "Windows 11 Home N / Home Single Language - ₾30" },
-            { value: "Windows 11 Home - ₾32", text: "Windows 11 Home - ₾32" },
-            { value: "Windows 11 Education N - ₾35", text: "Windows 11 Education N - ₾35" },
-            { value: "Windows 11 Education - ₾38", text: "Windows 11 Education - ₾38" },
-            { value: "Windows 11 Pro N - ₾40", text: "Windows 11 Pro N - ₾40" },
-            { value: "Windows 11 Pro - ₾42", text: "Windows 11 Pro - ₾42" },
-            { value: "Windows 11 Pro Education N - ₾45", text: "Windows 11 Pro Education N - ₾45" },
-            { value: "Windows 11 Pro Education - ₾48", text: "Windows 11 Pro Education - ₾48" },
-            { value: "Windows 11 Pro N for Workstations - ₾50", text: "Windows 11 Pro N for Workstations - ₾50" },
-            { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾55" },
-        ]
-    };
+// Populate version dropdown on category change
+osCategorySelection.addEventListener('change', function() {
+    const selectedCategoryValue = this.value;
+    const versions = osVersionData[selectedCategoryValue];
+    if (versions) {
+        versionSelectionContainer.style.display = 'block';
+        isoVersionSelection.innerHTML = '';
+        isoVersionSelection.required = true;
+        osCategorySelection.removeAttribute('name');
+        isoVersionSelection.setAttribute('name', 'Operating_System');
 
-    const osCategorySelection = document.getElementById('os-category-selection');
-    const versionSelectionContainer = document.getElementById('version-selection-container');
-    const isoVersionSelection = document.getElementById('iso-version-selection');
-    const addonsCheckboxesContainer = document.getElementById('addons-checkboxes');
-    const addonsNotice = document.getElementById('addons-notice');
-    const addonDrivers = document.getElementById('addon-wrapper-drivers');
-    const hirensPreinstalledSection = document.getElementById('hirens-preinstalled-section');
-    const driverLabel = document.querySelector('label[for="drivers"]');
-    const ltscInfoBox = document.getElementById('ltsc-info-box');
-    const unattendedInfoBox = document.getElementById('unattended-info-box');
+        const placeholder = new Option('-- აირჩიეთ ვერსია --', '');
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        isoVersionSelection.add(placeholder);
 
-    osCategorySelection.addEventListener('change', function() {
-        const selectedCategoryValue = this.value;
-        const versions = osVersionData[selectedCategoryValue];
-        if (versions) {
-            versionSelectionContainer.style.display = 'block';
-            isoVersionSelection.innerHTML = '';
-            isoVersionSelection.required = true;
-            osCategorySelection.removeAttribute('name');
-            isoVersionSelection.setAttribute('name', 'Operating_System');
-            const placeholder = new Option('-- აირჩიეთ ვერსია --', '');
-            placeholder.disabled = true;
-            placeholder.selected = true;
-            isoVersionSelection.add(placeholder);
-            versions.forEach(version => {
-                const option = new Option(version.text, version.value);
-                isoVersionSelection.add(option);
-            });
-            isoVersionSelection.addEventListener('change', handleAaddonVisibility);
-        } else {
-            versionSelectionContainer.style.display = 'none';
-            isoVersionSelection.innerHTML = '';
-            isoVersionSelection.required = false;
-            osCategorySelection.setAttribute('name', 'Operating_System');
-            isoVersionSelection.removeAttribute('name');
-            isoVersionSelection.removeEventListener('change', handleAaddonVisibility);
-        }
-        handleAaddonVisibility();
-    });
-
-    function handleAaddonVisibility() {
-        const selectedOption = osCategorySelection.options[osCategorySelection.selectedIndex];
-        const isWindows = selectedOption.parentElement.label === 'Windows ISOs';
-        const categoryValue = osCategorySelection.value;
-        let finalSelectionValue = categoryValue;
-        if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
-            finalSelectionValue = isoVersionSelection.value;
-        }
-        const isHiren = finalSelectionValue.includes("Hiren's BootCD");
-        const isLTSC = finalSelectionValue.includes("LTSC");
-        const isWin7 = categoryValue === 'win7';
-        const isUnattended = finalSelectionValue.includes("Unattended");
-        const allAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group > div');
-        allAddons.forEach(addon => addon.style.display = 'block');
-        hirensPreinstalledSection.style.display = 'none';
-        ltscInfoBox.style.display = 'none';
-        unattendedInfoBox.style.display = 'none';
-        if (driverLabel) {
-            driverLabel.textContent = "დრაივერების დაყენება - ₾10";
-        }
-        if (isWindows) {
-            addonsCheckboxesContainer.style.display = 'block';
-            addonsNotice.style.display = 'none';
-            setAddonInputsDisabled(false);
-            if (isWin7) {
-                if (driverLabel) {
-                    driverLabel.textContent = "არსებული დრაივერების განახლება - ₾10";
-                }
-            } else if (isHiren) {
-                allAddons.forEach(addon => addon.style.display = 'none');
-                document.getElementById('addon-wrapper-office').style.display = 'block';
-                document.getElementById('addon-wrapper-custom-apps').style.display = 'block';
-                hirensPreinstalledSection.style.display = 'block';
-            } else if (isLTSC) {
-                addonDrivers.style.display = 'none';
-                ltscInfoBox.style.display = 'flex';
-            } else if (isUnattended) {
-                unattendedInfoBox.style.display = 'flex';
-            }
-        } else {
-            addonsCheckboxesContainer.style.display = 'none';
-            addonsNotice.style.display = 'block';
-            setAddonInputsDisabled(true);
-        }
-
-        // NEW: Graphics and Design Apps addon visibility
-        const designAppsAddon = document.getElementById('addon-wrapper-design-apps');
-
-        const showDesignApps = (() => {
-            if (!designAppsAddon) return false;
-
-            const category = osCategorySelection.value;
-            const selectedOption = osCategorySelection.options[osCategorySelection.selectedIndex];
-            const fullText = selectedOption ? selectedOption.text : '';
-
-            // Exclude Linux, NanoWin10, Windows 10 Enterprise LTSC, Windows 11 IoT Enterprise LTSC
-            const excludedPatterns = [
-                /Linux/i,
-                /NanoWin10/i,
-                /Windows 10 Enterprise LTSC/i,
-                /Windows 11 IoT Enterprise LTSC/i
-            ];
-
-            for (const pattern of excludedPatterns) {
-                if (pattern.test(fullText)) return false;
-            }
-
-            // Show if it's Windows 7/10/11 categories, OR includes "Windows 11 Unattended"
-            if (
-                category === 'win7' ||
-                category === 'win10' ||
-                category === 'win11' ||
-                /Windows 11 Unattended/i.test(fullText)
-            ) {
-                return true;
-            }
-
-            return false;
-        })();
-
-        //end
-
-        if (designAppsAddon) {
-            designAppsAddon.style.display = showDesignApps ? 'block' : 'none';
-        }
-    }
-
-    function setAddonInputsDisabled(isDisabled) {
-        const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
-        inputsToToggle.forEach(input => {
-            input.disabled = isDisabled;
+        versions.forEach(version => {
+            isoVersionSelection.add(new Option(version.text, version.value));
         });
+
+        isoVersionSelection.addEventListener('change', handleAddonVisibility);
+    } else {
+        versionSelectionContainer.style.display = 'none';
+        isoVersionSelection.innerHTML = '';
+        isoVersionSelection.required = false;
+        osCategorySelection.setAttribute('name', 'Operating_System');
+        isoVersionSelection.removeAttribute('name');
+        isoVersionSelection.removeEventListener('change', handleAddonVisibility);
+    }
+    handleAddonVisibility();
+});
+
+function handleAddonVisibility() {
+    const selectedOption = osCategorySelection.options[osCategorySelection.selectedIndex];
+    const isWindows = selectedOption?.parentElement?.label === 'Windows ISOs';
+    const categoryValue = osCategorySelection.value;
+    let finalSelectionValue = categoryValue;
+
+    if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
+        finalSelectionValue = isoVersionSelection.value;
     }
 
-    // --- Order Form Navigation ---
-    document.addEventListener("DOMContentLoaded", function () {
-        const contactLinks = [
-            document.getElementById("contact-nav-link"),
-            document.getElementById("mobile-contact-nav-link")
+    const isHiren = finalSelectionValue.includes("Hiren's BootCD");
+    const isLTSC = finalSelectionValue.includes("LTSC");
+    const isWin7 = categoryValue === 'win7';
+    const isUnattended = finalSelectionValue.includes("Unattended");
+
+    const allAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group > div');
+    allAddons.forEach(addon => (addon.style.display = 'block'));
+
+    hirensPreinstalledSection.style.display = 'none';
+    ltscInfoBox.style.display = 'none';
+    unattendedInfoBox.style.display = 'none';
+
+    if (driverLabel) {
+        driverLabel.textContent = "დრაივერების დაყენება - ₾10";
+    }
+
+    if (isWindows) {
+        addonsCheckboxesContainer.style.display = 'block';
+        addonsNotice.style.display = 'none';
+        setAddonInputsDisabled(false);
+
+        if (isWin7 && driverLabel) {
+            driverLabel.textContent = "არსებული დრაივერების განახლება - ₾10";
+        } else if (isHiren) {
+            allAddons.forEach(addon => (addon.style.display = 'none'));
+            document.getElementById('addon-wrapper-office').style.display = 'block';
+            document.getElementById('addon-wrapper-custom-apps').style.display = 'block';
+            hirensPreinstalledSection.style.display = 'block';
+        } else if (isLTSC) {
+            addonDrivers.style.display = 'none';
+            ltscInfoBox.style.display = 'flex';
+        } else if (isUnattended) {
+            unattendedInfoBox.style.display = 'flex';
+        }
+    } else {
+        addonsCheckboxesContainer.style.display = 'none';
+        addonsNotice.style.display = 'block';
+        setAddonInputsDisabled(true);
+    }
+
+    // Graphics and Design Apps addon visibility
+    const designAppsAddon = document.getElementById('addon-wrapper-design-apps');
+    if (designAppsAddon) {
+        const fullText = selectedOption ? selectedOption.text : '';
+        const excludedPatterns = [
+            /Linux/i,
+            /NanoWin10/i,
+            /Windows 10 Enterprise LTSC/i,
+            /Windows 11 IoT Enterprise LTSC/i
         ];
-        const questionFormSection = document.getElementById("question-form-section");
-        const orderFormSection = document.getElementById("order-form-section");
-        const showOrderBtn = document.getElementById("show-order-btn");
-        const showQuestionBtn = document.getElementById("show-question-btn");
 
-        contactLinks.forEach(link => {
-            link?.addEventListener("click", function (e) {
-                e.preventDefault();
+        const showDesignApps = !excludedPatterns.some(pattern => pattern.test(fullText)) &&
+            (categoryValue === 'win7' || categoryValue === 'win10' || categoryValue === 'win11' || /Windows 11 Unattended/i.test(fullText));
 
-                // Smooth scroll to form section
-                document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" });
+        designAppsAddon.style.display = showDesignApps ? 'block' : 'none';
+    }
+}
 
-                // Switch to question form
-                questionFormSection.style.display = "block";
-                orderFormSection.style.display = "none";
+function setAddonInputsDisabled(isDisabled) {
+    const inputsToToggle = addonsCheckboxesContainer.querySelectorAll('input, textarea');
+    inputsToToggle.forEach(input => (input.disabled = isDisabled));
+}
 
-                // Update button styles
-                showOrderBtn.classList.remove("active");
-                showQuestionBtn.classList.add("active");
-            });
+// --- Order Form Navigation ---
+document.addEventListener("DOMContentLoaded", () => {
+    const contactLinks = [
+        document.getElementById("contact-nav-link"),
+        document.getElementById("mobile-contact-nav-link")
+    ];
+
+    const questionFormSection = document.getElementById("question-form-section");
+    const orderFormSection = document.getElementById("order-form-section");
+    const showOrderBtn = document.getElementById("show-order-btn");
+    const showQuestionBtn = document.getElementById("show-question-btn");
+
+    contactLinks.forEach(link => {
+        link?.addEventListener("click", e => {
+            e.preventDefault();
+
+            document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" });
+
+            questionFormSection.style.display = "block";
+            orderFormSection.style.display = "none";
+
+            showOrderBtn.classList.remove("active");
+            showQuestionBtn.classList.add("active");
         });
     });
 
+    // Check for hash on load to switch forms
+    if (window.location.hash === '#question') {
+        orderFormSection.style.display = 'none';
+        questionFormSection.style.display = 'block';
+        showOrderBtn.classList.remove('active');
+        showQuestionBtn.classList.add('active');
+    }
 
-    // --- Other form scripts ---
-    const customAppsCheckbox = document.getElementById('custom-apps-check');
-    const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
+    // Initialize total price calculation
+    calculateTotalPrice();
+});
+
+// --- Reset Addons ---
+function resetAddons() {
+    const addonCheckboxes = document.querySelectorAll('#addons-checkboxes input[type="checkbox"]');
+    addonCheckboxes.forEach(cb => (cb.checked = false));
+
+    const customAppsContainer = document.getElementById('custom-apps-selection-container');
+    if (customAppsContainer) {
+        customAppsContainer.style.display = 'none';
+
+        const customAppCheckboxes = customAppsContainer.querySelectorAll('input[type="checkbox"]');
+        customAppCheckboxes.forEach(cb => (cb.checked = false));
+    }
+}
+
+// --- Custom Apps Checkbox Toggle ---
+const customAppsCheckbox = document.getElementById('custom-apps-check');
+const customAppsSelectionContainer = document.getElementById('custom-apps-selection-container');
+if (customAppsCheckbox && customAppsSelectionContainer) {
     customAppsCheckbox.addEventListener('change', function() {
         customAppsSelectionContainer.style.display = this.checked ? 'block' : 'none';
         document.getElementById('apps-disclaimer-notice').style.display = this.checked ? 'block' : 'none';
+        calculateTotalPrice();
     });
+}
 
-    const otherAppsCheckbox = document.getElementById('app-other-check');
-    const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
+// --- Other Apps Checkbox Toggle ---
+const otherAppsCheckbox = document.getElementById('app-other-check');
+const otherAppsTextarea = document.getElementById('other-apps-textarea-container');
+if (otherAppsCheckbox && otherAppsTextarea) {
     otherAppsCheckbox.addEventListener('change', function() {
         otherAppsTextarea.style.display = this.checked ? 'block' : 'none';
+        calculateTotalPrice();
     });
+}
 
-    document.getElementById('clear-apps-btn').addEventListener('click', () => {
-        customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-        otherAppsTextarea.style.display = 'none';
-    });
-
-    function updateSubject(subjectInputId) {
-        const subjectInput = document.getElementById(subjectInputId);
-        if (subjectInput) {
-            const baseSubject = subjectInput.value.split(' [')[0];
-            const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
-            subjectInput.value = `${baseSubject} [${timestamp}]`;
+// --- Clear Apps Button ---
+const clearAppsBtn = document.getElementById('clear-apps-btn');
+if (clearAppsBtn) {
+    clearAppsBtn.addEventListener('click', () => {
+        if (customAppsSelectionContainer) {
+            customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => (cb.checked = false));
+            customAppsSelectionContainer.style.display = 'none';
         }
-        return true;
+        if (otherAppsTextarea) {
+            otherAppsTextarea.style.display = 'none';
+            const otherAppsInput = otherAppsTextarea.querySelector('textarea');
+            if (otherAppsInput) otherAppsInput.value = '';
+        }
+        if (customAppsCheckbox) customAppsCheckbox.checked = false;
+        if (otherAppsCheckbox) otherAppsCheckbox.checked = false;
+        calculateTotalPrice();
+    });
+}
+
+// --- Update Subject with Timestamp ---
+function updateSubject(subjectInputId) {
+    const subjectInput = document.getElementById(subjectInputId);
+    if (subjectInput) {
+        const baseSubject = subjectInput.value.split(' [')[0];
+        const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+        subjectInput.value = `${baseSubject} [${timestamp}]`;
+    }
+    return true;
+}
+
+// --- Mobile Menu Toggle ---
+const menuToggleBtn = document.getElementById('menu-toggle');
+if (menuToggleBtn) {
+    menuToggleBtn.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    });
+}
+
+// --- Theme Toggle Logic ---
+function setupThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+    const body = document.body;
+
+    // Initialize from saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        if (toggleBtn) toggleBtn.textContent = 'Theme: Dark';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Dark';
+    } else {
+        if (toggleBtn) toggleBtn.textContent = 'Theme: Light';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Light';
     }
 
-    // Mobile menu toggle
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+    // Toggle handler
+    function toggleTheme() {
+        body.classList.toggle('dark-theme');
+        const isDark = body.classList.contains('dark-theme');
+        if (toggleBtn) toggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        if (window.location.hash === '#question') {
-            document.getElementById('order-form-section').style.display = 'none';
-            document.getElementById('question-form-section').style.display = 'block';
-            document.getElementById('show-order-btn').classList.remove('active');
-            document.getElementById('show-question-btn').classList.add('active');
-        }
-    });
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
+}
 
-    // Theme toggle logic
-    function setupThemeToggle() {
-        const toggleBtn = document.getElementById('theme-toggle');
-        const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
-        const body = document.body;
+setupThemeToggle();
 
-        // Set initial state from localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-theme');
-            toggleBtn.textContent = 'Theme: Dark';
-            if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Dark';
+// --- Final Price Calculator ---
+(function() {
+    function parseGelValue(value) {
+        if (!value) return 0;
+
+        // Try to match currency before number: ₾10 or ₾ 10
+        let match = value.match(/₾\s*(\d+)/);
+        if (match) return parseFloat(match[1]);
+
+        // Try to match number before currency: 10 ₾ or 10₾
+        match = value.match(/(\d+)\s*₾/);
+        if (match) return parseFloat(match[1]);
+
+        // Handle ranges like "10–15 ₾" or "10-15 ₾" — take average
+        match = value.match(/(\d+)[–-](\d+)\s*₾/);
+        if (match) return (parseFloat(match[1]) + parseFloat(match[2])) / 2;
+
+        // If nothing matches, try to find any number
+        match = value.match(/(\d+)/);
+        if (match) return parseFloat(match[1]);
+
+        return 0;
+    }
+
+    function countOtherApps(text) {
+        // Split by comma, semicolon, or newline, and filter out empty items
+        if (!text) return 0;
+        return text.split(/[,;\n]+/).map(s => s.trim()).filter(s => s.length > 0).length;
+    }
+
+    function isOsSelectionPlaceholder(text) {
+        // Checks if the OS selection is a placeholder (no price)
+        return (
+            text.includes('აირჩიეთ ვერსიების სანახავად.') ||
+            text.includes('-- გთხოვთ აირჩიოთ --') ||
+            text.includes('-- აირჩიეთ ვერსია --') ||
+            text.trim() === ''
+        );
+    }
+
+    function calculateTotalPrice() {
+        let total = 0;
+        let summaryList = [];
+        // OS price
+        let osPrice = 0;
+        let osText = '';
+        const osCategory = osCategorySelection.value;
+        if (versionSelectionContainer.style.display === 'block' && isoVersionSelection.value) {
+            osText = isoVersionSelection.options[isoVersionSelection.selectedIndex]?.text || '';
+            osPrice = isOsSelectionPlaceholder(osText) ? 0 : parseGelValue(osText);
         } else {
-            toggleBtn.textContent = 'Theme: Light';
-            if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Light';
+            osText = osCategorySelection.options[osCategorySelection.selectedIndex]?.text || '';
+            osPrice = isOsSelectionPlaceholder(osText) ? 0 : parseGelValue(osText);
+        }
+        if (osText && !isOsSelectionPlaceholder(osText)) {
+            summaryList.push(`<li>ოპერაციული სისტემა: <span>${osText}</span></li>`);
+        }
+        if (osPrice > 0) {
+            total += osPrice;
         }
 
-        // Toggle handler
-        function toggleTheme() {
-            body.classList.toggle('dark-theme');
-            const isDark = body.classList.contains('dark-theme');
-            toggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
-            if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        // Addons
+        if (addonsCheckboxesContainer.style.display === 'block') {
+            const checkedAddons = addonsCheckboxesContainer.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
+            checkedAddons.forEach(cb => {
+                // Do not count "მომხმარებლის აპლიკაციების დაყენება (1 ₾ თითო)" itself as price
+                if (cb.id === 'custom-apps-check') return;
+                const label = addonsCheckboxesContainer.querySelector(`label[for="${cb.id}"]`);
+                const labelText = label ? label.textContent : cb.value;
+                const price = parseGelValue(cb.value) || parseGelValue(labelText);
+                if (price > 0) {
+                    total += price;
+                    summaryList.push(`<li>დამატება: <span>${labelText}</span></li>`);
+                }
+            });
+
+            // Custom Apps
+            if (customAppsCheckbox && customAppsCheckbox.checked && customAppsSelectionContainer.style.display === 'block') {
+                let appCount = 0;
+                const checkedApps = customAppsSelectionContainer.querySelectorAll('input[type="checkbox"]:checked');
+                checkedApps.forEach(appCb => {
+                    if (appCb.id !== 'app-other-check') {
+                        appCount++;
+                        summaryList.push(`<li>აპლიკაცია: <span>${appCb.value}</span> (₾1)</li>`);
+                    }
+                });
+                // Other apps textarea
+                if (otherAppsCheckbox && otherAppsCheckbox.checked && otherAppsTextarea.style.display === 'block') {
+                    const otherAppsInput = otherAppsTextarea.querySelector('textarea');
+                    if (otherAppsInput && otherAppsInput.value.trim()) {
+                        const otherAppsText = otherAppsInput.value.trim();
+                        const otherAppsCount = countOtherApps(otherAppsText);
+                        if (otherAppsCount > 0) {
+                            summaryList.push(`<li>სხვა აპლიკაციები: <span>${otherAppsText}</span> (₾${otherAppsCount})</li>`);
+                            appCount += otherAppsCount;
+                        }
+                    }
+                }
+                if (appCount > 0) {
+                    total += appCount * 1;
+                }
+            }
         }
 
-        toggleBtn.addEventListener('click', toggleTheme);
-        if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
+        // Update UI
+        const priceSummaryList = document.getElementById('price-summary-list');
+        const priceSummaryContainer = document.getElementById('price-summary-container');
+        const totalPriceSpan = document.getElementById('total-price');
+        if (summaryList.length > 0) {
+            priceSummaryList.innerHTML = summaryList.join('');
+            priceSummaryContainer.style.display = 'block';
+            totalPriceSpan.textContent = `₾${total}`;
+        } else {
+            priceSummaryList.innerHTML = '';
+            priceSummaryContainer.style.display = 'none';
+            totalPriceSpan.textContent = '₾0';
+        }
+                // ADD THIS LINE to update the hidden field for the email
+        document.getElementById('price-summary-hidden').value = totalPriceSpan.textContent;
     }
 
-    // Initialize theme toggle
-    setupThemeToggle();
+    // Recalculate price on relevant changes
+    osCategorySelection.addEventListener('change', calculateTotalPrice);
+    if (isoVersionSelection) isoVersionSelection.addEventListener('change', calculateTotalPrice);
+    if (addonsCheckboxesContainer) {
+        addonsCheckboxesContainer.addEventListener('change', calculateTotalPrice);
+    }
+    if (customAppsCheckbox) customAppsCheckbox.addEventListener('change', calculateTotalPrice);
+    if (customAppsSelectionContainer) customAppsSelectionContainer.addEventListener('change', calculateTotalPrice);
+    if (otherAppsCheckbox) otherAppsCheckbox.addEventListener('change', calculateTotalPrice);
+    if (otherAppsTextarea) {
+        const otherAppsInput = otherAppsTextarea.querySelector('textarea');
+        if (otherAppsInput) otherAppsInput.addEventListener('input', calculateTotalPrice);
+    }
+
+    // Initial calculation
+    calculateTotalPrice();
+})();
+
+// --- Reset Addons When OS Changes ---
+osCategorySelection.addEventListener('change', function() {
+    resetAddons(); // <-- Reset all addon checkboxes and custom apps when OS changes
+});
+
+if (isoVersionSelection) {
+    isoVersionSelection.addEventListener('change', function() {
+        resetAddons(); // <-- Reset all addon checkboxes and custom apps when version changes
+    });
+}
+
+// ...
 </script>
 </body>
 </html>
