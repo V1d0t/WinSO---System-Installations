@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+<!-- Footer Section -->
 <footer class="footer-main">
     <div class="container-main">
         <div class="footer-content">
@@ -44,8 +44,18 @@
             <!-- Column 2: Links -->
             <div class="footer-links">
                 <h4 class="footer-subtitle">წარმმართველი პრინციპები</h4>
-                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">მომსახურების პირობები</a>
-                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">კონფიდენციალურობის პოლიტიკა</a>
+                <a href="WinSO-Terms.html" class="footer-link" data-i18n="terms">
+                    მომსახურების პირობები
+                    <svg class="footer-link-icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h160M336 64h112v112M224 288L448 64"/>
+                    </svg>
+                </a>
+                <a href="WinSO-Privacy.html" class="footer-link" data-i18n="privacy">
+                    კონფიდენციალურობის პოლიტიკა
+                    <svg class="footer-link-icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h160M336 64h112v112M224 288L448 64"/>
+                    </svg>
+                </a>
             </div>
 
             <!-- Column 3: Contact Details with Icons -->
@@ -84,6 +94,18 @@
         <div class="footer-copyright" data-i18n="copyright">&copy; 2025 ოპერაციული სისტემების ინსტალაციის სერვისები.</div>
     </div>
 </footer>
+
+    <script>
+        (function() {
+            // Check the theme that was saved in the browser from the other pages -J.
+            const savedTheme = localStorage.getItem('theme');
+            
+            // If the saved theme is 'dark', add the 'dark-theme' class to the body (TROUBLESHOOT)
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        })();
+    </script>
 
 </body>
 </html>
