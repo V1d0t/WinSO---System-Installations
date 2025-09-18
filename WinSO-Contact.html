@@ -24,8 +24,8 @@
                 <nav class="desktop-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-                        <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-                        <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+                        <li class="nav-item"><a href="WinSO-Contact.html" class="nav-link" data-i18n="order">შეკვეთა</a></li>
+                        <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებითი სერვისები</a></li>
                         <li class="nav-item"><a href="#contact-section" id="contact-nav-link" class="nav-link" data-i18n="contact">დაგვიკავშირდით</a></li>
                         <li class="nav-item"><button id="theme-toggle" class="theme-toggle-btn">Theme: Light</button>
                     </ul>
@@ -40,8 +40,8 @@
         </div>
         <nav id="mobile-menu" class="mobile-nav hidden">
             <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="home">მთავარი</a></li>
-            <li class="nav-item"><a href="index.html#windows-section" class="nav-link" data-i18n="merchandise">პროდუქცია</a></li>
-            <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებები</a></li>
+            <li class="nav-item"><a href="WinSO-Contact.html" class="nav-link" data-i18n="order">შეკვეთა</a></li>
+            <li class="nav-item"><a href="index.html#addons-section" class="nav-link" data-i18n="addons">დამატებითი სერვისები</a></li>
             <li class="nav-item"><a href="#contact-section" id="mobile-contact-nav-link" class="nav-link" data-i18n="contact">დაგვიკავშირდით</a></li>
             <li class="nav-item"><button id="mobile-theme-toggle" class="theme-toggle-btn">Theme: Light</button></li>
         </nav>
@@ -602,37 +602,43 @@ if (menuToggleBtn) {
     });
 }
 
-// --- Theme Toggle Logic ---
-function setupThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
-    const body = document.body;
+        // Theme toggle logic
+        function setupThemeToggle() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+            const body = document.body;
 
-    // Initialize from saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        if (toggleBtn) toggleBtn.textContent = 'Theme: Dark';
-        if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Dark';
-    } else {
-        if (toggleBtn) toggleBtn.textContent = 'Theme: Light';
-        if (mobileToggleBtn) mobileToggleBtn.textContent = 'Theme: Light';
-    }
+            // Set initial state from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                toggleBtn.textContent = 'რეჟიმი: მუქი';
+                if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: მუქი';
+            } else {
+                toggleBtn.textContent = 'რეჟიმი: ნათელი';
+                if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: ნათელი';
+            }
 
-    // Toggle handler
-    function toggleTheme() {
-        body.classList.toggle('dark-theme');
-        const isDark = body.classList.contains('dark-theme');
-        if (toggleBtn) toggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
-        if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'Theme: Dark' : 'Theme: Light';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
+            // Toggle handler
+            function toggleTheme() {
+                body.classList.toggle('dark-theme');
+                const isDark = body.classList.contains('dark-theme');
+                toggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
+                if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
 
-    if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
-    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
-}
+            toggleBtn.addEventListener('click', toggleTheme);
+            if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
+        }
 
-setupThemeToggle();
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize theme toggle
+        setupThemeToggle();
 
 // --- Final Price Calculator ---
 (function() {
