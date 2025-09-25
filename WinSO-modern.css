@@ -115,6 +115,7 @@ background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); color: #f0f0f0;}
 /* Main Content Area */
 .main-content { flex: 1; padding: 40px 0; }
 .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: var(--border-radius); padding: 24px; transition: var(--transition); margin-bottom: 32px; }
+#linux-section.glass-card {margin-bottom: 16px;}
 .glass-card:last-child { margin-bottom: 0; }
 .glass-card-hover:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 .os-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
