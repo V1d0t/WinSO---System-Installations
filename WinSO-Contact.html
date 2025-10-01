@@ -479,7 +479,7 @@ function handleAddonVisibility() {
         ];
 
         const showDesignApps = !excludedPatterns.some(pattern => pattern.test(fullText)) &&
-            (categoryValue === 'win7' || categoryValue === 'win10' || categoryValue === 'win11' || /Windows 11 Unattended/i.test(fullText));
+            (categoryValue === 'win10' || categoryValue === 'win11' || /Windows 11 Unattended/i.test(fullText));
 
         designAppsAddon.style.display = showDesignApps ? 'block' : 'none';
     }
@@ -602,43 +602,38 @@ if (menuToggleBtn) {
     });
 }
 
-        // Theme toggle logic
-        function setupThemeToggle() {
-            const toggleBtn = document.getElementById('theme-toggle');
-            const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
-            const body = document.body;
+// --- Theme Toggle ---
+function setupThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+    const body = document.body;
 
-            // Set initial state from localStorage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-theme');
-                toggleBtn.textContent = 'რეჟიმი: მუქი';
-                if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: მუქი';
-            } else {
-                toggleBtn.textContent = 'რეჟიმი: ნათელი';
-                if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: ნათელი';
-            }
+    // Set initial state from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        toggleBtn.textContent = 'რეჟიმი: მუქი';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: მუქი';
+    } else {
+        toggleBtn.textContent = 'რეჟიმი: ნათელი';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = 'რეჟიმი: ნათელი';
+    }
 
-            // Toggle handler
-            function toggleTheme() {
-                body.classList.toggle('dark-theme');
-                const isDark = body.classList.contains('dark-theme');
-                toggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
-                if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            }
+    // Toggle handler
+    function toggleTheme() {
+        body.classList.toggle('dark-theme');
+        const isDark = body.classList.contains('dark-theme');
+        toggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
+        if (mobileToggleBtn) mobileToggleBtn.textContent = isDark ? 'რეჟიმი: მუქი' : 'რეჟიმი: ნათელი';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
 
-            toggleBtn.addEventListener('click', toggleTheme);
-            if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
-        }
+    toggleBtn.addEventListener('click', toggleTheme);
+    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
+}
 
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-
-        // Initialize theme toggle
-        setupThemeToggle();
+// Initialize theme toggle
+setupThemeToggle();
 
 // --- Final Price Calculator ---
 (function() {
