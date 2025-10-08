@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Segoe+UI:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="WinSO-modern.css">
 </head>
 <body class="body-container">
@@ -67,7 +70,11 @@
                     <div class="form-group"><label for="last-name">გვარი:</label><input type="text" id="last-name" name="last_name" placeholder="მაგ: დოე" required></div>
                     <div class="form-group"><label for="order-email">თქვენი ელ.ფოსტა:</label><input type="email" id="order-email" name="email" placeholder="customer@example.com" maxlength="30" required></div>
                     <div class="form-group"><label for="phone">ტელეფონის ნომერი:</label><input type="tel" id="phone" name="phone" placeholder="555 123 456" pattern="^(5\d{8}|\+995\s?5\d{8})$" title="შეიყვანეთ 9-ნიშნა ნომერი (მაგ: 555123456) ან სრული ფორმატით (+995 555123456)" required></div>
-                    
+                    <div class="form-group"><label for="search">მისამართი:</label><input type="text" id="search" placeholder="მაგ: ქუთაისი, აღმაშენებლის ქუჩა 10" required /><input type="hidden" name="address" id="selected-address" /></div>
+
+<div id="map" style="height: 300px;"></div>
+
+
                     <div class="form-group">
                         <label for="os-category-selection">აირჩიეთ ოპერაციული სისტემა:</label>
                         <select id="os-category-selection" name="Operating_System" required>
@@ -77,9 +84,9 @@
                                 <option value="win10">Windows 10 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
                                 <option value="win11">Windows 11 Consumer Edition (აირჩიეთ ვერსიების სანახავად.)</option>
                                 <option value="NanoWin10 23H1 NTDEV (LTSC) - ₾45">NanoWin10 23H1 NTDEV (LTSC) - ₾45</option>
-                                <option value="Windows 10 Enterprise LTSC - ₾55">Windows 10 Enterprise LTSC - ₾55</option>
+                                <option value="Windows 10 Enterprise LTSC - ₾70">Windows 10 Enterprise LTSC - ₾70</option>
                                 <option value="Windows 11 Unattended Install - ₾60">Windows 11 Unattended Install - ₾60</option>
-                                <option value="Windows 11 IoT Enterprise LTSC 2024 - ₾80">Windows 11 IoT Enterprise LTSC 2024 - ₾80</option>
+                                <option value="Windows 11 IoT Enterprise LTSC 2024 - ₾70">Windows 11 IoT Enterprise LTSC 2024 - ₾70</option>
                                <!-- <option value="Hiren's BootCD PE x64 - ₾80">Hiren's BootCD PE x64 - ₾80</option> Removed from the list due to it being Utility & a bootable rescue environment. -->
                             </optgroup>
                             <optgroup label="Linux ISOs">
@@ -310,11 +317,11 @@
             <div class="footer-socials">
                 <h4 class="footer-subtitle">გამოგვყევით</h4>
                 <div class="social-icons-container">
-                    <a href="https://www.facebook.com/profile.php?id=100081595650312"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
+                    <a href="https://t.ly/JSxQf"  target="_blank" class="social-icon" aria-label="Follow us on Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <!-- NEW: Instagram Icon -->
-                    <a href="https://www.instagram.com/winso.services/"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
+                    <a href="https://t.ly/P8eZL"  target="_blank" class="social-icon" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -343,34 +350,34 @@ document.getElementById('show-question-btn').addEventListener('click', () => {
 // --- OS SELECTION & ADDON LOGIC ---
 const osVersionData = {
     win7: [
-        { value: "Windows 7 Starter - ₾15", text: "Windows 7 Starter - ₾15" },
-        { value: "Windows 7 Home Premium - ₾20", text: "Windows 7 Home Premium - ₾20" },
-        { value: "Windows 7 Professional - ₾25", text: "Windows 7 Professional - ₾25" },
-        { value: "Windows 7 Ultimate - ₾30", text: "Windows 7 Ultimate - ₾30" }
+        { value: "Windows 7 Starter - ₾5", text: "Windows 7 Starter - ₾5" },
+        { value: "Windows 7 Home Premium - ₾10", text: "Windows 7 Home Premium - ₾10" },
+        { value: "Windows 7 Professional - ₾15", text: "Windows 7 Professional - ₾15" },
+        { value: "Windows 7 Ultimate - ₾25", text: "Windows 7 Ultimate - ₾25" }
     ],
     win10: [
-        { value: "Windows 10 Home N/SL - ₾23", text: "Windows 10 Home N / Single Language - ₾23" },
-        { value: "Windows 10 Home - ₾25", text: "Windows 10 Home - ₾25" },
-        { value: "Windows 10 Education N - ₾28", text: "Windows 10 Education N - ₾28" },
-        { value: "Windows 10 Education - ₾30", text: "Windows 10 Education - ₾30" },
-        { value: "Windows 10 Pro N - ₾32", text: "Windows 10 Pro N - ₾32" },
-        { value: "Windows 10 Pro - ₾35", text: "Windows 10 Pro - ₾35" },
+        { value: "Windows 10 Home N/SL - ₾10", text: "Windows 10 Home N / Single Language - ₾10" },
+        { value: "Windows 10 Home - ₾10", text: "Windows 10 Home - ₾10" },
+        { value: "Windows 10 Education N - ₾15", text: "Windows 10 Education N - ₾15" },
+        { value: "Windows 10 Education - ₾15", text: "Windows 10 Education - ₾15" },
+        { value: "Windows 10 Pro N - ₾30", text: "Windows 10 Pro N - ₾30" },
+        { value: "Windows 10 Pro - ₾30", text: "Windows 10 Pro - ₾30" },
         { value: "Windows 10 Pro for Workstations - ₾40", text: "Windows 10 Pro for Workstations - ₾40" }
     ],
     win11unattended: [
         { value: "Windows 11 Unattended Install - ₾60", text: "Windows 11 Unattended Install - ₾60" }
     ],
     win11: [
-        { value: "Windows 11 Home N/SL - ₾30", text: "Windows 11 Home N / Home Single Language - ₾30" },
-        { value: "Windows 11 Home - ₾32", text: "Windows 11 Home - ₾32" },
-        { value: "Windows 11 Education N - ₾35", text: "Windows 11 Education N - ₾35" },
-        { value: "Windows 11 Education - ₾38", text: "Windows 11 Education - ₾38" },
-        { value: "Windows 11 Pro N - ₾40", text: "Windows 11 Pro N - ₾40" },
-        { value: "Windows 11 Pro - ₾42", text: "Windows 11 Pro - ₾42" },
-        { value: "Windows 11 Pro Education N - ₾45", text: "Windows 11 Pro Education N - ₾45" },
-        { value: "Windows 11 Pro Education - ₾48", text: "Windows 11 Pro Education - ₾48" },
+        { value: "Windows 11 Home N/SL - ₾10", text: "Windows 11 Home N / Home Single Language - ₾10" },
+        { value: "Windows 11 Home - ₾10", text: "Windows 11 Home - ₾10" },
+        { value: "Windows 11 Education N - ₾15", text: "Windows 11 Education N - ₾15" },
+        { value: "Windows 11 Education - ₾15", text: "Windows 11 Education - ₾15" },
+        { value: "Windows 11 Pro N - ₾30", text: "Windows 11 Pro N - ₾30" },
+        { value: "Windows 11 Pro - ₾30", text: "Windows 11 Pro - ₾30" },
+        { value: "Windows 11 Pro Education N - ₾40", text: "Windows 11 Pro Education N - ₾40" },
+        { value: "Windows 11 Pro Education - ₾40", text: "Windows 11 Pro Education - ₾40" },
         { value: "Windows 11 Pro N for Workstations - ₾50", text: "Windows 11 Pro N for Workstations - ₾50" },
-        { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾55" }
+        { value: "Windows 11 Pro for Workstations - ₾55", text: "Windows 11 Pro for Workstations - ₾50" }
     ]
 };
 
@@ -784,6 +791,55 @@ if (isoVersionSelection) {
         resetAddons(); // <-- Reset all addon checkboxes and custom apps when version changes
     });
 }
+
+//Geo Map OSM
+const map = L.map('map').setView([42.2679, 42.7180], 13); // Kutaisi center
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  let marker;
+
+  // Address search input
+  document.getElementById('search').addEventListener('input', function (e) {
+    const query = e.target.value;
+    if (query.length < 3) return;
+
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=1`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0) {
+          const result = data[0];
+          const lat = result.lat;
+          const lon = result.lon;
+          const address = result.display_name;
+
+          if (marker) map.removeLayer(marker);
+          marker = L.marker([lat, lon]).addTo(map);
+          map.setView([lat, lon], 16);
+
+          document.getElementById('selected-address').value = address;
+        }
+      });
+  });
+
+  // Map click to set address
+  map.on('click', function (e) {
+    const { lat, lng } = e.latlng;
+
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+      .then(res => res.json())
+      .then(data => {
+        const address = data.display_name;
+
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([lat, lng]).addTo(map);
+
+        document.getElementById('search').value = address;
+        document.getElementById('selected-address').value = address;
+      });
+  });
 
 // ...
 </script>
